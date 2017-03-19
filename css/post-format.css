@@ -1,0 +1,68 @@
+﻿/**
+ * Post Formats
+ *
+ * Layout / Design for Post Formats
+ *
+ * @package		WordPress
+ * @subpackage	fkBootpress
+ *
+ * @since		1.0.0
+ *
+ * @author		Fabian Künzel, https://fkuenzel.de/
+ */
+
+body.blog article.post {
+	display: block;
+}
+ 
+article.post, article.page { 
+	background: #fff;
+	margin-bottom: 1rem;
+	border-radius: .75rem;
+}
+ 
+.postHeader, .postFooter {
+	padding: 1.5rem;
+}
+.postContent { padding: 0 1.5rem; }
+.postFooter { border-radius: 0 0 .75rem .75rem; }
+
+/** Article Format **/
+ 
+article.format-standard {
+	
+}
+ 
+ 
+article.format-aside {
+	background-color: #fcf8e3;
+}
+article.sticky  {
+	background-color: #fcf8e3;
+    border-color: #faf2cc;
+    color: #8a6d3b;
+    border-radius: .25rem;
+}
+
+article.format-quote  .post-content{
+	border-left: .25rem solid #eceeef;
+	font-size: 1.25rem; 
+}
+
+
+/**
+ * 
+ */
+ 
+.post-title { 
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+.postContent > h1,
+.postContent > h2,
+.postContent > h3,
+.postContent > h4,
+.postContent > h5,
+.postContent > h6 {
+	margin-top: -.5rem;
+}
