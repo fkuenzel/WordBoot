@@ -6,10 +6,10 @@
  */
 header('Content-Type: text/css;charset=utf-8');
 define( 'WP_USE_THEMES', false );
-include('../../../wp-load.php'); 
+require_once('../../../wp-load.php'); 
 ?>
 /**
- * WordBoot Template D Customizing CSS
+ * WordBoot Template Customizing CSS
  *
  * This is a automatic generatet CSS File from WordBoot
  */
@@ -27,7 +27,7 @@ if ( get_theme_mod('font_family_headline') ) {
 
 body {
 	font-family: <?php echo get_theme_mod('font_family_global', 'inherit'); ?>;
-	font-size: <?php echo get_theme_mod('font_size', '16'); ?>px;
+	font-size: <?php echo get_theme_mod('body_font_size', '16'); ?>px;
 	color: <?php echo get_theme_mod('text_color', '#292b2c'); ?>;
 	background: <?php echo get_theme_mod( 'body_background_color', '#eaeaea'); ?>;
 }
@@ -129,3 +129,8 @@ h1,h2,h3,h4,h5,h6,
 .navbar-light .navbar-nav .open>.nav-link {
 	color: <?php echo get_theme_mod('nav_link_active_color', '000'); ?>;
 }
+
+<?php 
+	$style = apply_filters( 'wb_customizer_css', $style ); 
+	echo $style;
+?>
