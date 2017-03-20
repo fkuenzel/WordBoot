@@ -151,8 +151,8 @@ ul.wb-category-list-child {
 /**
  * Footer Widget Control
  */
-.footer-widgets { background: #fff; padding: 1rem 0; }
-.footer-widgets + #pageFooter { margin-top: 0; }
+.footer-widgets { padding: 1rem 0; }
+.footer-widgets  { margin-top: 0; }
 
 .footer-widgets .widget_calendar { max-width: 200px; }
 .footer-widgets .widget_meta { max-width: 224px; }
