@@ -38,6 +38,15 @@ body {
 #pageHeader .dropdown-menu {
 	background: <?php echo get_theme_mod( 'main_navbar_background_color', '#f7f7f7'); ?>;
 }	
+
+<?php
+	$cap_bg = get_theme_mod( 'wb_slice_caption_background', '#000000');
+	$caption_bg = wb_hex2rgb( $cap_bg ); 
+?>
+.carousel-caption {
+	color: <?php echo get_theme_mod( 'wb_slice_caption_text', '#ffffff'); ?>;;
+	background: rgba(<?php echo $caption_bg['red']; ?>, <?php echo $caption_bg['green']; ?>, <?php echo $caption_bg['blue']; ?>, 0.5);
+}
 #pageContent {
 	background: <?php echo get_theme_mod( 'page_content_background_color', '#ffffff'); ?>;
 }

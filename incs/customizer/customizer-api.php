@@ -7,7 +7,7 @@ class WordBoot_Customizer {
 	public static function register( $wp_customize ) {
 		
 		/**
-		 * WordBoot Options
+		 * WordBoot Layout Options
 		 *
 		 * @section		wordboot_options
 		 * @since		WordBoot 1.0.0
@@ -330,6 +330,323 @@ class WordBoot_Customizer {
 		);
 		
 		/**
+		 * WordBoot Carousel Slider Settings
+		 *
+		 * Settings Bootstrap Slider.
+		 *
+		 * @since		1.0.0
+		 */
+		$wp_customize->add_panel( 'wb_slider_panel', array(
+			'title' => __( 'Slider Settings', 'wordboot' ),
+			'description' => __( 'WordBoot Slider Settings', 'wordboot' ), // Include html tags such as <p>.
+			'priority' => 30, // Mixed with top-level-section hierarchy.
+		) );
+		 
+		$wp_customize->add_section(
+			'wb_slider_options', array(
+				'title'			=> __( 'Slider Settings', 'wordboot' ),
+				'priority'		=> 1,
+				'capability'	=> 'edit_theme_options',
+				'panel'			=> 'wb_slider_panel'
+			)
+		);
+		$wp_customize->add_section(
+			'wb_slider_upload', array(
+				'title'			=> __( 'Slider Upload', 'wordboot' ),
+				'priority'		=> 2,
+				'capability'	=> 'edit_theme_options',
+				'panel'			=> 'wb_slider_panel'
+			)
+		);
+		$wp_customize->add_setting( 'wb_slider_status', 
+			array(
+				'default'    => 'false',
+				'transport'  => 'postMessage',
+			)
+		);
+		
+		$wp_customize->add_control( 'wb_slider_status',
+			array(
+				'settings' => 'wb_slider_status',
+				'label'    		=> __( 'Slider Active?', 'wordboot' ),
+				'section'		=> 'wb_slider_options',
+				'type'     => 'radio',
+				'priority' => 1,
+				'choices'  => array(
+					'true'   	=> __( 'Yes', 'wordboot' ),
+					'false'  	=> __( 'No', 'wordboot' ),
+				)
+			)
+		);
+		
+		$wp_customize->add_setting( 'wb_slider_indicators', 
+			array(
+				'default'    => 'false',
+				'transport'  => 'postMessage',
+			)
+		);
+		
+		$wp_customize->add_control( 'wb_slider_indicators',
+			array(
+				'settings' => 'wb_slider_indicators',
+				'label'    		=> __( 'Show Slider indicators?', 'wordboot' ),
+				'description'	=> '',
+				'section'		=> 'wb_slider_options',
+				'type'     => 'radio',
+				'priority' => 2,
+				'choices'  => array(
+					'true'   	=> __( 'Yes', 'wordboot' ),
+					'false'  	=> __( 'No', 'wordboot' ),
+				)
+			)
+		);
+		$wp_customize->add_setting( 'wb_slider_controls', 
+			array(
+				'default'    => 'false',
+				'transport'  => 'postMessage',
+			)
+		);
+		
+		$wp_customize->add_control( 'wb_slider_controls',
+			array(
+				'settings' => 'wb_slider_controls',
+				'label'    		=> __( 'Show Slider Controls?', 'wordboot' ),
+				'description'	=> '',
+				'section'		=> 'wb_slider_options',
+				'type'     => 'radio',
+				'priority' => 3,
+				'choices'  => array(
+					'true'   	=> __( 'Yes', 'wordboot' ),
+					'false'  	=> __( 'No', 'wordboot' ),
+				)
+			)
+		);
+		$wp_customize->add_setting( 'wb_slide_caption', 
+			array(
+				'default'    => 'false',
+				'transport'  => 'postMessage',
+			)
+		);
+		
+		$wp_customize->add_control( 'wb_slide_caption',
+			array(
+				'settings' => 'wb_slide_caption',
+				'label'    		=> __( 'Show Caption Text on Slider?', 'wordboot' ),
+				'description'	=> '',
+				'section'		=> 'wb_slider_options',
+				'type'     => 'radio',
+				'priority' => 4,
+				'choices'  => array(
+					'true'   	=> __( 'Yes', 'wordboot' ),
+					'false'  	=> __( 'No', 'wordboot' ),
+				)
+			)
+		);
+		
+		$wp_customize->add_setting( 
+			'wb_slice_caption_background', array(
+				'default'    => '#000',
+				'type'       => 'theme_mod',
+				'capability' => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'transport' => 'refresh'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wb_slice_caption_background',
+			array(
+				 'label'    => 'Slider Caption background color',
+				 'section'  => 'wb_slider_options',
+				 'settings' => 'wb_slice_caption_background'
+			)
+		));
+		$wp_customize->add_setting( 
+			'wb_slice_caption_text', array(
+				'default'    => '#ffffff',
+				'type'       => 'theme_mod',
+				'capability' => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'transport' => 'refresh'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wb_slice_caption_text',
+			array(
+				 'label'    => 'Slider Caption Text color',
+				 'section'  => 'wb_slider_options',
+				 'settings' => 'wb_slice_caption_text'
+			)
+		));
+		
+			
+		$sliders = array();
+		
+		$sliders[] = array(
+			'slug'    => 'wb_slide_img_1',
+			'default' => '',
+			'label'   => __( 'Slider Image One', 'wordboot' ),
+			'transport' => 'refresh'
+		);
+		$sliders[] = array(
+			'slug'    => 'wb_slide_img_2',
+			'default' => '',
+			'label'   => __( 'Slider Image Two', 'wordboot' ),
+			'transport' => 'refresh'
+		);
+		$sliders[] = array(
+			'slug'    => 'wb_slide_img_3',
+			'default' => '',
+			'label'   => __( 'Slider Image Three', 'wordboot' ),
+			'transport' => 'refresh'
+		);
+		$sliders[] = array(
+			'slug'    => 'wb_slide_img_4',
+			'default' => '',
+			'label'   => __( 'Slider Image Four', 'wordboot' ),
+			'transport' => 'refresh'
+		);
+		$sliders[] = array(
+			'slug'    => 'wb_slide_img_5',
+			'default' => '',
+			'label'   => __( 'Slider Image Five', 'wordboot' ),
+			'transport' => 'refresh'
+		);
+		
+		
+		foreach ( $sliders as $slider ) {
+			// SETTINGS
+			$wp_customize->add_setting( 
+				$slider['slug'], array(
+					'default'    => $slider['default'],
+				)
+			);
+			// CONTROLS
+			$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, $slider['slug'],
+				array(
+					 'label'    => $slider['label'],
+					 'section'  => 'wb_slider_upload',
+					 'settings' => $slider['slug']
+				)
+			));
+		} // foreach
+		
+		
+		/**
+		 * WordBoot Color Settings
+		 *
+		 * Settings for Colors of WordBoot.
+		 *
+		 * @since		1.0.0
+		 */
+		$wp_customize->add_panel( 'wb_color_panel', array(
+			'title' => __( 'Color Settings', 'wordboot' ),
+			'description' => __( 'WordBoot Color Settings for Text and Layout', 'wordboot' ), // Include html tags such as <p>.
+			'priority' => 30, // Mixed with top-level-section hierarchy.
+		) );
+		
+		/**
+		 * Layout Background Colors Settings for WordBoot
+		 *
+		 * @section		wordboot_layout_color_settings_options
+		 * @since		1.0.0
+		 */
+		$wp_customize->add_section(
+			'wordboot_layout_color_settings_options', array(
+				'title'			=> __( 'Layout Background Colors', 'wordboot' ),
+				'priority'		=> 2,
+				'capability'	=> 'edit_theme_options',
+				'panel'			=> 'wb_color_panel'
+			)
+		);
+		
+		/**
+		 * Text Settings and Colors for WordBoot
+		 *
+		 * @section		wordboot_text_settings_options
+		 * @since		WordBoot 1.0.0
+		 */
+		$wp_customize->add_section(
+			'wordboot_text_settings_options', array(
+				'title'			=> __( 'Text Settings and Colors', 'wordboot' ),
+				'priority'		=> 30,
+				'capability'	=> 'edit_theme_options',
+				'panel'			=> 'wb_color_panel'
+			)
+		);
+		
+		/**
+		 * Text Color Settings
+		 * @since		 1.0.0
+		 */
+		$layout_colors = array();
+		
+		$layout_colors[] = array(
+			'slug'    => 'body_background_color',
+			'default' => '#eaeaea',
+			'label'   => __( 'Body background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'header_background_color',
+			'default' => '#ffffff',
+			'label'   => __( 'Header background color', 'wordboot' )
+		);
+		
+		$layout_colors[] = array(
+			'slug'    => 'main_navbar_background_color',
+			'default' => '#f7f7f7',
+			'label'   => __( 'Top Menu background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'main_nav_link_border',
+			'default' => '#fff',
+			'label'   => __( 'Top menu border Color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'page_content_background_color',
+			'default' => '#ffffff',
+			'label'   => __( 'Page Content background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'sidebar_left_background_color',
+			'default' => '#cccccc',
+			'label'   => __( 'Sidebar left background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'sidebar_right_background_color',
+			'default' => '#cccccc',
+			'label'   => __( 'Sidebar right background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'sidebar_widget_background_color',
+			'default' => '#fffffff',
+			'label'   => __( 'Sidebar Section background color', 'wordboot' )
+		);
+		$layout_colors[] = array(
+			'slug'    => 'footer_background_color',
+			'default' => '#fffffff',
+			'label'   => __( 'Footer background color', 'wordboot' )
+		);
+		foreach ( $layout_colors as $layout_color ) {
+			// SETTINGS
+			$wp_customize->add_setting( 
+				$layout_color['slug'], array(
+					'default'    => $layout_color['default'],
+					'type'       => 'theme_mod',
+					'capability' => 'edit_theme_options',
+					'sanitize_callback' => 'sanitize_hex_color',
+					'transport' => 'refresh'
+				)
+			);
+			// CONTROLS
+			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 
+				$layout_color['slug'], array(
+					 'label'    => $layout_color['label'],
+					 'section'  => 'wordboot_layout_color_settings_options',
+					 'settings' => $layout_color['slug']
+				)
+			));
+		} // foreach end
+		
+		
+		/**
 		 * WordBoot Text Settings Options
 		 *
 		 * @section		wordboot_text_settings_options
@@ -405,83 +722,83 @@ class WordBoot_Customizer {
 		$text_colors[] = array(
 			'slug'    => 'text_color',
 			'default' => '#292b2c',
-			'label'   => __( 'Text Color', 'wordboot' )
+			'label'   => __( 'Text color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'link_color',
 			'default' => '#337ab7',
-			'label'   => __( 'Link Color', 'wordboot' )
+			'label'   => __( 'Link color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'link_color_hover',
 			'default' => '#337ab7',
-			'label'   => __( 'Link Hover Color', 'wordboot' )
+			'label'   => __( 'Link Hover color', 'wordboot' )
 		);
 		
 		$text_colors[] = array(
 			'slug'    => 'headline_color',
 			'default' => '#292b2c',
-			'label'   => __( 'Headline Color', 'wordboot' )
+			'label'   => __( 'Headline color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'social_nav_link_color',
 			'default' => '#00000',
-			'label'   => __( 'Social Nav Link Color', 'wordboot' )
+			'label'   => __( 'Social nav link color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'social_nav_link_hover_color',
 			'default' => '#00000',
-			'label'   => __( 'Social Nav Link Hover Color', 'wordboot' )
+			'label'   => __( 'Social nav link hover color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'nav_link_color',
 			'default' => '#00000',
-			'label'   => __( 'Nav Link Color', 'wordboot' )
+			'label'   => __( 'Nav link color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'nav_link_hover_color',
 			'default' => '#00000',
-			'label'   => __( 'Nav Link Hover Color', 'wordboot' )
+			'label'   => __( 'Nav link hover color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'nav_link_active_color',
 			'default' => '#00000',
-			'label'   => __( 'Nav Link active Color', 'wordboot' )
+			'label'   => __( 'Nav link active color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'footer_text_color',
 			'default' => '#00000',
-			'label'   => __( 'Footer Text Color', 'wordboot' )
+			'label'   => __( 'Footer Text color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'footer_link_color',
 			'default' => '#337ab7',
-			'label'   => __( 'Footer Link Color', 'wordboot' )
+			'label'   => __( 'Footer link color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'footer_link_color_hover',
 			'default' => '#337ab7',
-			'label'   => __( 'Footer Link Hover Color', 'wordboot' )
+			'label'   => __( 'Footer link Hover color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'sidebar_text_color',
 			'default' => '#00000',
-			'label'   => __( 'Sidebar Text Color', 'wordboot' )
+			'label'   => __( 'Sidebar Text color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'sidebar_headline_color',
 			'default' => '#00000',
-			'label'   => __( 'Sidebar Headline Color', 'wordboot' )
+			'label'   => __( 'Sidebar Headline color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'sidebar_link_color',
 			'default' => '#337ab7',
-			'label'   => __( 'Sidebar Link Color', 'wordboot' )
+			'label'   => __( 'Sidebar link color', 'wordboot' )
 		);
 		$text_colors[] = array(
 			'slug'    => 'sidebar_link_color_hover',
 			'default' => '#337ab7',
-			'label'   => __( 'Sidebar Link Hover Color', 'wordboot' )
+			'label'   => __( 'Sidebar link Hover color', 'wordboot' )
 		);
 		
 		foreach ( $text_colors as $text_color ) {
@@ -504,259 +821,6 @@ class WordBoot_Customizer {
 				)
 			));
 		} // foreach end
-		
-		
-		/**
-		 * Custom Image Slider
-		 */
-		 
-		$wp_customize->add_section(
-			'wb_slider_options', array(
-				'title'			=> __( 'WordBoot Image Slider Settings', 'wordboot' ),
-				'priority'		=> 24,
-				'capability'	=> 'edit_theme_options',
-			)
-		);
-		
-		$wp_customize->add_setting( 'wb_slider_status', 
-			array(
-				'default'    => 'false',
-				'transport'  => 'postMessage',
-			)
-		);
-		
-		$wp_customize->add_control( 'wb_slider_status',
-			array(
-				'settings' => 'wb_slider_status',
-				'label'    		=> __( 'Image Slider Active?', 'wordboot' ),
-				'description'	=> '',
-				'section'		=> 'wb_slider_options',
-				'type'     => 'radio',
-				'priority' => 1,
-				'choices'  => array(
-					'true'   	=> __( 'Yes', 'wordboot' ),
-					'false'  	=> __( 'No', 'wordboot' ),
-				)
-			)
-		);
-		
-		$wp_customize->add_setting( 'wb_slider_indicators', 
-			array(
-				'default'    => 'false',
-				'transport'  => 'postMessage',
-			)
-		);
-		
-		$wp_customize->add_control( 'wb_slider_indicators',
-			array(
-				'settings' => 'wb_slider_indicators',
-				'label'    		=> __( 'Image Slider indicators?', 'wordboot' ),
-				'description'	=> '',
-				'section'		=> 'wb_slider_options',
-				'type'     => 'radio',
-				'priority' => 2,
-				'choices'  => array(
-					'true'   	=> __( 'Yes', 'wordboot' ),
-					'false'  	=> __( 'No', 'wordboot' ),
-				)
-			)
-		);
-		$wp_customize->add_setting( 'wb_slider_controls', 
-			array(
-				'default'    => 'false',
-				'transport'  => 'postMessage',
-			)
-		);
-		
-		$wp_customize->add_control( 'wb_slider_controls',
-			array(
-				'settings' => 'wb_slider_controls',
-				'label'    		=> __( 'Image Slider Controls?', 'wordboot' ),
-				'description'	=> '',
-				'section'		=> 'wb_slider_options',
-				'type'     => 'radio',
-				'priority' => 3,
-				'choices'  => array(
-					'true'   	=> __( 'Yes', 'wordboot' ),
-					'false'  	=> __( 'No', 'wordboot' ),
-				)
-			)
-		);
-		$wp_customize->add_setting( 'wb_slide_caption', 
-			array(
-				'default'    => 'false',
-				'transport'  => 'postMessage',
-			)
-		);
-		
-		$wp_customize->add_control( 'wb_slide_caption',
-			array(
-				'settings' => 'wb_slide_caption',
-				'label'    		=> __( 'Caption Text on Slider?', 'wordboot' ),
-				'description'	=> '',
-				'section'		=> 'wb_slider_options',
-				'type'     => 'radio',
-				'priority' => 4,
-				'choices'  => array(
-					'true'   	=> __( 'Yes', 'wordboot' ),
-					'false'  	=> __( 'No', 'wordboot' ),
-				)
-			)
-		);
-		
-		$sliders = array();
-		
-		$sliders[] = array(
-			'slug'    => 'wb_slide_img_1',
-			'default' => '',
-			'label'   => __( 'Slider Image One', 'wordboot' ),
-			'transport' => 'refresh'
-		);
-		$sliders[] = array(
-			'slug'    => 'wb_slide_img_2',
-			'default' => '',
-			'label'   => __( 'Slider Image Two', 'wordboot' ),
-			'transport' => 'refresh'
-		);
-		$sliders[] = array(
-			'slug'    => 'wb_slide_img_3',
-			'default' => '',
-			'label'   => __( 'Slider Image Three', 'wordboot' ),
-			'transport' => 'refresh'
-		);
-		$sliders[] = array(
-			'slug'    => 'wb_slide_img_4',
-			'default' => '',
-			'label'   => __( 'Slider Image Four', 'wordboot' ),
-			'transport' => 'refresh'
-		);
-		$sliders[] = array(
-			'slug'    => 'wb_slide_img_5',
-			'default' => '',
-			'label'   => __( 'Slider Image Five', 'wordboot' ),
-			'transport' => 'refresh'
-		);
-		
-		
-		foreach ( $sliders as $slider ) {
-			// SETTINGS
-			$wp_customize->add_setting( 
-				$slider['slug'], array(
-					'default'    => $slider['default'],
-				)
-			);
-			// CONTROLS
-			$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, $slider['slug'],
-				array(
-					 'label'    => $slider['label'],
-					 'section'  => 'wb_slider_options',
-					 'settings' => $slider['slug']
-				)
-			));
-		} // foreach
-		
-		
-		/**
-		 * Layout Color Settings Section for WordBoot
-		 *
-		 * @section		wordboot_layout_color_settings_options
-		 * @since		1.0.0
-		 */
-		$wp_customize->add_section(
-			'wordboot_layout_color_settings_options', array(
-				'title'			=> __( 'WordBoot Layout Color Settings', 'wordboot' ),
-				'priority'		=> 24,
-				'capability'	=> 'edit_theme_options',
-			)
-		);
-		
-		
-		/**
-		 * Text Settings Section for WordBoot
-		 *
-		 * @section		wordboot_text_settings_options
-		 * @since		WordBootCHILD 1.0.0
-		 */
-		$wp_customize->add_section(
-			'wordboot_text_settings_options', array(
-				'title'			=> __( 'WordBoot Text Settings', 'wordboot' ),
-				'priority'		=> 30,
-				'capability'	=> 'edit_theme_options',
-			)
-		);
-		/**
-		 * Text Color Settings
-		 * @since		 1.0.0
-		 */
-		$layout_colors = array();
-		
-		$layout_colors[] = array(
-			'slug'    => 'body_background_color',
-			'default' => '#eaeaea',
-			'label'   => __( 'Body Background color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'header_background_color',
-			'default' => '#ffffff',
-			'label'   => __( 'Header Background ', 'wordboot' )
-		);
-		
-		$layout_colors[] = array(
-			'slug'    => 'main_navbar_background_color',
-			'default' => '#f7f7f7',
-			'label'   => __( 'Main Menu background color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'main_nav_link_border',
-			'default' => '#fff',
-			'label'   => __( 'Main Menu Border Color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'page_content_background_color',
-			'default' => '#ffffff',
-			'label'   => __( 'Page Content background color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'sidebar_left_background_color',
-			'default' => '#cccccc',
-			'label'   => __( 'Sidebar Left Background Color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'sidebar_right_background_color',
-			'default' => '#cccccc',
-			'label'   => __( 'Sidebar right Background Color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'sidebar_widget_background_color',
-			'default' => '#fffffff',
-			'label'   => __( 'Sidebar Sections Background Color', 'wordboot' )
-		);
-		$layout_colors[] = array(
-			'slug'    => 'footer_background_color',
-			'default' => '#fffffff',
-			'label'   => __( 'Footer Background Color', 'wordboot' )
-		);
-		foreach ( $layout_colors as $layout_color ) {
-			// SETTINGS
-			$wp_customize->add_setting( 
-				$layout_color['slug'], array(
-					'default'    => $layout_color['default'],
-					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options',
-					'sanitize_callback' => 'sanitize_hex_color',
-					'transport' => 'refresh'
-				)
-			);
-			// CONTROLS
-			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 
-				$layout_color['slug'], array(
-					 'label'    => $layout_color['label'],
-					 'section'  => 'wordboot_layout_color_settings_options',
-					 'settings' => $layout_color['slug']
-				)
-			));
-		} // foreach end
-		
 		
 		
 		//4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
@@ -785,6 +849,10 @@ class WordBoot_Customizer {
 		$wp_customize->get_setting( 'nav_link_color' )			->transport = 'postMessage';
 		$wp_customize->get_setting( 'nav_link_hover_color' )	->transport = 'postMessage';
 		$wp_customize->get_setting( 'nav_link_active_color' )	->transport = 'postMessage';
+		
+		
+		$wp_customize->get_setting( 'wb_slice_caption_text' )		->transport = 'postMessage';
+		$wp_customize->get_setting( 'wb_slice_caption_background' )	->transport = 'postMessage';
 		
 	} // register end
 	
