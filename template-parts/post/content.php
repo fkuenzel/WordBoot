@@ -29,7 +29,7 @@
 	
 	<div class="postContent">
 		<?php if( !is_singular() AND wordboot_show_excerpt() != 'full' ) { ?>
-			<?php if ( has_embed() ) { the_excerpt_embed(); } else { the_excerpt(); } ?>
+			<?php the_excerpt(); ?>
 		<?php } else { ?>
 			<?php the_content( sprintf(
 				__( 'Continue reading<span class="sr-only"> "%s"</span>', 'wordboot' ),
