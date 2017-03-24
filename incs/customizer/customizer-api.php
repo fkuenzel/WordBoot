@@ -573,7 +573,7 @@ class WordBoot_Customizer {
 		);
 		
 		/**
-		 * Text Color Settings
+		 * Laxou Background Colors
 		 * @since		 1.0.0
 		 */
 		$layout_colors = array();
@@ -655,21 +655,21 @@ class WordBoot_Customizer {
 		
 		
 		
-		$wp_customize->add_setting( 'font_size', 
+		$wp_customize->add_setting( 'body_font_size', 
 			array(
 				'default'    => '16',
 				'transport'  => 'postMessage',
-				'sanitize_callback' => 'wordboot_sanitize_choices',
+				'sanitize_callback' => 'intval',
 			)
 		);
 		
-		$wp_customize->add_control( 'font_size',
+		$wp_customize->add_control( 'body_font_size',
 			array(
-				'settings' => 'font_size',
+				'settings' 		=> 'body_font_size',
 				'label'    		=> __( 'Font Size', 'wordboot' ),
 				'description'	=> __( 'Default Font Size in <em>px</em>. <small><em>(DEFAULT: 16)</em></small>', 'wordboot' ),
 				'section'		=> 'wordboot_text_settings_options',
-				'type'     		=> 'text',
+				'type'     		=> 'number',
 				'priority' 		=> 1,
 			)
 		);
