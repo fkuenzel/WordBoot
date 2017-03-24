@@ -49,7 +49,7 @@ function wordboot_scripts() {
 	 */ 
 	 
 	wp_add_inline_script( "bootstrap-js", 
-		esc_js( "$('[data-toggle=\"modalexternal\"]').click(function(e) {
+		"$('[data-toggle=\"modalexternal\"]').click(function(e) {
 			e.preventDefault();
 			var modal_url = $(this).attr('href');
 			$.ajax({
@@ -60,8 +60,7 @@ function wordboot_scripts() {
 				$('#modal_frame').modal('show');
 			});
 		});
-		") 
-	);
+		"); 
 	
 }
 
