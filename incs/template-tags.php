@@ -125,24 +125,6 @@ function wb_single_post_excerpt() {
 	
 }
 
-function has_embed( $post_id = false ) {
-    if( !$post_id )
-        $post_id = get_the_ID();
-    else
-        $post_id = absint( $post_id );
-    if( !$post_id )
-        return false;
- 
-    $post_meta = get_post_custom_keys( $post_id );
- 
-    foreach( $post_meta as $meta ) {
-        if( '_oembed' != substr( trim( $meta ) , 0 , 7 ) )
-            continue;
-        return true;
-    }
-    return false;
-}
-
 function wb_add_html_classes( $html ) {
     $find = array(
         "/<blockquote>/",
