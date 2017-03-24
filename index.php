@@ -2,9 +2,9 @@
 	<div class="<?php wb_container_class(); ?>" id="pageContent">
 		<div class="row">
 		
-		<?php if ( '2_cols_left' === wb_columns_layout( true, 'global' ) OR '3_cols' === wb_columns_layout( true, 'global' )) { get_sidebar('left'); } ?>
+		<?php if ( '2_cols_left' === wb_columns_layout( false, 'global' ) OR '3_cols' === wb_columns_layout( false, 'global' )) { get_sidebar('left'); } ?>
 		
-		<?php echo wb_columns_layout( false, 'global' ); ?>
+		<?php echo wb_columns_layout( true, 'global' ); ?>
 		<?php
 		if ( have_posts() ) :
 			/* Start the Loop */
@@ -32,7 +32,7 @@
 		
 		</div> <!-- .col -->
 		
-		<?php if ( '2_cols_right' === wb_columns_layout( true, 'global' ) OR '3_cols' === wb_columns_layout( true, 'global' )) { get_sidebar(); } ?>
+		<?php if ( '2_cols_right' === wb_columns_layout( false, 'global' ) OR '3_cols' === wb_columns_layout( false, 'global' )) { get_sidebar(); } ?>
 		</div> <!-- .row end; -->
 			
 	</div> <!-- .<?php wb_container_class(); ?> end -->

@@ -14,9 +14,9 @@ get_header(); ?>
 	<div class="<?php wb_container_class(); ?>" id="pageContent">
 		<div class="row">
 		
-		<?php if ( '2_cols_left' === wb_columns_layout( true, 'single' ) OR '3_cols' === wb_columns_layout( true, 'single' ) ) { get_sidebar('left'); } ?>
+		<?php if ( '2_cols_left' === wb_columns_layout( false, 'single' ) OR '3_cols' === wb_columns_layout( false, 'single' ) ) { get_sidebar('left'); } ?>
 		
-		<?php echo wb_columns_layout(false, 'single' ); ?>
+		<?php echo wb_columns_layout(true, 'single' ); ?>
 			<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
@@ -38,7 +38,7 @@ get_header(); ?>
 				endwhile; // End of the loop.
 			?>
 			</div> <!-- .col -->
-			<?php if ( '2_cols_right' === wb_columns_layout( true, 'single' ) OR '3_cols' === wb_columns_layout( true, 'single' )) { get_sidebar(); } ?>
+			<?php if ( '2_cols_right' === wb_columns_layout( false, 'single' ) OR '3_cols' === wb_columns_layout( false, 'single' )) { get_sidebar(); } ?>
 		</div> <!-- .row end; -->
 	</div> <!-- .<?php wb_container_class(); ?> end -->
 <?php get_footer(); ?>
