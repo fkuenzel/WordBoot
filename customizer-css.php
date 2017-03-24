@@ -129,7 +129,7 @@ h1,h2,h3,h4,h5,h6,
 .navbar-light .navbar-nav .open>.nav-link {
 	color: <?php echo get_theme_mod('nav_link_active_color', '000'); ?>;
 }
-
+<?php echo get_theme_mod( 'wb_custom_css' ); ?>
 <?php 
 	$style = apply_filters( 'wb_customizer_css', $style ); 
 	echo $style;
