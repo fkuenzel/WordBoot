@@ -9,28 +9,57 @@ function wb_columns_layout( $show_cols = false, $layout = 'global' ) {
 	$output = '';
 	switch( $layout ) {
 		case 'global':
-			$cols = get_theme_mod('columns_layout_global');
+			$cols = get_theme_mod('columns_layout_global', 'fullwidth');
 			break;
 		case 'single':
-			$cols = get_theme_mod('columns_layout_single');
+			$cols = get_theme_mod('columns_layout_single', 'default');
 			break;
 		case 'pages':
-			$cols = get_theme_mod('columns_layout_pages');
+			$cols = get_theme_mod('columns_layout_pages', 'default');
 			break;
 		default:
-			$cols = get_theme_mod('columns_layout_global');
+			$cols = get_theme_mod('columns_layout_global', 'fullwidth');
 			break;
 	}
+	
+	if ( $cols === 'default' ) { $cols = get_theme_mod('columns_layout_global', 'fullwidth'); }
+	switch( $cols ) {
+		case 'fullwidth':
+			$output .= '<div class="col fullwidth">';
+			break;
+		case '2_cols_left':
+			$output .= '<div class="col-md-9 has-left-sidebar">';
+			break;
+		case '2_cols_right':
+			$output .= '<div class="col-md-9 has-right-sidebar">';
+			break;
+		case '3_cols':
+			$output .= '<div class="col-md-6 3-colum-layout">';
+			break;
+		default:
+			$output .= '<div class="col no-cols">';
+			break;
+	}
+	/*
 	if ( !empty( $cols ) ) {
-		if ( 'fullwidth' === $cols ) { $output .= '<div class="col fullwidth">'; }
-		if ( '2_cols_left' === $cols ) { $output .=  '<div class="col-md-9 has-left-sidebar">'; }
-		if ( '2_cols_right' === $cols ) { $output .= '<div class="col-md-9 has-right-sidebar">'; }
-		if ( '3_cols' === $cols ) { $output .= '<div class="col-md-6 3-colum-layout">'; }
+		if ( $cols === 'default' ) {
+			$default_cols = get_theme_mod('columns_layout_global', 'fullwidth');
+			if ( 'fullwidth' === $default_cols ) { $output .= '<div class="col fullwidth">'; }
+			if ( '2_cols_left' === $default_cols ) { $output .=  '<div class="col-md-9 has-left-sidebar">'; }
+			if ( '2_cols_right' === $default_cols ) { $output .= '<div class="col-md-9 has-right-sidebar">'; }
+			if ( '3_cols' === $default_cols ) { $output .= '<div class="col-md-6 3-colum-layout">'; }
+		} else {		
+			if ( 'fullwidth' === $cols ) { $output .= '<div class="col fullwidth">'; }
+			if ( '2_cols_left' === $cols ) { $output .=  '<div class="col-md-9 has-left-sidebar">'; }
+			if ( '2_cols_right' === $cols ) { $output .= '<div class="col-md-9 has-right-sidebar">'; }
+			if ( '3_cols' === $cols ) { $output .= '<div class="col-md-6 3-colum-layout">'; }
+		}
 	} else {
 		$output .= '<div class="col no-cols">';
 	}
+	*/
 	
-	if ( $show_cols == true ) {
+	if ( $show_cols === false ) {
 		return $cols;
 	} else {
 		return $output;
