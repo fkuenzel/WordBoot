@@ -161,6 +161,8 @@ ul.wb-category-list-child {
 /**
  * Widget Styling
  */
+.textwidget { word-break: break-word; } 
+ 
 #wp-calendar caption  { caption-side: top; color: inherit; font-size: 1rem; font-weight: 700; text-align: center; padding: inherit; }
 #wp-calendar th {
 	text-align: center;
