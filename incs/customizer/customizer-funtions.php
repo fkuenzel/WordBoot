@@ -220,7 +220,7 @@ function wb_image_slider() {
 	$output .= '</div> <!.-- #wb_image_slider END -->';
 	
 	if ( get_theme_mod( 'wb_slider_status' ) == 'true' ) {
-		echo $output;
+		echo apply_filters( 'wb_image_slider', $output );
 	}
 }
 // retrieves the attachment ID from the file URL
