@@ -820,8 +820,51 @@ class WordBoot_Customizer {
 					 'settings' => $text_color['slug']
 				)
 			));
+			
+			
 		} // foreach end
 		
+		/**
+			 * Remove Default Custom CSS
+			 */
+			$wp_customize->remove_control( 'custom_css' );
+			$wp_customize->remove_section( 'custom_css' );
+		
+		/**
+		 * Layout Background Colors Settings for WordBoot
+		 *
+		 * @section		wordboot_layout_color_settings_options
+		 * @since		1.0.0
+		 */
+		$wp_customize->add_section(
+			'wb_custom_css', array(
+				'title'			=> __( 'Custom CSS', 'wordboot' ),
+				'priority'		=> 35,
+				'capability'	=> 'edit_theme_options',
+				'description_hidden' => true,
+				'description'        => sprintf( '%s<br /><a href="%s" class="external-link" target="_blank">%s<span class="screen-reader-text">%s</span></a>',
+					__( 'CSS allows you to customize the appearance and layout of your site with code. Separate CSS is saved for each of your themes. In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key.' ),
+					esc_url( __( 'https://codex.wordpress.org/CSS' ) ),
+					__( 'Learn more about CSS' ),
+					__( '(link opens in a new window)' )
+				),
+			)
+		);
+		$wp_customize->add_setting( 'wb_custom_css', 
+			array(
+				'default'    => '',
+				'transport'  => 'postMessage',
+			)
+		);
+		$wp_customize->add_control( 'wb_custom_css',
+			array(
+				'settings' => 'wb_custom_css',
+				'label'    => __( 'Your CSS rules for WordBoot', 'wordboot' ),
+				'section'  => 'wb_custom_css',
+				'type'     => 'textarea',
+				'priority' => 1,
+			)
+		);
 		
 		//4. We can also change built-in settings by modifying properties. For instance, let's make some stuff use live preview JS...
 		$wp_customize->get_setting( 'body_background_color' )			->transport = 'postMessage';
