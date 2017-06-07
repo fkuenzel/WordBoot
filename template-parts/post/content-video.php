@@ -26,7 +26,7 @@
 	<header class="postHeader">
 		<?php
 			if ( is_single() ) {
-				wordboot_posted_on();
+				bs4_posted_on();
 				the_title( '<h2 class="display-4 post-title">', '</h2>' );
 			} else {
 				the_title( '<h2 class="display-4 post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
@@ -78,6 +78,6 @@
 	<?php endif; ?>
 	<div class="clearfix"></div>
 	<footer class="postFooter">
-		<?php wordboot_content_footer(); ?>
+		<?php bs4_content_footer(); ?>
 	</footer>
 </article><!-- #post-ID end; -->

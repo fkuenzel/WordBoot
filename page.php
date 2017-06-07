@@ -10,11 +10,10 @@
  */
 
 get_header(); ?>
-	<div class="<?php wb_container_class(); ?>" id="pageContent">
+	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		<div class="row">
 		
 		<?php
-			if ( '2_cols_left' === wb_columns_layout( false, 'pages' ) OR '3_cols' === wb_columns_layout( false, 'pages' )) { get_sidebar('left'); }
 			echo wb_columns_layout( true, 'pages' ); 
 				while ( have_posts() ) : the_post();
 
@@ -31,8 +30,9 @@ get_header(); ?>
 			?>
 			</div> <!-- .col -->
 			
-			<?php if ( '2_cols_right' === wb_columns_layout( false, 'pages' ) OR '3_cols' === wb_columns_layout( false, 'pages' )) { get_sidebar(); } ?>
+			<?php if ( is_columns( 'sidebar-left' ) ) { get_sidebar( 'left' ); } ?>
+			<?php if ( is_columns( 'sidebar-right' ) ) { get_sidebar( ); } ?>
 			
 		</div> <!-- .row end; -->
-	</div> <!-- .<?php wb_container_class(); ?> AUTO CLASS end -->
+	</div> <!-- .<?php bs4_container_class(); ?> AUTO CLASS end -->
 <?php get_footer(); ?>

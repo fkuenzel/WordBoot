@@ -1,13 +1,13 @@
 <?php
-if ( ! function_exists( 'wordboot_posted_on' ) ) :
+if ( ! function_exists( 'bs4_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function wordboot_posted_on() {
-	echo get_wordboot_posted_on();
+function bs4_posted_on() {
+	echo get_bs4_posted_on();
 }
  
-function get_wordboot_posted_on() {
+function get_bs4_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s" hidden>%4$s</time>';
@@ -30,22 +30,22 @@ function get_wordboot_posted_on() {
 	
 	$output = '<div class="postMeta"><span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span></div>';
 	
-	return apply_filters( 'wordboot_posted_on', "{$output}", $time_string . $posted_on . $byline );
+	return apply_filters( 'bs4_posted_on', "{$output}", $time_string . $posted_on . $byline );
 }
 endif;
 
-if ( ! function_exists( 'wordboot_content_footer' ) ) :
+if ( ! function_exists( 'bs4_content_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function wordboot_content_footer() {
+function bs4_content_footer() {
 	echo "<div class='row'>\n";
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
 		echo "<div class='col-md-10'>\n";
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'wordboot' ) );
-		if ( $categories_list && wordboot_categorized_blog() ) {
+		if ( $categories_list && bs4_categorized_blog() ) {
 			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'wordboot' ) . '</span>', $categories_list );
 		}
 		echo "<br />\n";
@@ -78,8 +78,8 @@ endif;
  *
  * @return bool
  */
-function wordboot_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'wordboot_categories' ) ) ) {
+function bs4_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'bs4_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -89,35 +89,35 @@ function wordboot_categorized_blog() {
 		) );
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
-		set_transient( 'wordboot_categories', $all_the_cool_cats );
+		set_transient( 'bs4_categories', $all_the_cool_cats );
 	}
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so wordboot_categorized_blog should return true.
+		// This blog has more than 1 category so bs4_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so wordboot_categorized_blog should return false.
+		// This blog has only 1 category so bs4_categorized_blog should return false.
 		return false;
 	}
 }
 /**
- * Flush out the transients used in wordboot_categorized_blog.
+ * Flush out the transients used in bs4_categorized_blog.
  */
-function wordboot_category_transient_flusher() {
+function bs4_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'wordboot_categories' );
+	delete_transient( 'bs4_categories' );
 }
-add_action( 'edit_category', 'wordboot_category_transient_flusher' );
-add_action( 'save_post',     'wordboot_category_transient_flusher' );
+add_action( 'edit_category', 'bs4_category_transient_flusher' );
+add_action( 'save_post',     'bs4_category_transient_flusher' );
 
 
 function wb_single_post_excerpt() {
 	
 	$output = "";
 	
-	if ( is_single() AND wordboot_show_single_excerpt() == true ) {
+	if ( is_single() AND bs4_show_single_excerpt() == true ) {
 			$output .= "<div class='lead postExcerpt'>\n ". get_the_excerpt() ."</div>\n";
 	}
 	

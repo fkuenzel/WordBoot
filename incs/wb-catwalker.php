@@ -1,5 +1,5 @@
 <?php
-class WordBoot_Walker_Category extends Walker_Category {
+class Bootstrap4_Walker_Category extends Walker_Category {
 	/**
 	 * Starts the list before the elements are added.
 	 *

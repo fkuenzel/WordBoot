@@ -2,13 +2,13 @@
 /**
  * Header Logo / Textlogo 
  *
- * @subpackage		WordBoot
+ * @subpackage		Bootstrap4
  * @since			1.0.0
  */
  
 ?>
 <?php if ( !has_custom_logo() ) { ?>
-	<h1 class="pageTitle"><?php bloginfo( 'name' ); ?></h1>
+	<span class="h1 pageTitle"><?php bloginfo( 'name' ); ?></span>
 	<?php 
 	$description = get_bloginfo( 'description', 'display' );
 	if ( $description || is_customize_preview() ) : ?>

@@ -2,7 +2,7 @@
 /**
  * Widget API: WB_Widget_Categories class
  *
- * @package WordBoot
+ * @package Bootstrap4
  * @subpackage Widgets
  * @since 1.1.0
  */
@@ -99,7 +99,7 @@ class WB_Widget_Categories extends WP_Widget {
 		<ul class="list-style-none nav">
 <?php
 		$cat_args['title_li'] = '';
-		$cat_args['walker'] = new WordBoot_Walker_Category();
+		$cat_args['walker'] = new Bootstrap4_Walker_Category();
 		/**
 		 * Filter the arguments for the Categories widget.
 		 *

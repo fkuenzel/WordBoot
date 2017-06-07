@@ -1,21 +1,21 @@
 <?php
 /**
- * WordBoot Theme Setup
+ * Bootstrap4 Theme Setup
  *
  * @package			WordPress
- * @subpackage		WordBoot
+ * @subpackage		Bootstrap4
  *
  * @version			1.0.0
  * @since			1.0.0
  */
-function wordboot_setup() {
+function bs4_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyseventeen
 	 * If you're building a theme based on Twenty Seventeen, use a find and replace
-	 * to change 'wordboot' to the name of your theme in all the template files.
+	 * to change 'bs4_lang' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'wordboot', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'bs4_lang', get_template_directory() . '/languages' );
 	
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -37,7 +37,11 @@ function wordboot_setup() {
 
 	add_image_size( 'featured-image', 2000, 1200, true );
 	add_image_size( 'thumbnail-avatar', 150, 150, true );
+	add_image_size( 'navbar-brand-logo', 30, 30, true );
+	
+	
 	add_image_size( 'wb_slider_img', 1140, 400, true );
+	
 	
 	// Set the default content width.
 	$GLOBALS['content_width'] = 1140;
@@ -56,7 +60,7 @@ function wordboot_setup() {
 	// Register Theme Features
 
 	// Add theme support for Custom Header
-	add_theme_support( 'custom-header', apply_filters( 'wordboot_custom_header_args', array(
+	add_theme_support( 'custom-header', apply_filters( 'bs4_custom_header_args', array(
 			'default-image'          => '',
 			'width'                  => 1140,
 			'height'                 => 400,
@@ -74,7 +78,7 @@ function wordboot_setup() {
 		))
 	);
 
-	add_theme_support( 'custom-background', apply_filters( 'wordboot_custom_hbackground_args',	
+	add_theme_support( 'custom-background', apply_filters( 'bs4_custom_hbackground_args',	
 		array(
 			'default-preset' => 'default',
 			'default-position-x' => 'left',
@@ -88,8 +92,10 @@ function wordboot_setup() {
 	
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'wordboot' ),
-		'social' => __( 'Social Links Menu', 'wordboot' ),
+		'header_m'			=> __( 'Menü Kopfbereich', 'bs4_lang' ),
+		'sidebar_left_m'	=> __( 'Menü Linke Sidebar', 'bs4_lang' ),
+		'sidebar_right_m'	=> __( 'Menü Sidebar Rechts', 'bs4_lang' ),
+		'footer_m'			=> __( 'Menü Fussbereich', 'bs4_lang' ),
 	) );
 
 	/*
@@ -124,4 +130,48 @@ function wordboot_setup() {
 	 */
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
+
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function bs4_content_width() {
+
+	$content_width = $GLOBALS['content_width'];
+
+	// Get layout.
+	$page_layout = get_theme_mod( 'page_layout' );
+	
+	// Check if layout is one column.
+	if ( 'fullwidth' === $page_layout ) {
+		$content_width = 1140;
+		}
+
+	// Check if is sidebar(s).
+	if ( 'sidebar-left' === $page_layout OR 'sidebar-sidebar' === $page_layout ) {
+		$content_width = 740;
+	}
+	
+	// Check if is sidebar(s).
+	if ( '3-columns' === $page_layout ) {
+		$content_width = 540;
+	}
+	
+
+	/**
+	 * Filter Bootstrap4n content width of the theme.
+	 *
+	 * @since Bootstrap4 1.0.0
+	 *
+	 * @param $content_width integer
+	 */
+	$GLOBALS['content_width'] = apply_filters( 'bs4_content_width', $content_width );
+}
+add_action( 'template_redirect', 'bs4_content_width', 0 );
+
+
 ?>

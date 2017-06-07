@@ -2,7 +2,7 @@
 /**
  * Customizer Options Functions
  *
- * @since		WordBoot 1.0.0
+ * @since		Bootstrap4 1.0.0
  * @version		1.0.0
  */
 function wb_columns_layout( $show_cols = false, $layout = 'global' ) {
@@ -66,30 +66,12 @@ function wb_columns_layout( $show_cols = false, $layout = 'global' ) {
 	}
 }
 
-function wb_container_class() {
-	
-	$container = wb_get_container_class();
-	
-	echo $container;
-}
-
-function wb_get_container_class() {
-	
-	$container = get_theme_mod('container_class');
-	
-	if ( $container === 'fluid' ) {
-		return 'container-fluid ';
-	} else {
-		return 'container ';
-	}
-}
-
-function wordboot_show_single_excerpt() {
+function bs4_show_single_excerpt() {
 	
 	return get_theme_mod( 'ShowExcerptSingle' );
 }
 
-function wordboot_show_excerpt() {
+function bs4_show_excerpt() {
 	
 	return get_theme_mod( 'ShowExcerptBlog');
 }
@@ -99,7 +81,7 @@ function wordboot_show_excerpt() {
  * @param int $length Excerpt length.
  * @return int (Maybe) modified excerpt length.
  */
-function wordboot_custom_excerpt_length( $length ) {
+function bs4_custom_excerpt_length( $length ) {
     $lenght = get_theme_mod('ExcerptLenght');
 	
 	if ( !empty($lenght) ) {
@@ -108,7 +90,7 @@ function wordboot_custom_excerpt_length( $length ) {
 	
 	return $lenght;
 }
-//add_filter( 'excerpt_length', 'wordboot_custom_excerpt_length', 999 );
+//add_filter( 'excerpt_length', 'bs4_custom_excerpt_length', 999 );
 
 /**
  * Filter the "read more" excerpt string link to the post.
@@ -184,25 +166,25 @@ function google_font_import( $font ) {
  *
  * @since		1.0.0
  */
-function wb_image_slider() {
+function wb_image_carousel() {
 	
 	$slider_img = array();
 	
-	$slider_img[0] = wb_get_image_id( get_theme_mod('wb_slide_img_1') );
-	$slider_img[1] = wb_get_image_id( get_theme_mod('wb_slide_img_2') );
-	$slider_img[2] = wb_get_image_id( get_theme_mod('wb_slide_img_3') );
-	$slider_img[3] = wb_get_image_id( get_theme_mod('wb_slide_img_4') );
-	$slider_img[4] = wb_get_image_id( get_theme_mod('wb_slide_img_5') );
+	$slider_img[0] = wb_get_image_id( get_theme_mod('wb_carousel_img_1') );
+	$slider_img[1] = wb_get_image_id( get_theme_mod('wb_carousel_img_2') );
+	$slider_img[2] = wb_get_image_id( get_theme_mod('wb_carousel_img_3') );
+	$slider_img[3] = wb_get_image_id( get_theme_mod('wb_carousel_img_4') );
+	$slider_img[4] = wb_get_image_id( get_theme_mod('wb_carousel_img_5') );
 	
-	$output = '<div id="wb-image-slider" class="carousel slide '. wb_get_container_class() .'" data-ride="carousel">';
+	$output = '<div id="wb-image-carousel" class="carousel slide '. get_bs4_container_class() .'" data-ride="carousel">';
 	$indi_count = -1;
-	if ( get_theme_mod('wb_slider_indicators') == 'true' ) {
+	if ( get_theme_mod('wb_carousel_indicators') == 'true' ) {
 		$output .= '<ol class="carousel-indicators">';
 		foreach( $slider_img as $img ) {
 			$indi_count++;
 			if ( !empty( $img ) ) {
 		
-				$output .= '<li data-target="#wb-image-slider" data-slide-to="'. $indi_count .'"';
+				$output .= '<li data-target="#wb-image-carousel" data-slide-to="'. $indi_count .'"';
 				if ( $indi_count == 0 ) { $output .= ' class="active"'; }
 				$output .= '></li>';
 			}
@@ -222,7 +204,7 @@ function wb_image_slider() {
 			//if ( empty($image) ) { $image = wp_get_attachment_image_src( $img, 'full-width', false ); } 
 			$output .= '<img class="d-block img-fluid" src="'. $image['0'] .'" />';
 			
-			if ( get_theme_mod('wb_slide_caption') == 'true')  {
+			if ( get_theme_mod('wb_carousel_caption') == 'true')  {
 				//$image_meta = wp_get_attachment_metadata( $img );
 				$image_meta = get_post_field('post_content', $img);
 				if ( !empty( $image_meta ) ) {
@@ -236,21 +218,21 @@ function wb_image_slider() {
 		}
 	}
 	$output .= '</div> <!-- .carousel-inner END; -->';
-	if ( get_theme_mod('wb_slider_controls') == 'true' ) {
-		$output .= '<a class="carousel-control-prev" href="#wb-image-slider" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	if ( get_theme_mod('wb_carousel_controls') == 'true' ) {
+		$output .= '<a class="carousel-control-prev" href="#wb-image-carousel" role="button" data-slide="prev">
+			<i class="fa fa-chevron-left" aria-hidden="true"></i>
 			<span class="sr-only">'. __('Previous', 'wordboot' ) .'</span>
 		</a>
-		<a class="carousel-control-next" href="#wb-image-slider" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<a class="carousel-control-next" href="#wb-image-carousel" role="button" data-slide="next">
+			<i class="fa fa-chevron-right" aria-hidden="true"></i>
 			<span class="sr-only">'. __('Next', 'wordboot' ) .'</span>
 		</a>';
 	}
-	$output .= '</div> <!.-- #wb_image_slider END -->';
+	$output .= '</div> <!.-- #wb_image_carousel END -->';
 	
-	if ( get_theme_mod( 'wb_slider_status' ) == 'true' ) {
-		echo apply_filters( 'wb_image_slider', $output );
-	}
+	
+	echo apply_filters( 'wb_image_carousel', $output );
+	
 }
 // retrieves the attachment ID from the file URL
 function wb_get_image_id($image_url) {

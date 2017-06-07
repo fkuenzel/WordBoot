@@ -3,20 +3,20 @@
 				<?php 
 				if ( is_active_sidebar( 'footer_widgets' ) ) { ?>
 				<div class="footer-widgets">
-					<div class="<?php wb_container_class(); ?>">
+					<div class="<?php bs4_container_class(); ?>">
 						<div class="row">
 							<?php dynamic_sidebar( 'footer_widgets' );  ?>
 						</div><!-- .row end; -->
-					</div> <!-- .<?php wb_container_class(); ?> -->
+					</div> <!-- .<?php bs4_container_class(); ?> -->
 				</div> <!-- .footer-widgets end -->
 				<?php } ?>
-			
-				<div class="<?php wb_container_class(); ?>">
-					<div class="copyright">
-						<p>Copyright <?php echo date('Y'); ?> by <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>. | Make with <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wordboot' ) ); ?>"><?php echo  __( 'WordPress', 'wordboot' ); ?></a> and <a href="<?php echo esc_url( __( 'https://github.com/fkuenzel/WordBoot', 'wordboot' ) ); ?>"><?php echo __( "WordBoot ", "wordboot" ) .' '. $GLOBALS['wordboot_version']; ?></a><p>
-					</div>
-				</div>
 			</footer>
+			
+			
+			<div class="copyright text-center">
+				<p>Copyright <?php echo date('Y'); ?> by <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>. | Make with <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bs4_lang' ) ); ?>" title="<?php echo  __( 'WordPress', 'bs4_lang' ); ?>" rel="external"><?php echo  __( 'WordPress', 'bs4_lang' ); ?></a> and <a href="<?php echo esc_url( __( 'https://github.com/fkuenzel/Bootstrap4', 'bs4_lang' ) ); ?>" title="<?php echo __( "Bootstrap4 ", "bs4_lang" ) .' '. $GLOBALS['bs4_version']; ?>" rel="external"><?php echo __( "Bootstrap4 ", "bs4_lang" ) .' '. $GLOBALS['bs4_version']; ?></a></p>
+			</div>
+
 			
 			<?php wp_footer(); ?>
 		</div> <!-- #pageWrapper END -->

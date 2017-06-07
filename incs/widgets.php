@@ -1,9 +1,9 @@
 <?php
 /**
- * WordBoot Widgets
+ * Bootstrap4 Widgets
  *
  * @package			WordPress
- * @subpackage		WordBoot
+ * @subpackage		Bootstrap4
  *
  * @version			1.0.0
  * @since			1.0.0
@@ -14,7 +14,7 @@
  *
  * @link https://developer.wordpress.org/reference/functions/register_sidebar/
  *
- * @since WordBoot 1.0
+ * @since Bootstrap4 1.0
  */
 function wb_widgets_init() {
 	register_sidebar( array(
@@ -54,7 +54,7 @@ function wb_widget_init(){
 	unregister_widget( 'WP_Widget_Categories' );
 	unregister_widget( 'WP_Widget_Meta' );
 	
-	// Register WordBoot Widgets
+	// Register Bootstrap4 Widgets
 	register_widget( 'WB_Widget_Categories' );
 	register_widget( 'WB_Widget_Meta' );
 }
@@ -62,9 +62,9 @@ function wb_widget_init(){
 add_action("widgets_init", "wb_widget_init");
 
 /**
- * Load WordBoot Widgets
+ * Load Bootstrap4 Widgets
  *
- * Loading WordBoot Special Widgets
+ * Loading Bootstrap4 Special Widgets
  */
 require( 'widgets/wp-category-widget.php' );
 require( 'widgets/wb-meta-widget.php' );

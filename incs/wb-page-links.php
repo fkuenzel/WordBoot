@@ -1,6 +1,6 @@
 <?php
 /**
- * WordBoot Page Links
+ * Bootstrap4 Page Links
  */
 /**
  * The formatted output of a list of pages.

@@ -15,7 +15,7 @@ if ( ! function_exists( 'wb_post_thumbnail' ) ) :
  *
  * Create your own wb_post_thumbnail() function to override in a child theme.
  *
- * @since WordBoot 1.0
+ * @since Bootstrap4 1.0
  */
 function wb_post_thumbnail() {
 	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
@@ -234,7 +234,7 @@ function wb_remove_tinymce_emoji($plugins) {
  * Bootstrap Gallery Shortcode function for WordPress
  *
  * @package			WordPress
- * @subpackage		WordBoot
+ * @subpackage		Bootstrap4
  *
  * @version			1.0.0
  * @since			1.0.0

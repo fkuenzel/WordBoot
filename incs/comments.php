@@ -1,10 +1,10 @@
 <?php
 /**
- * WordBoot Comments
+ * Bootstrap4 Comments
  *
- * Comment functions for the WordBoot Theme
+ * Comment functions for the Bootstrap4 Theme
  *
- * @package			WordBoot
+ * @package			Bootstrap4
  * @subpackage		WordPress
  *
  * @section			comments
@@ -12,7 +12,7 @@
  * @since			1.0.0
  */
 
-function wordboot_comment_form( $args ) {
+function bs4_comment_form( $args ) {
 	
 	$commenter = wp_get_current_commenter();
     $req = get_option( 'require_name_email' );
@@ -51,7 +51,7 @@ function wordboot_comment_form( $args ) {
 	
 	return $args;
 }
-add_filter( 'comment_form_defaults', 'wordboot_comment_form' );
+add_filter( 'comment_form_defaults', 'bs4_comment_form' );
 
 function wb_edit_comment( $link, $text = null, $before = '', $after = '') {
 	if ( null === $text ) {
@@ -90,7 +90,7 @@ function wb_comments_navigation( $args = array() ) {
             $navigation .= '<li class="nav-next next">' . $next_link . '</li>';
         }
  
-        $navigation = wordboot_postnavigation( $navigation, 'comment-navigation', $args['screen_reader_text'] );
+        $navigation = bs4_postnavigation( $navigation, 'comment-navigation', $args['screen_reader_text'] );
     }
  
     echo $navigation;
@@ -119,7 +119,7 @@ function wb_comment_classes() {
 }
 add_filter( 'comment_class', wb_comment_classes, 10, 10 );
 
-function wordboot_comment($comment, $args, $depth) {
+function bs4_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 	extract($args, EXTR_SKIP);
 	

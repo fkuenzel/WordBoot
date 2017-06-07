@@ -6,7 +6,7 @@
  * and the comment form.
  *
  * @package WordPress
- * @since WordBoot 1.0
+ * @since Bootstrap4 1.0
  */
 
 /*
@@ -54,7 +54,7 @@ if ( post_password_required() ) {
 					'short_ping'  	=> true,
 					'avatar_size'	=> 50,
 					'type'			=>'all',
-					'callback'		=> 'wordboot_comment',
+					'callback'		=> 'bs4_comment',
 					'short_ping'	=> true,
 				) );
 			?>

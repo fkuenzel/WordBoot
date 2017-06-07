@@ -27,6 +27,6 @@
 	</div><!-- .postContent end; -->
 	<div class="clearfix"></div>
 	<footer class="postFooter">
-		<?php wordboot_content_footer(); ?>
+		<?php bs4_content_footer(); ?>
 	</footer>
 </article><!-- #post-ID end; -->

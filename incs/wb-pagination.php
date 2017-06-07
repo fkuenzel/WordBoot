@@ -1,6 +1,6 @@
 <?php
 if ( version_compare( $GLOBALS['wp_version'], '4.1.0', '>' ) ) {
-	function wordboot_postnavigation( $links, $class = 'post-navigation', $screen_reader_text = '' ) {
+	function bs4_postnavigation( $links, $class = 'post-navigation', $screen_reader_text = '' ) {
 		
 	$output .= str_replace(
         'class="nav-previous"',
@@ -31,10 +31,10 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1.0', '>' ) ) {
 		}
 		return sprintf( $template, sanitize_html_class( $class ), esc_html( $screen_reader_text ), $links );
 		
-	} add_filter( 'navigation_markup_template', 'wordboot_postnavigation' );
+	} add_filter( 'navigation_markup_template', 'bs4_postnavigation' );
 }
 
-function wordboot__post_link_class( $output ) {
+function bs4__post_link_class( $output ) {
     $output = str_replace(
         'href="',
         'class="nav-link text-center" href="',
@@ -43,17 +43,17 @@ function wordboot__post_link_class( $output ) {
 	
 	return $output;
 }
-add_filter( 'next_post_link', 'wordboot__post_link_class' );
-add_filter( 'previous_post_link', 'wordboot__post_link_class' );
+add_filter( 'next_post_link', 'bs4__post_link_class' );
+add_filter( 'previous_post_link', 'bs4__post_link_class' );
 
 
-if ( ! function_exists( 'wordboot_paging_nav' ) ) :
+if ( ! function_exists( 'bs4_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
- * Based on paging nav function from WordBoot
+ * Based on paging nav function from Bootstrap4
  */
 
-function wordboot_paging_nav( $args = '' ) {
+function bs4_paging_nav( $args = '' ) {
 	// Don't print empty markup if there's only one page.
 	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
 		return;

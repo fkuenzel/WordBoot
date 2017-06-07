@@ -1,5 +1,5 @@
 /*
-Theme Name: WordBoot
+Theme Name: Bootstrap4
 Theme URI: https://fkuenzel.de/
 Author: Fabian Künzel
 Author URI: https://fkuenzel.de/
@@ -7,79 +7,9 @@ Description: WordPress + Bootstrap = Mobile-First WordPress Theme
 Version: 1.0-alpha
 */
 
-/**
- * General 
- */
+.pageTitle { display: block; }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-
-html { position: relative; min-height: 100%; }
-body {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
-	font-size: 16px;
-	color: #212121; background-color: #eaeaea;
-	position: relative;
-}
-
-a.custom-logo-link {
-	display: inline-block;
-}
-
-@media (max-width: 992px)  {
-	.navbar { min-height: 56px; }
-}
-.dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu>.dropdown-menu {
-    top: 0;
-    left: 100%;
-	margin-top: -.5rem;
-    -webkit-border-radius: 0 .25rem .25rem .25rem;
-    -moz-border-radius: 0 .25rem .25rem;
-    border-radius: 0 .25rem .25rem .25rem;
-}
-
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-}
-
-.dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: .25rem;
-    border-left-color: #ccc;
-	margin-top: .5rem;
-}
-
-.dropdown-submenu:hover>a:after {
-    border-left-color: #000;
-}
-
-.pageTitle { margin-bottom: 0; }
-#HeaderImage { margin-bottom: 1rem; }
-
-#wb-image-slider { padding-left: 0; padding-right: 0; }
-/**
- * Page Footer
- *
- * @template		footer.php
- */
-#pageFooter {
-	background: #f7f7f7;
-	margin-top: 1rem; padding: .75rem 0rem;
-}
-#pageFooter .copyright { padding: .75rem 0; }
-#pageFooter .copyright p { font-size: .75rem; text-align: center; margin: 0; }
-
+.copyright { font-size: .75rem; margin-top: 1rem; }
 /**
  * Media
  */
@@ -96,7 +26,7 @@ img.float-right, figure.float-right { margin-left: 1rem; margin-bottom: 1rem; }
 .list-group-item-heading, .list-group-item-footer { display: block; width: 100%; }
 .list-group-item-footer { margin-bottom: 1rem; }
 /**
- * WordBoot Custom Logo
+ * Bootstrap4 Custom Logo
  *
  * @since		1.0.0
  * @section		ThemeCustomizer
@@ -112,19 +42,9 @@ img.float-right, figure.float-right { margin-left: 1rem; margin-bottom: 1rem; }
 	.custom-logo-link img { max-width: 640px }
 }
 
-/**
- * Sidebars
- */
-#sidebar-right aside,
-#sidebar-left aside {
-	background-color: #fff;
-	border-radius: .75rem;
-	padding: .75rem; margin-bottom: 1rem; 
-	
-}
 
 /**
- * WordBoot Catergory Widget List
+ * Bootstrap4 Catergory Widget List
  */
 .wb-category-widget ul {
 	list-style: none; 
@@ -197,22 +117,7 @@ ul.wb-category-list-child {
 }
 
 #wp-calendar td.pad, #wp-calendar tfoot td { border: 0; }
-/**
- * WordBoot Post Excerpt on single Pages (is it active)
- *
- * @section			ThemeCustomizer
- */
-.postExcerpt {
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	padding: .5rem;
-	margin-bottom: 1rem;
-}
-.postExcerpt p:last-child { margin: 0; }
 
-/**
- * list-group submenu
- */
 
 /** Post Navigation **/
 .post-navigation {
@@ -225,72 +130,7 @@ ul.wb-category-list-child {
 }
 .post-navigation div.nav-next { border-bottom: 1px solid #000; }
 
-
 /**
- * Post Formats
- *
- * Layout / Design for Post Formats
- *
- * @package		WordPress
- * @subpackage	fkBootpress
- *
- * @since		1.0.0
- *
- * @author		Fabian Künzel, https://fkuenzel.de/
+ * Bootstrap 4 Overwrites
  */
-
-body.blog article.post {
-	display: block;
-}
- 
-article.post, article.page { 
-	background: #fff;
-	margin-bottom: 1rem;
-	border-radius: .75rem;
-}
- 
-.postHeader, .postFooter {
-	padding: 1.5rem;
-}
-.postContent { padding: 0 1.5rem; }
-.postFooter { border-radius: 0 0 .75rem .75rem; }
-
-/** Article Format **/
- 
-article.format-standard {
-	
-}
- 
- 
-article.format-aside {
-	background-color: #fcf8e3;
-}
-article.sticky  {
-	background-color: #fcf8e3;
-    border-color: #faf2cc;
-    color: #8a6d3b;
-    border-radius: .25rem;
-}
-
-article.format-quote  .post-content{
-	border-left: .25rem solid #eceeef;
-	font-size: 1.25rem; 
-}
-
-
-/**
- * 
- */
- 
-.post-title { 
-	-ms-word-wrap: break-word;
-	word-wrap: break-word;
-}
-.postContent > h1,
-.postContent > h2,
-.postContent > h3,
-.postContent > h4,
-.postContent > h5,
-.postContent > h6 {
-	margin-top: -.5rem;
-}
+#pageHeader.container .navbar { margin-left: -15px; margin-right: -15px; }

@@ -1,6 +1,6 @@
 <?php
 /**
- * WordBoot Customizer Sheet
+ * Bootstrap4 Customizer Sheet
  *
  * If your using the WordPress Customizer functions and if you setting external Stylesheet as Option.
  */
@@ -9,11 +9,14 @@ define( 'WP_USE_THEMES', false );
 require_once('../../../wp-load.php'); 
 ?>
 /**
- * WordBoot Template Customizing CSS
+ * Bootstrap4 Template Customizing CSS
  *
- * This is a automatic generatet CSS File from WordBoot
+ * This is a automatic generatet CSS File from Bootstrap4
  */
 <?php 
+
+echo get_container_css(); 
+
 if ( get_theme_mod('font_family_global') ) {
 	$body_font = get_theme_mod('font_family_global');
 	echo google_font_import( $body_font ) ."\n";
@@ -39,14 +42,6 @@ body {
 	background: <?php echo get_theme_mod( 'main_navbar_background_color', '#f7f7f7'); ?>;
 }	
 
-<?php
-	$cap_bg = get_theme_mod( 'wb_slice_caption_background', '#000000');
-	$caption_bg = wb_hex2rgb( $cap_bg ); 
-?>
-.carousel-caption {
-	color: <?php echo get_theme_mod( 'wb_slice_caption_text', '#ffffff'); ?>;;
-	background: rgba(<?php echo $caption_bg['red']; ?>, <?php echo $caption_bg['green']; ?>, <?php echo $caption_bg['blue']; ?>, 0.5);
-}
 #pageContent {
 	background: <?php echo get_theme_mod( 'page_content_background_color', '#ffffff'); ?>;
 }
@@ -129,8 +124,53 @@ h1,h2,h3,h4,h5,h6,
 .navbar-light .navbar-nav .open>.nav-link {
 	color: <?php echo get_theme_mod('nav_link_active_color', '000'); ?>;
 }
-<?php echo get_theme_mod( 'wb_custom_css' ); ?>
+
+<?php if ( get_theme_mod('wb_carousel_status') == TRUE ) { ?>
+/**
+ * Bootstrap Carousel
+ *
+ * Carousel Colors
+ */
+<?php if ( get_theme_mod('wb_carousel_caption') == TRUE ) { ?>
+<?php
+	$cap_bg = get_theme_mod( 'wb_carousel_caption_background_color', '#000000');
+	$caption_bg = wb_hex2rgb( $cap_bg ); 
+?>
+.carousel-caption {
+	color: <?php echo get_theme_mod( 'wb_carousel_caption_text_color', '#ffffff'); ?>;
+	background: rgba(<?php echo $caption_bg['red']; ?>, <?php echo $caption_bg['green']; ?>, <?php echo $caption_bg['blue']; ?>, <?php echo get_theme_mod( 'wb_carousel_caption_background_transparent', '0.75	'); ?>);
+} 
+<?php } // carousel caption ?>
+<?php if ( get_theme_mod( 'wb_carousel_indicators' ) == TRUE ) { ?>
+
+<?php
+	$indicator_bg = get_theme_mod( 'wb_carousel_indicator_color', '#ffffff');
+	$indicator_bg = wb_hex2rgb( $indicator_bg ); 
+?>
+.carousel-indicators li {
+	background: rgba(<?php echo $indicator_bg['red']; ?>, <?php echo $indicator_bg['green']; ?>, <?php echo $indicator_bg['blue']; ?>, 0.5);
+}
+.carousel-indicators .active {
+	background: <?php echo get_theme_mod( 'wb_carousel_indicator_color', '#ffffff'); ?>;
+}	
+<?php } // Indicator END ?>
+<?php if ( get_theme_mod('wb_carousel_controls') == TRUE ) { ?>
+.carousel-control-next,
+.carousel-control-prev {
+	color: <?php echo get_theme_mod( 'wb_carousel_controls_color', '#ffffff'); ?>;
+	font-size: 1.5rem;
+}
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus, 
+.carousel-control-prev:hover {
+	color: <?php echo get_theme_mod( 'wb_carousel_controls_color', '#ffffff'); ?>
+}
+<?php } // Carousel Control END ?>
+<?php } // Carousel END ?>
+
+<?php echo get_theme_mod( 'bs4_custom_css' ); ?>
 <?php 
-	$style = apply_filters( 'wb_customizer_css', $style ); 
+	$style = apply_filters( 'bs4_custom_css', $style ); 
 	echo $style;
 ?>

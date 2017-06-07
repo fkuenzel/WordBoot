@@ -1,8 +1,6 @@
 <?php get_header(); ?>
-	<div class="<?php wb_container_class(); ?>" id="pageContent">
+	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		<div class="row">
-		
-		<?php if ( '2_cols_left' === wb_columns_layout( false, 'global' ) OR '3_cols' === wb_columns_layout( false, 'global' )) { get_sidebar('left'); } ?>
 		
 		<?php echo wb_columns_layout( true, 'global' ); ?>
 		<?php
@@ -21,7 +19,7 @@
 		?>
 		
 		<?php 
-			wordboot_paging_nav( array(
+			bs4_paging_nav( array(
 				'prev_text' => '<span class="sr-only">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
 				'next_text' => '<span class="sr-only">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
 				'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'twentyseventeen' ) . ' </span>'
@@ -31,9 +29,10 @@
 		?>
 		
 		</div> <!-- .col -->
+		<?php if ( is_columns( 'sidebar-left' ) ) { get_sidebar( 'left' ); } ?>
+		<?php if ( is_columns( 'sidebar-right' ) ) { get_sidebar( ); } ?>
 		
-		<?php if ( '2_cols_right' === wb_columns_layout( false, 'global' ) OR '3_cols' === wb_columns_layout( false, 'global' )) { get_sidebar(); } ?>
 		</div> <!-- .row end; -->
 			
-	</div> <!-- .<?php wb_container_class(); ?> end -->
+	</div> <!-- .<?php bs4_container_class(); ?> end -->
 <?php get_footer(); ?>

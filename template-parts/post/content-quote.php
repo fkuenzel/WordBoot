@@ -14,7 +14,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="postHeader">
 		<?php
-				wordboot_posted_on();
+				bs4_posted_on();
 				the_title( '<h2 class="display-4 post-title">', '</h2>' );
 		?>
 	</header><!-- .postHeader  end; -->
@@ -38,6 +38,6 @@
 	</div><!-- .postContent end; -->
 	<div class="clearfix"></div>
 	<footer class="postFooter">
-		<?php wordboot_content_footer(); ?>
+		<?php bs4_content_footer(); ?>
 	</footer>
 </article><!-- #post-ID end; -->
