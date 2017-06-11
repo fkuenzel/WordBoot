@@ -93,6 +93,10 @@ $wp_customize->add_control( 'container_width',
 ); 
 
 
+// JavaScript Changes
+$wp_customize->get_setting( 'container_class' )->transport = 'postMessage';
+$wp_customize->get_setting( 'container_width' )->transport = 'postMessage';
+
 /**
  * 2. LAYOUT COLUMNS
  */ 
@@ -101,13 +105,13 @@ $wp_customize->add_control( 'container_width',
  * Layout Colum Setting GLOBAL
  * default:		full-width
  */
-$wp_customize->add_setting( 'columns_layout_global', 
+$wp_customize->add_setting( 'layout_columns', 
 	array(
 		'default'				=> 'full-width',
 		'transport'				=> 'postMessage',
 	)
 );
-$wp_customize->add_control( 'columns_layout_global',
+$wp_customize->add_control( 'layout_columns',
 	array(
 		'choices'  		=> array(
 								'full-width	'   	=> __( 'Full Width (default)', 'bs4_lang' ),
@@ -119,7 +123,7 @@ $wp_customize->add_control( 'columns_layout_global',
 		'label'			=> __( 'Columns', 'bs4_lang' ),
 		'priority' 		=> 1,
 		'section'  		=> 'bs4_layout_columns',
-		'settings' 		=> 'columns_layout_global',
+		'settings' 		=> 'layout_columns',
 		'type'			=> 'select',
 	)
 );
@@ -136,12 +140,12 @@ $wp_customize->add_setting( 'grid_sidebar_left',
 $wp_customize->add_control( 'grid_sidebar_left',
 		array(
 		'choices'  		=> array(
-							'col-lg-6'	=> __( '50% <code>(col-lg-6)</code>', 'bs4_lang' ),
-							'col-lg-5'	=> __( '41.666667% <code>(col-lg-5)</code>', 'bs4_lang' ),
-							'col-lg-4'	=> __( '33.333333% <code>(col-lg-4)</code>', 'bs4_lang' ),
-							'col-lg-3'	=> __( '25% <code>(col-lg-3)</code>', 'bs4_lang' ),
-							'col-lg-2'	=> __( '16.666667% <code>(col-lg-2)</code> (default)', 'bs4_lang' ),
-							'col-lg-1'	=> __( '8.333333% <code>(col-lg-1)</code>', 'bs4_lang' ),
+							'6'	=> __( '50% <code>(col-6)</code>', 'bs4_lang' ),
+							'5'	=> __( '41.666667% <code>(col-5)</code>', 'bs4_lang' ),
+							'4'	=> __( '33.333333% <code>(col-4)</code>', 'bs4_lang' ),
+							'3'	=> __( '25% <code>(col-3)</code>', 'bs4_lang' ),
+							'2'	=> __( '16.666667% <code>(col-2)</code> (default)', 'bs4_lang' ),
+							'1'	=> __( '8.333333% <code>(col-1)</code>', 'bs4_lang' ),
 						 ),
 		'description'	=> __( '<em>Nur Relevant, wenn 2-Spalten (Linke Sidebar) oder 3-Spalten Layout gewählt ist.</em>' , 'bs4_lang' ),
 		'label'			=> __( 'Breite für Linke Sidebar.', 'bs4_lang' ),
@@ -161,12 +165,12 @@ $wp_customize->add_setting( 'grid_sidebar_right',
 $wp_customize->add_control( 'grid_sidebar_right',
 		array(
 		'choices'  		=> array(
-							'col-lg-6'	=> __( '50% <code>(col-lg-6)</code>', 'bs4_lang' ),
-							'col-lg-5'	=> __( '41.666667% <code>(col-lg-5)</code>', 'bs4_lang' ),
-							'col-lg-4'	=> __( '33.333333% <code>(col-lg-4)</code>', 'bs4_lang' ),
-							'col-lg-3'	=> __( '25% <code>(col-lg-3)</code>', 'bs4_lang' ),
-							'col-lg-2'	=> __( '16.666667% <code>(col-lg-2)</code> (default)', 'bs4_lang' ),
-							'col-lg-1'	=> __( '8.333333% <code>(col-lg-1)</code>', 'bs4_lang' ),
+							'6'	=> __( '50% <code>(col-6)</code>', 'bs4_lang' ),
+							'5'	=> __( '41.666667% <code>(col-5)</code>', 'bs4_lang' ),
+							'4'	=> __( '33.333333% <code>(col-4)</code>', 'bs4_lang' ),
+							'3'	=> __( '25% <code>(col-3)</code>', 'bs4_lang' ),
+							'2'	=> __( '16.666667% <code>(col-2)</code> (default)', 'bs4_lang' ),
+							'1'	=> __( '8.333333% <code>(col-1)</code>', 'bs4_lang' ),
 						 ),
 		'description'	=> __( '<em>Nur Relevant, wenn 2-Spalten (Rechte Sidebar) oder 3-Spalten Layout gewählt ist.</em>' , 'bs4_lang' ),
 		'label'			=> __( 'Breite für Rechte Sidebar.', 'bs4_lang' ),

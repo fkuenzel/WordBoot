@@ -170,11 +170,11 @@ function wb_image_carousel() {
 	
 	$slider_img = array();
 	
-	$slider_img[0] = wb_get_image_id( get_theme_mod('wb_carousel_img_1') );
-	$slider_img[1] = wb_get_image_id( get_theme_mod('wb_carousel_img_2') );
-	$slider_img[2] = wb_get_image_id( get_theme_mod('wb_carousel_img_3') );
-	$slider_img[3] = wb_get_image_id( get_theme_mod('wb_carousel_img_4') );
-	$slider_img[4] = wb_get_image_id( get_theme_mod('wb_carousel_img_5') );
+	$slider_img[0] = bs4_get_image_id( get_theme_mod('wb_carousel_img_1') );
+	$slider_img[1] = bs4_get_image_id( get_theme_mod('wb_carousel_img_2') );
+	$slider_img[2] = bs4_get_image_id( get_theme_mod('wb_carousel_img_3') );
+	$slider_img[3] = bs4_get_image_id( get_theme_mod('wb_carousel_img_4') );
+	$slider_img[4] = bs4_get_image_id( get_theme_mod('wb_carousel_img_5') );
 	
 	$output = '<div id="wb-image-carousel" class="carousel slide '. get_bs4_container_class() .'" data-ride="carousel">';
 	$indi_count = -1;
@@ -234,11 +234,6 @@ function wb_image_carousel() {
 	echo apply_filters( 'wb_image_carousel', $output );
 	
 }
-// retrieves the attachment ID from the file URL
-function wb_get_image_id($image_url) {
-	global $wpdb;
-	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
-        return $attachment[0]; 
-}
+
 
 ?>

@@ -2,7 +2,7 @@
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		<div class="row">
 		
-		<?php echo wb_columns_layout( true, 'global' ); ?>
+		<div class="<?php layout_grid_class('content' ); ?>">
 		<?php
 		if ( have_posts() ) :
 			/* Start the Loop */

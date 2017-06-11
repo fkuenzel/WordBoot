@@ -24,16 +24,16 @@ add_action( 'wp_enqueue_scripts', 'bs4_scripts' );
  */
 function bs4_scripts() {
 	// Theme stylesheet.
-	wp_enqueue_style( 'wordboot-style', get_stylesheet_uri(), array('bootstrap-style') );
-	wp_enqueue_style( 'customizer-api', get_theme_file_uri( '/customizer-css.php' ), array('wordboot-style') );
+	wp_enqueue_style( 'bs4-style', get_stylesheet_uri(), array('bootstrap-style') );
+	wp_enqueue_style( 'customizer-api', get_theme_file_uri( '/customizer-css.php' ), array('bs4-style') );
 	
 	// Load the Bootstrap 4 Stylesheet and JavaScript Files
-	wp_enqueue_style( 'bootstrap-style', get_theme_file_uri( '/libs/bootstrap4/css/bootstrap.min.css' ), array(), '4.0.0-alpha.6' );
+	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/libs/bootstrap4/css/bootstrap.min.css' ), array(), '4.0.0-alpha.6' );
 	wp_enqueue_script( 'tether', get_theme_file_uri( '/libs/tether/1.4.0/js/tether.min.js' ) , array('jquery'), '1.4.0', true );	
-	wp_enqueue_script( 'bootstrap-js', get_theme_file_uri( '/libs/bootstrap4/js/bootstrap.min.js' ), array('jquery'), '4.0.0-alpha.6', true );
+	wp_enqueue_script( 'bootstrap-js', get_theme_file_uri( '/libs/bootstrap4/js/bootstrap.min.js' ), array('tether'), '4.0.0-alpha.6', true );
 	
 	// Load Font-Awesome File
-	wp_enqueue_style( 'font-awesome-4.7.0', get_theme_file_uri( '/libs/font-awesome/css/font-awesome.min.css' ), array( 'wordboot-style' ), '4.7.0' );
+	wp_enqueue_style( 'font-awesome-4.7.0', get_theme_file_uri( '/libs/font-awesome/css/font-awesome.min.css' ), array( 'bs4-style' ), '4.7.0' );
 	
 	
 	/**

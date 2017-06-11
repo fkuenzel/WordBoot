@@ -450,13 +450,7 @@ class Bootstrap4_Customizer {
      * @since MyTheme 1.0
      */
 	public static function live_preview() {
-		wp_enqueue_script( 
-		'wordboot-themecustomizer', // Give the script a unique ID
-			get_template_directory_uri() . '/incs/customizer/theme-customizer.js', // Define the path to the JS file
-			array(  'jquery', 'customize-preview' ), // Define dependencies
-			'', // Define a version (optional) 
-			true // Specify whether to put in footer (leave this true)
-		);
+		wp_enqueue_script( 'bs4-customize-preview', get_theme_file_uri( '/libs/js/customize-preview.js' ), array( 'customize-preview' ), '1.0', true );
 	}
 	
 }

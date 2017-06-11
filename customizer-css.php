@@ -29,8 +29,7 @@ if ( get_theme_mod('font_family_headline') ) {
 
 
 body {
-	font-family: <?php echo get_theme_mod('font_family_global', 'inherit'); ?>;
-	font-size: <?php echo get_theme_mod('body_font_size', '16'); ?>px;
+
 	color: <?php echo get_theme_mod('text_color', '#292b2c'); ?>;
 	background: <?php echo get_theme_mod( 'body_background_color', '#eaeaea'); ?>;
 }

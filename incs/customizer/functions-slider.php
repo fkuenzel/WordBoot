@@ -74,11 +74,5 @@ function bs4_image_carousel() {
 	echo apply_filters( 'bs4_image_carousel', $output );
 	
 }
-// retrieves the attachment ID from the file URL
-function bs4_get_image_id($image_url) {
-	global $wpdb;
-	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
-        return $attachment[0]; 
-}
 
 ?>

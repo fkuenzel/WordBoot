@@ -16,26 +16,17 @@
 		<?php
 			if ( is_single() OR 'aside' == get_post_type() ) {
 				bs4_posted_on();
-				the_title( '<h2 class="display-4 post-title">', '</h2>' );
+				the_title( '<h1 class="post-title">', '</h1>' );
 			} else {
-				the_title( '<h2 class="display-4 post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
 		?>
 	</header><!-- .postHeader  end; -->
 
 	<?php wb_post_thumbnail(); ?>
-
-	<?php wb_single_post_excerpt() ?>
 	
 	<div class="postContent">
-		<?php if( !is_singular() AND bs4_show_excerpt() != 'full' ) { ?>
-			<?php the_excerpt(); ?>
-		<?php } else { ?>
-			<?php the_content( sprintf(
-				__( 'Continue reading<span class="sr-only"> "%s"</span>', 'wordboot' ),
-				get_the_title()
-			) ); ?>
-		<?php } ?>
+		<?php the_content( sprintf( __( 'Continue reading <span class="sr-only">"%s"</span>', 'wordboot' ), get_the_title() ) ); ?>
 		<?php
 		if ( is_single AND is_singular() ) {
 				wb_link_pages( array(

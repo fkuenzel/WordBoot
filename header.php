@@ -5,11 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
 		<?php wp_head(); ?>
-		
-		<style type="text/css">
-			@import url("https://v4-alpha.getbootstrap.com/assets/css/docs.min.css") screen;
-		</style>
-		
 	</head>
 	
 	<body <?php body_class(); ?>>

@@ -12,9 +12,8 @@
 get_header(); ?>
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		<div class="row">
-		
-		<?php
-			echo wb_columns_layout( true, 'pages' ); 
+			<div class="<?php layout_grid_class('content' ); ?>">
+			<?php
 				while ( have_posts() ) : the_post();
 
 					get_template_part( 'template-parts/page/content', 'page' );
