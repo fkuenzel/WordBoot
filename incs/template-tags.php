@@ -171,21 +171,15 @@ function wb_search_form( $form ) {
  *
  * Chek if page or page_parent
  *
- * @param	string		$page page_slug or page_id of the parent page
- * @return	bool		true or false
+ * @param	int		$pid 		page_id of the parent page
+ * @return	bool				true or false
  */
-function is_tree( $page ) { // $page_id_or_slug = The ID of the page we're looking for pages underneath
-	global $post; // load details about this page
-
-	if ( !is_numeric( $page_id_or_slug ) ) { // Used this code to change a slug to an ID, but had to change is_int to is_numeric for it to work: http://bavotasan.com/2011/is_child-conditional-function-for-wordpress/
-		$page = get_page_by_path( $page_id_or_slug );
-		$page_id_or_slug = $page->ID;
-	}
-
-	if ( is_page() && ( $post->post_parent == $page_id_or_slug || (is_page( $page_id_or_slug ) || in_array($page_id_or_slug, $post->ancestors) ) ) )
-		return true; // we're at the page or at a sub page
-	else
-		return false; // we're elsewhere
+function is_tree($pid) {      // $pid = The ID of the page we're looking for pages underneath
+	global $post;         // load details about this page
+	if(is_page()&&($post->post_parent==$pid||is_page($pid))) 
+               return true;   // we're at the page or at a sub page
+	else 
+               return false;  // we're elsewhere
 };
 
 ?>
