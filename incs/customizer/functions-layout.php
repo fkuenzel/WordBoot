@@ -15,7 +15,7 @@
  * @since		1.0.0
  * @version		1.0.0
  */
-function bs4_container_class( $container_class = null) {
+function bs4_container_class( $container_class = null ) {
 	
 	$container = get_bs4_container_class( $container_class );
 	
@@ -23,7 +23,6 @@ function bs4_container_class( $container_class = null) {
 }
 
 function get_bs4_container_class( $container_class = null ) {
-	
 	
 	if ( !isset( $container_class ) AND empty( $container_class ) ) {
 		$container = get_theme_mod( 'container_class', 'container' );
