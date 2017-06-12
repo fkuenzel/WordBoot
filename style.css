@@ -7,9 +7,13 @@ Description: WordPress + Bootstrap = Mobile-First WordPress Theme
 Version: 1.0-alpha
 */
 
-.pageTitle { display: block; }
-
 .copyright { font-size: .75rem; margin-top: 1rem; }
+
+/**
+ * Bootstrap Button Link Fix
+ */
+a.btn-primary { color: #fff!important; }
+
 /**
  * Media
  */
