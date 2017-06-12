@@ -14,7 +14,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="postHeader">
 		<?php
-			the_title( '<h2 class="display-4 post-title">', '</h2>' );
+			the_title( '<h1 class="post-title">', '</h1>' );
 		?>
 	</header><!-- .postHeader  end; -->
 
