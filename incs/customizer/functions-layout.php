@@ -82,7 +82,7 @@ function get_container_css( $maxWidth = null ) {
 	 *
 	 * @since Bootstrap4 1.0.0
 	 *
-	 * @param var $output		output of bootstrap container CSS.
+	 * @param string $output		output of bootstrap container CSS.
 	 */
 	return apply_filters( 'get_container_css', $output ); 
 }
