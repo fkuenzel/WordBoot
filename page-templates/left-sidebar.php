@@ -13,7 +13,7 @@
 get_header(); ?>
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		<div class="row">
-			<div class="<?php layout_grid_class('content' ); ?>">
+			<div class="col-lg-9 col-sm-12">
 			<?php
 				while ( have_posts() ) : the_post();
 
