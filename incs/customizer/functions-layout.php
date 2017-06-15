@@ -106,8 +106,7 @@ function get_page_layout_columns() {
  * @since		1.0.0
  * @version		1.0.0
  *
- * @param string $section		section of column allow
- * @return	true|false			if section allowed, returns true.
+ * @param string $name			name of column allow
  */
 function is_columns( $name ) {
 	
