@@ -94,8 +94,6 @@ function get_container_css( $maxWidth = null ) {
  *
  * @since	1.0.0
  */
-
-
 function get_page_layout_columns() {
 	$columns = get_theme_mod( 'layout_columns', 'full-width' );
 	
