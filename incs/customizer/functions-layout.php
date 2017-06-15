@@ -143,7 +143,7 @@ function is_columns( $name ) {
  * @version		1.0.0
  *
  * @param string $section		section of colum
- * @return string $output Output Bootstrap Grid Classes
+ * @return string $output 		Output Bootstrap Grid Classes
  */
 function layout_grid_class( $section ) {
 	echo get_layout_grid_class( $section );
