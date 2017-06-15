@@ -9,6 +9,7 @@ Version: 1.0-alpha
 
 .copyright { font-size: .75rem; margin-top: 1rem; }
 
+header span.pageTitle { display: block; margin-bottom: 0; }
 /**
  * Bootstrap Button Link Fix
  */
