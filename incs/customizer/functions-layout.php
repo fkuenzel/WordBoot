@@ -107,6 +107,7 @@ function get_page_layout_columns() {
  * @version		1.0.0
  *
  * @param string $name			name of column allow
+ * @return bool	true|false			if name allowed, returns true.
  */
 function is_columns( $name ) {
 	
