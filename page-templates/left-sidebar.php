@@ -12,6 +12,9 @@
 
 get_header(); ?>
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
+		
+		<?php bs4_breadcrumb(); ?>
+	
 		<div class="row">
 			<div class="col-lg-9 col-sm-12">
 			<?php
