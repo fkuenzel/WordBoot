@@ -66,8 +66,8 @@ $wp_customize->add_control( 'container_class',
 							'container'			=> __( 'fixed-width', 'wordboot' ),
 							'container-fluid'	=> __( 'fluid-width', 'wordboot' ),
 						 ),
-		'description'	=> __( 'Choose from a responsive, fixed-width container (meaning its <code>max-width</code> changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).', 'wordboot' ),
-		'label'    		=> __( 'Container Setting', 'wordboot' ),
+		'description'	=> __( 'Wählen aus einem reaktionsfähigen, festen Container (dh. er hat pro Ausgabe Medium eine Feste Breite) oder einem beweglichen Container (dh. er ist immer 100% breit).', 'wordboot' ),
+		'label'    		=> __( 'Container Einstellung', 'wordboot' ),
 		'priority'		=> 1,
 		'section'  		=> 'bs4_container_options',
 		'settings' 		=> 'container_class',
@@ -114,13 +114,13 @@ $wp_customize->add_setting( 'layout_columns',
 $wp_customize->add_control( 'layout_columns',
 	array(
 		'choices'  		=> array(
-								'full-width	'   	=> __( 'Full Width (default)', 'bs4_lang' ),
+								'full-width'   		=> __( 'Full Width (default)', 'bs4_lang' ),
 								'sidebar-left'  	=> __( '2 Columns (Left Sidebar)', 'bs4_lang' ),
 								'sidebar-right' 	=> __( '2 Columns (Right Sidebar)', 'bs4_lang' ),
 								'two-sidebar'		=> __( '3 Columns', 'bs4_lang' )
 						 ),
 		'description'	=> '',
-		'label'			=> __( 'Columns', 'bs4_lang' ),
+		'label'			=> __( 'Spalten Anzahl', 'bs4_lang' ),
 		'priority' 		=> 1,
 		'section'  		=> 'bs4_layout_columns',
 		'settings' 		=> 'layout_columns',
@@ -133,7 +133,7 @@ $wp_customize->add_control( 'layout_columns',
  */
 $wp_customize->add_setting( 'grid_sidebar_left', 
 	array(
-		'default'    		=> 'col-lg-2',
+		'default'    		=> '2',
 		'transport' 		=> 'postMessage',
 	)
 );
@@ -158,7 +158,7 @@ $wp_customize->add_control( 'grid_sidebar_left',
 
 $wp_customize->add_setting( 'grid_sidebar_right', 
 	array(
-		'default'    		=> 'col-lg-2',
+		'default'    		=> '2',
 		'transport' 		=> 'postMessage',
 	)
 );
