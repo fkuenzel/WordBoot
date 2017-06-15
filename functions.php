@@ -68,6 +68,7 @@ require get_parent_theme_file_path( '/incs/wb-catwalker.php' );
 require get_parent_theme_file_path( '/incs/template-tags.php' );
 require get_parent_theme_file_path( '/incs/wb-pagination.php' );
 require get_parent_theme_file_path( '/incs/wb-page-links.php' );
+require get_parent_theme_file_path( '/incs/bs4-breadcrumb.php' );
 require get_parent_theme_file_path( '/incs/media.php' );
 require get_parent_theme_file_path( '/incs/comments.php' );
 require get_parent_theme_file_path( '/incs/widgets.php' );
