@@ -133,7 +133,7 @@ $wp_customize->add_control( 'layout_columns',
  */
 $wp_customize->add_setting( 'grid_sidebar_left', 
 	array(
-		'default'    		=> '2',
+		'default'    		=> '3',
 		'transport' 		=> 'postMessage',
 	)
 );
@@ -143,8 +143,8 @@ $wp_customize->add_control( 'grid_sidebar_left',
 							'6'	=> __( '50% <code>(col-6)</code>', 'bs4_lang' ),
 							'5'	=> __( '41.666667% <code>(col-5)</code>', 'bs4_lang' ),
 							'4'	=> __( '33.333333% <code>(col-4)</code>', 'bs4_lang' ),
-							'3'	=> __( '25% <code>(col-3)</code>', 'bs4_lang' ),
-							'2'	=> __( '16.666667% <code>(col-2)</code> (default)', 'bs4_lang' ),
+							'3'	=> __( '25% <code>(col-3)</code> (default)', 'bs4_lang' ),
+							'2'	=> __( '16.666667% <code>(col-2)</code>', 'bs4_lang' ),
 							'1'	=> __( '8.333333% <code>(col-1)</code>', 'bs4_lang' ),
 						 ),
 		'description'	=> __( '<em>Nur Relevant, wenn 2-Spalten (Linke Sidebar) oder 3-Spalten Layout gewählt ist.</em>' , 'bs4_lang' ),
