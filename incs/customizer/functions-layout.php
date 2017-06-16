@@ -186,7 +186,7 @@ function get_layout_grid_class( $section ) {
 	}
 
 	if ( $section === 'content' ) {
-		$output = 'col' . $offset;
+		$output = 'col';
 	} else {
 		$output = 'col-lg-'.$grid . $offset .' col-md-12';
 	}

@@ -9,6 +9,7 @@
 function bs4_breadcrumb( $attr = '' ) {
 	global $post, $wp_query;
 	
+	$args = '';
 	$defaults = array(
         'delimiter' => '', // normal, lg or sm
 		'home'		=> __( 'Home', 'bs4_lang' ),
