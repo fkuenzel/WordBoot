@@ -99,7 +99,7 @@ function wb_comments_navigation( $args = array() ) {
 function wb_comments_alert() {
 	$output = '';
 	
-	if ( is_page() AND wb_comments_alerts_page == TRUE && ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
+	if ( is_page() AND wb_comments_alerts_page() == TRUE && ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
 		$output .= "<div class='alert alert-danger mt-3'>\n
 		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this Page.', 'wordboot' ) ."</span>\n
 		</div>\n";
