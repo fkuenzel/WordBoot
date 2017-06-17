@@ -175,12 +175,6 @@ add_filter( 'get_image_tag_class','wb_remove_classes', 1 );
 add_filter( 'wp_get_attachment_image_attributes','wb_remove_classes', 1 );
 add_filter( 'the_content','wb_remove_classes', 1 );  
 
-
-function add_image_class($class){
-    $class .= ' img-fluid';
-    return $class;
-} add_filter( 'get_image_tag_class', 'add_image_class' );
-
 /**
  * Make iframe's Responsive
  *
