@@ -25,8 +25,7 @@
 				get_the_title()
 			) ); ?>
 	</div><!-- .postContent end; -->
-	<div class="clearfix"></div>
-	<footer class="postFooter">
+		<footer class="postFooter clearfix">
 		<?php bs4_content_footer(); ?>
 	</footer>
 </article><!-- #post-ID end; -->
