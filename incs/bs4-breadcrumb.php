@@ -76,11 +76,11 @@ function bs4_breadcrumb( $args = '' ) {
 			echo $crumb . ' ' . $args['delimeter'] . ' ';
 			echo '<span class="breadcrumb-item active">'. $args['before'] . get_the_title() . $args['after'] .'</span>';
 		} elseif ( is_search() ) {
-			echo $args['before'] . 'Ergebnisse für Ihre Suche nach "' . get_search_query() . '"' . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Ergebnisse für Ihre Suche nach "' . get_search_query() . '"' . $args['after'] .'</span>';
 		} elseif ( is_tag() ) {
-			echo $args['before'] . 'Beiträge mit dem Schlagwort "' . single_tag_title('', false) . '"' . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Beiträge mit dem Schlagwort "' . single_tag_title('', false) . '"' . $args['after'] .'</span>';
 		} elseif ( is_404() ) {
-			echo $args['before'] . 'Fehler 404' . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Fehler 404' . $args['after'] .'</span>';
 		}
  
 		if ( get_query_var('paged') ) {
