@@ -39,35 +39,35 @@ if ( ! function_exists( 'bs4_content_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function bs4_content_footer() {
-	echo "<div class='row'>\n";
+	echo "<div class='row pb-4'>\n";
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
 		echo "<div class='col-md-10'>\n";
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'wordboot' ) );
 		if ( $categories_list && bs4_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'wordboot' ) . '</span>', $categories_list );
+			printf( '<span class="cat-links">' . __( 'Veröffentlich in %1$s', 'wordboot' ) . '</span>', $categories_list );
 		}
 		echo "<br />\n";
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', ',&nbsp;' );
 		if ( $tags_list ) {
-			printf( ' <span class="tags-links">' . __( 'Tagged %1$s', 'wordboot' ) . '</span>', $tags_list );
+			printf( ' <span class="tags-links">' . __( 'Schlagwörter: %1$s', 'wordboot' ) . '</span>', $tags_list );
 		}
 		echo "</div>\n";
 	}
-	echo "<div class='col-md-2'>\n";
+	echo "<div class='col'>\n";
 	if ( is_page() AND wb_show_comments_on_pages() == TRUE ) {
 		echo ' <span class="comments-link float-lg-right">';
-		comments_popup_link( __( 'Leave a comment', 'wordboot' ), __( '<span class="badge badge-default">1</span> Comment', 'wordboot' ), __( '<span class="badge badge-default">%</span> Comments', 'wordboot' ), 'btn btn-secondary btn-sm' );
+		comments_popup_link( __( 'Hinterlasse einen Kommentar', 'wordboot' ), __( '<span class="badge badge-default">1</span> Kommentar', 'wordboot' ), __( '<span class="badge badge-default">%</span> Kommentare', 'wordboot' ), 'btn btn-secondary btn-sm' );
 		echo '</span>';
 	} else if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() AND !is_page() ) ) {
 			echo ' <span class="comments-link float-lg-right">';
-			comments_popup_link( __( 'Leave a comment', 'wordboot' ), __( '<span class="badge badge-default">1</span> Comment', 'wordboot' ), __( '<span class="badge badge-default">%</span> Comments', 'wordboot' ), 'btn btn-secondary btn-sm' );
+			comments_popup_link( __( 'Hinterlasse einen Kommentar', 'wordboot' ), __( '<span class="badge badge-default">1</span> Kommentar', 'wordboot' ), __( '<span class="badge badge-default">%</span> Kommentare', 'wordboot' ), 'btn btn-secondary btn-sm' );
 			echo '</span>';
 		}
 	
-	edit_post_link( __( 'Edit', 'wordboot' ), ' <span class="edit-link float-lg-right">', '</span>', '', 'btn btn-secondary btn-sm' );
+	edit_post_link( __( 'Bearbeiten', 'wordboot' ), ' <span class="edit-link float-lg-right">', '</span>', '', 'btn btn-secondary btn-sm' );
 	echo "</div>\n";
 	echo "</div> <!-- .row end -->\n";
 }
