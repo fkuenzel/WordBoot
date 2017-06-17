@@ -200,6 +200,9 @@ function get_layout_grid_class( $section ) {
  *
  * @section		Header Menu
  * @since		1.0.0
+ * @version		1.0.0
+ *
+ * @return		(string) $output | returns the output for navbar-brand in header navbar.
  */
 function navbar_brand() {
 	$brand_option = get_theme_mod( 'navbar_brand_text','yes' );
@@ -236,6 +239,14 @@ function navbar_brand() {
 
 	echo $output;
 }
+/*
+ * Show Navbar Brand Logo
+ *
+ * @since		1.0.0
+ * @version		1.0.0
+ *
+ * @return		(string) $output | returns the the uploades navbar-brand logo.
+ */
 function get_navbar_brand_logo() {
 	
 	$brand_img =  bs4_get_image_id( get_theme_mod('navbar_brand_upload') );
@@ -253,7 +264,14 @@ function get_navbar_brand_logo() {
 		return $output;
 	}
 }
-
+/**
+ * Conditional-Tag for navbar-brand Logo Image
+ *
+ * @since		1.0.0
+ * @version		1.0.0
+ *
+ * @return		(bool) true|false
+ */
 function is_navbar_brand_logo() {
 	
 	if ( get_theme_mod('navbar_brand_logo', 'no' ) === 'no' ) {
@@ -261,5 +279,27 @@ function is_navbar_brand_logo() {
 	} else {
 		return true;
 	}
+}
+
+/**
+ * Navbar Color Schem
+ *
+ * @since		1.0.0
+ * @version		1.0.0
+ *
+ */
+function bs4_navbar_color_schema() {
+	$schema = get_theme_mod( 'navbar_color_schema', 'navbar-light' );
+	$class = '';
+	
+	if ( $schema === 'navbar-customize' ) {
+		$class .= 'navbar-light';
+	} else if ( $schema === 'navbar-light' ) {
+		$class .= 'navbar-light bg-faded';
+	} else {
+		$class .= 'navbar-inverse '. $schema;
+	}
+	
+	return $class;
 }
 ?>
