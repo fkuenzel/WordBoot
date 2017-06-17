@@ -6,10 +6,10 @@
  * @version		1.0.0
  */
 
-function bs4_breadcrumb( $attr = '' ) {
+function bs4_breadcrumb( $args = '' ) {
 	global $post, $wp_query;
 	
-	$args = '';
+	
 	$defaults = array(
         'delimiter' => '', // normal, lg or sm
 		'home'		=> __( 'Home', 'bs4_lang' ),
@@ -46,23 +46,23 @@ function bs4_breadcrumb( $attr = '' ) {
 			$post_type = get_post_type_object(get_post_type());
 			$slug = $post_type->rewrite;
 			echo '<a class="breadcrumb-item" href="' . get_bloginfo('url') . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $args['delimeter'] . ' ';
-			echo $args['before'] . get_the_title() . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_title() . $args['after'] .'</span>';
 		} else {
 			$cat = get_the_category(); $cat = $cat[0];
 			echo get_category_parents($cat, TRUE, ' ' . $args['delimeter'] . ' ');
-			echo $args['before'] . get_the_title() . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_title() . $args['after'] .'</span>';
 		}
 	} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
 		$post_type = get_post_type_object(get_post_type());
-		echo $args['before'] . $post_type->labels->singular_name . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . $post_type->labels->singular_name . $args['after'] .'</span>';
 	} elseif ( is_attachment() ) {
 		$parent = get_post($post->post_parent);
 		$cat = get_the_category($parent->ID); $cat = $cat[0];
 		echo get_category_parents($cat, TRUE, ' ' . $args['delimeter'] . ' ');
 		echo '<a class="breadcrumb-item" href="' . get_permalink($parent) . '">' . $parent->post_title . '</a> ' . $args['delimeter'] . ' ';
-		echo $args['before'] . get_the_title() . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_title() . $args['after'] .'</span>';
 	} elseif ( is_page() && !$post->post_parent ) {
-		echo $args['before'] . get_the_title() . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_title() . $args['after'] .'</span>';
 	} elseif ( is_page() && $post->post_parent ) {
 		$parent_id = $post->post_parent;
 		$breadcrumbs = array();
