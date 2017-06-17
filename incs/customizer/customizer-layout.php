@@ -274,13 +274,14 @@ $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'nav
 $wp_customize->add_control( 'navbar_color_schema',
 	array(
 		'choices'  		=> array(
-							'navbar-light'	=> __( 'navbar-light (default)', 'bs4_lang' ),
-							'bg-primary'	=> __( 'primary (dark blue)', 'bs4_lang' ),
-							'bg-success'	=> __( 'success (green)', 'bs4_lang' ),
-							'bg-info'		=> __( 'info (light blue)', 'bs4_lang' ),
-							'bg-warning'	=> __( 'warning (orange)', 'bs4_lang' ),
-							'bg-danger'		=> __( 'danger (red)', 'bs4_lang' ),
-							'bg-inverse'	=> __( 'inverse (black)', 'bs4_lang' ),
+							'navbar-light'		=> __( 'navbar-light (default)', 'bs4_lang' ),
+							'navbar-customize'	=> __( 'navbar-customize', 'bs4_lang' ),
+							'bg-primary'		=> __( 'primary (dark blue)', 'bs4_lang' ),
+							'bg-success'		=> __( 'success (green)', 'bs4_lang' ),
+							'bg-info'			=> __( 'info (light blue)', 'bs4_lang' ),
+							'bg-warning'		=> __( 'warning (orange)', 'bs4_lang' ),
+							'bg-danger'			=> __( 'danger (red)', 'bs4_lang' ),
+							'bg-inverse'		=> __( 'inverse (black)', 'bs4_lang' ),
 						),
 		'description'	=> __( 'Farb Schema der Navbar anhand von Boostrap Default Klassen.<br />Wenn du die Navbar Inviduell gestallten möchtes, wähle das Standard Farbe Schema' , 'bs4_lang' ),
 		'label'   		=> __( 'Navbar Farb Schema', 'bs4_lang' ),
@@ -290,6 +291,7 @@ $wp_customize->add_control( 'navbar_color_schema',
 		'type'			=> 'select',
 	)
 );
-
+// JavaScript Changes
+$wp_customize->get_setting( 'navbar_color_schema' )->transport = 'postMessage';
 
 ?>
