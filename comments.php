@@ -27,7 +27,7 @@ if ( post_password_required() ) {
 				$comments_number = get_comments_number();
 				if ( 1 === $comments_number ) {
 					/* translators: %s: post title */
-					printf( __( 'One thought on &ldquo;%s&rdquo;', 'wordboot' ), get_the_title() );
+					printf( __( 'One thought on &ldquo;%s&rdquo;', 'bs4_lang' ), get_the_title() );
 				} else {
 					printf(
 						/* translators: 1: number of comments, 2: post title */
@@ -36,7 +36,7 @@ if ( post_password_required() ) {
 							'%1$s thoughts on &ldquo;%2$s&rdquo;',
 							$comments_number,
 							'comments title',
-							'wordboot'
+							'bs4_lang'
 						),
 						number_format_i18n( $comments_number ),
 						get_the_title()

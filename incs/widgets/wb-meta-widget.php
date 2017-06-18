@@ -27,10 +27,10 @@ class WB_Widget_Meta extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'widget_meta',
-			'description' => __( 'Login, RSS, &amp; WordPress.org links.' ),
+			'description' => __( 'Login, RSS, &amp; WordPress.org links.', 'bs4_lang' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'meta', __( 'Meta' ), $widget_ops );
+		parent::__construct( 'meta', __( 'Meta', 'bs4_lang' ), $widget_ops );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class WB_Widget_Meta extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta', 'bs4_lang' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 		if ( $title ) {
@@ -55,8 +55,8 @@ class WB_Widget_Meta extends WP_Widget {
 			<ul class="list-group">
 			<?php wp_register( '<li class="list-group-item">', '</li>'); ?>
 			<li class="list-group-item"><?php wp_loginout(); ?></li>
-			<li class="list-group-item"><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
-			<li class="list-group-item"><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+			<li class="list-group-item"><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>', 'bs4_lang' ); ?></a></li>
+			<li class="list-group-item"><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>', 'bs4_lang' ); ?></a></li>
 			<?php 			
 			wp_meta();
 			?>
@@ -95,7 +95,7 @@ class WB_Widget_Meta extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = sanitize_text_field( $instance['title'] );
 ?>
-			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'bs4_lang' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 <?php
 	}
 }

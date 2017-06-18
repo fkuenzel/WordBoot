@@ -29,7 +29,7 @@ $wp_customize->add_section(
 $wp_customize->add_section(
 	'bs4_carousel_uploads', array(
 		'capability'	=> 'edit_theme_options',
-		'description'	=> __( 'Upload up to five images for your Carousel Slider or select from existing images from your media library.', 'wordboot'),
+		'description'	=> __( 'Upload up to five images for your Carousel Slider or select from existing images from your media library.', 'bs4_lang'),
 		'panel'			=> 'bs4_carousel_panel',
 		'priority'		=> 20,
 		'title'			=> __( 'Carousel Image Uploads', 'bs4_lang' ),
@@ -62,7 +62,7 @@ $wp_customize->add_setting( 'bs4_carousel_status',
 	array(
 		'default'				=> 'false',
 		//'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_status',
@@ -90,7 +90,7 @@ $wp_customize->add_setting( 'bs4_carousel_controls',
 	array(
 		'default'				=> 'false',
 		//'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_controls',
@@ -118,7 +118,7 @@ $wp_customize->add_setting( 'bs4_carousel_indicators',
 	array(
 		'default'				=> 'false',
 		//'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_indicators',
@@ -145,7 +145,7 @@ $wp_customize->add_setting( 'bs4_carousel_caption',
 	array(
 		'default'				=> 'false',
 		//'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_caption',
@@ -154,7 +154,7 @@ $wp_customize->add_control( 'bs4_carousel_caption',
 							'false'  	=> __( 'No', 'bs4_lang' ),
 							'true'   	=> __( 'Yes', 'bs4_lang' ),
 						),
-		'description'	=> __( 'Füge beschriftungen zu den Sliderfolien an.<br /><em>Hierzu muss über die Mediathek bei den gewählten Bilder das Feld "Beschreibung" Ausgefüllt sein.', 'bs4_lang' ),
+		'description'	=> __( 'F&uuml;ge beschriftungen zu den Sliderfolien an.<br /><em>Hierzu mu&szlig; &uuml;ber die Mediathek bei den gew&auml;hlten Bilder das Feld "Beschreibung" Ausgef&uuml;llt sein.', 'bs4_lang' ),
 		'label'    		=> __( 'Show Captions?', 'bs4_lang' ),
 		'section'		=> 'bs4_carousel_options',
 		'settings' 		=> 'bs4_carousel_caption',
@@ -171,7 +171,7 @@ $wp_customize->add_setting( 'bs4_carousel_controls_color',
 		'default'			=> '#000000',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
-		'transport'			=> 'postMessage',
+		'transport'			=> 'postMe&szlig;age',
 		'type'       		=> 'theme_mod',
 	)
 );
@@ -190,7 +190,7 @@ $wp_customize->add_setting( 'bs4_carousel_indicator_color',
 		'default'			=> '#ffffff',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
-		'transport'			=> 'postMessage',
+		'transport'			=> 'postMe&szlig;age',
 		'type'       		=> 'theme_mod',
 	)
 );
@@ -209,7 +209,7 @@ $wp_customize->add_setting( 'bs4_carousel_caption_background_color',
 		'default'			=> '#000000',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
-		'transport'			=> 'postMessage',
+		'transport'			=> 'postMe&szlig;age',
 		'type'       		=> 'theme_mod',
 	)
 );
@@ -227,13 +227,13 @@ $wp_customize->add_setting(
 	'bs4_carousel_caption_background_transparent', array(
 		'default'			=> '0.75',
 		'capability'		=> 'edit_theme_options',
-		'transport'			=> 'postMessage',
+		'transport'			=> 'postMe&szlig;age',
 		'type'				=> 'theme_mod',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_caption_background_transparent',
 	array(
-		'label'       	=> __('Caption Background Transparent','wordboot'),
+		'label'       	=> __('Caption Background Transparent', 'bs4_lang'),
 		'description' 	=> __('How much transparency should the caption background have?', 'bs4_lang' ),
 		'input_attrs' 	=> array(
 							'min'   => 0,
@@ -253,14 +253,14 @@ $wp_customize->add_setting(
 		'default'			=> '#ffffff',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
-		'transport'			=> 'postMessage',
+		'transport'			=> 'postMe&szlig;age',
 		'type'				=> 'theme_mod',
 	)
 );
 $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bs4_carousel_caption_text_color',
 	array(
 		'description'	=> __( 'Which text color should the caption have?', 'bs4_lang' ),
-		'label'    		=> __('Carousel Caption Text Color', 'wordboot'),
+		'label'    		=> __('Carousel Caption Text Color', 'bs4_lang'),
 		'section'  		=> 'bs4_carousel_colors',
 		'settings' 		=> 'bs4_carousel_caption_text_color',
 		'priority' 		=> 40,
@@ -334,7 +334,7 @@ $wp_customize->add_setting( 'bs4_carousel_js_interval',
 	array(
 		'default'				=> 5000,
 		//'sanitize_callback'		=> 'bs4_sanitize_number',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_js_interval',
@@ -352,7 +352,7 @@ $wp_customize->add_setting( 'bs4_carousel_js_keyboard',
 	array(
 		'default'				=> true,
 		'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_js_keyboard',
@@ -374,7 +374,7 @@ $wp_customize->add_setting( 'bs4_carousel_js_pause',
 	array(
 		'default'				=> 'hover',
 		//'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_js_pause',
@@ -398,7 +398,7 @@ $wp_customize->add_setting( 'bs4_carousel_js_ride',
 	array(
 		'default'				=> false,
 		'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_js_ride',
@@ -420,7 +420,7 @@ $wp_customize->add_setting( 'bs4_carousel_js_wrap',
 	array(
 		'default'				=> true,
 		'sanitize_callback'		=> 'bs4_sanitize_choices',
-		'transport'				=> 'postMessage',
+		'transport'				=> 'postMe&szlig;age',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_js_wrap',

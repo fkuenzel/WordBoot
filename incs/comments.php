@@ -22,29 +22,29 @@ function bs4_comment_form( $args ) {
 	$args['fields'] = array(
 		'author' => '
 		<div class="form-group comment-form-author">
-			<label for="author">' . __( 'Name', 'wordboot' ) .
+			<label for="author">' . __( 'Name', 'bs4_lang' ) .
 			( $req ? ' <span class="required text-danger">*</span>' : '' ) . '</label>
 			<input class="form-control" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' ' . ( $req ? ' required' : '' ) . ' />
 		</div> <!-- .form-group end; -->',
 		'email' => '
 		<div class="form-group comment-form-email">
-			<label for="email" >' . __( 'Email', 'wordboot' ) .
+			<label for="email" >' . __( 'Email', 'bs4_lang' ) .
 			( $req ? ' <span class="required text-danger">*</span>' : '' ) . '</label>
 			<input class="form-control" id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' ' . ( $req ? ' required' : '' ) . ' />
 		</div> <!-- .form-group end; -->',
 		'url' => '
 		<div class="form-group comment-form-url">
-			<label for="url" >' . __( 'Website', 'wordboot' ) . '</label>
+			<label for="url" >' . __( 'Website', 'bs4_lang' ) . '</label>
 			<input class="form-control" id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />
 		</div> <!-- .form-group end; -->',
     );
     $args['comment_field'] = '
 		<div class="form-group comment-form-comment">
-			<label for="comment" >' . __( 'Comment', 'wordboot' ) . '</label>
+			<label for="comment" >' . __( 'Comment', 'bs4_lang' ) . '</label>
 			<textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
 		</div>';    
-	$args['comment_notes_before'] = '<div class="alert alert-info">'.  __ ('Your email address will not be published.', 'wordboot') .'</div>';
-	$args['comment_notes_after'] = '<div class="alert alert-info form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'wordboot' ), ' <code>' . allowed_tags() . '</code>' ) . '</div>';
+	$args['comment_notes_before'] = '<div class="alert alert-info">'.  __ ('Your email address will not be published.', 'bs4_lang') .'</div>';
+	$args['comment_notes_after'] = '<div class="alert alert-info form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'bs4_lang' ), ' <code>' . allowed_tags() . '</code>' ) . '</div>';
 	$args['class_form'] = 'form-comments';
 	$args['class_submit'] = 'btn btn-primary';
 	$args['format'] = 'html5';
@@ -55,7 +55,7 @@ add_filter( 'comment_form_defaults', 'bs4_comment_form' );
 
 function wb_edit_comment( $link, $text = null, $before = '', $after = '') {
 	if ( null === $text ) {
-        $text = __( 'Edit This', 'wordboot' );
+        $text = __( 'Edit This', 'bs4_lang' );
     }
 	$link = '<a class="comment-edit-link btn btn-secondary btn-sm pull-right" href="' . esc_url( get_edit_comment_link( $comment ) ) . '">' . $text . '</a>';
 	
@@ -74,9 +74,9 @@ function wb_comments_navigation( $args = array() ) {
     // Are there comments to navigate through?
     if ( get_comment_pages_count() > 1 ) {
         $args = wp_parse_args( $args, array(
-            'prev_text'          => __( '<span aria-hidden="true">&larr;</span> Older comments', 'wordboot' ),
-            'next_text'          => __( 'Newer comments <span aria-hidden="true">&rarr;</span>', 'wordboot' ),
-            'screen_reader_text' => __( 'Comments navigation', 'wordboot' ),
+            'prev_text'          => __( '<span aria-hidden="true">&larr;</span> Older comments', 'bs4_lang' ),
+            'next_text'          => __( 'Newer comments <span aria-hidden="true">&rarr;</span>', 'bs4_lang' ),
+            'screen_reader_text' => __( 'Comments navigation', 'bs4_lang' ),
         ) );
  
         $prev_link = get_previous_comments_link( $args['prev_text'] );
@@ -99,13 +99,13 @@ function wb_comments_navigation( $args = array() ) {
 function wb_comments_alert() {
 	$output = '';
 	
-	if ( is_page() AND wb_comments_alerts_page() == TRUE && ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
+	if ( /*is_page() AND wb_comments_alerts_page() == TRUE && */ ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
 		$output .= "<div class='alert alert-danger mt-3'>\n
-		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this Page.', 'wordboot' ) ."</span>\n
+		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this Page.', 'bs4_lang' ) ."</span>\n
 		</div>\n";
 	} else if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 		$output .= "<div class='alert alert-danger mt-3'>\n
-		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this post.', 'wordboot' ) ."</span>\n
+		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this post.', 'bs4_lang' ) ."</span>\n
 		</div>\n";
 	}
 	
@@ -138,17 +138,17 @@ function bs4_comment($comment, $args, $depth) {
 		<?php if ( $args['avatar_size'] != 0 ) : ?>
 			<?php echo get_avatar( $comment, $args['avatar_size'], '', '', array( 'class' => 'img-thumbnail float-left' )  ); ?>
 		<?php endif; ?>
-		<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>', 'wordboot' ), get_comment_author_link() ); ?>
+		<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>', 'bs4_lang' ), get_comment_author_link() ); ?>
 		</div>
 		<?php if ( $comment->comment_approved == '0' ) : ?>
-			<em class="comment-awaiting-moderation text-info"><?php _e( 'Your comment is awaiting moderation.', 'wordboot' ); ?></em>
+			<em class="comment-awaiting-moderation text-info"><?php _e( 'Your comment is awaiting moderation.', 'bs4_lang' ); ?></em>
 			<br />
 		<?php endif; ?>
 
 		<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
 			<?php
 				/* translators: 1: date, 2: time */
-				printf( __('%1$s at %2$s','wordboot'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'wordboot' ) );
+				printf( __('%1$s at %2$s','bs4_lang'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'bs4_lang' ) );
 			?>
 		</div>
 	</header>

@@ -31,8 +31,8 @@ get_header(); ?>
 					}
 	
 					the_post_navigation( array(
-						'prev_text' => '<span class="sr-only">' . __( 'Previous Post', 'wordboot' ) . '</span> %title',
-						'next_text' => '<span class="sr-only">' . __( 'Next Post', 'wordboot' ) . '</span> %title',
+						'prev_text' => '<span class="sr-only">' . __( 'Previous Post', 'bs4_lang' ) . '</span> %title',
+						'next_text' => '<span class="sr-only">' . __( 'Next Post', 'bs4_lang' ) . '</span> %title',
 					) );
 					
 				endwhile; // End of the loop.

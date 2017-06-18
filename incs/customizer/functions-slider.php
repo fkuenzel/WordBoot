@@ -16,15 +16,15 @@ function bs4_image_carousel() {
 	$slider_img[3] = bs4_get_image_id( get_theme_mod('bs4_carousel_img_4') );
 	$slider_img[4] = bs4_get_image_id( get_theme_mod('bs4_carousel_img_5') );
 	
-	$output = '<div id="wordboot-image-carousel" class="carousel slide '. get_bs4_container_class() .'" data-ride="carousel">';
+	$output = '<div id="bs4-image-carousel" class="carousel slide '. get_bs4_container_class() .'" data-ride="carousel">';
 	$indi_count = -1;
-	if ( get_theme_mod('wb_carousel_indicators') == 'true' ) {
+	if ( get_theme_mod('bs4_carousel_indicators') == 'true' ) {
 		$output .= '<ol class="carousel-indicators">';
 		foreach( $slider_img as $img ) {
 			$indi_count++;
 			if ( !empty( $img ) ) {
 		
-				$output .= '<li data-target="#wordboot-image-carousel" data-slide-to="'. $indi_count .'"';
+				$output .= '<li data-target="#bs4-image-carousel" data-slide-to="'. $indi_count .'"';
 				if ( $indi_count == 0 ) { $output .= ' class="active"'; }
 				$output .= '></li>';
 			}
@@ -59,13 +59,13 @@ function bs4_image_carousel() {
 	}
 	$output .= '</div> <!-- .carousel-inner END; -->';
 	if ( get_theme_mod('wb_carousel_controls') == 'true' ) {
-		$output .= '<a class="carousel-control-prev" href="#wordboot-image-carousel" role="button" data-slide="prev">
+		$output .= '<a class="carousel-control-prev" href="#bs4-image-carousel" role="button" data-slide="prev">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Previous', 'wordboot' ) .'</span>
+			<span class="sr-only">'. __('Previous', 'bs4_lang' ) .'</span>
 		</a>
-		<a class="carousel-control-next" href="#wordboot-image-carousel" role="button" data-slide="next">
+		<a class="carousel-control-next" href="#bs4-image-carousel" role="button" data-slide="next">
 			<i class="fa fa-chevron-right" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Next', 'wordboot' ) .'</span>
+			<span class="sr-only">'. __('Next', 'bs4_lang' ) .'</span>
 		</a>';
 	}
 	$output .= '</div> <!.-- #wb_image_carousel END -->';

@@ -15,7 +15,7 @@ class Bootstrap4_Customizer {
 		$wp_customize->add_panel(
 			'bs4_layout_panel', array(
 				'capability' => 'edit_theme_options',
-				'description' => __( 'Layout Einstellungen für Bootstrap4 und Bootstrap4 Child Themes.', 'bs4_lang' ),
+				'description' => __( 'Layout Einstellungen f&uuml;r Bootstrap4 und Bootstrap4 Child Themes.', 'bs4_lang' ),
 				'priority' => 21,
 				'theme_supports' => '',
 				'title' => __( 'Layout', 'bs4_lang' ),
@@ -49,7 +49,7 @@ class Bootstrap4_Customizer {
 		 */
 		$wp_customize->add_panel( 'bs4_colors_panel', array(
 			'capability' => 'edit_theme_options',
-			'description' => __( 'Passe alle möglichen Text- und Hintergrundfarben an.', 'bs4_lang' ),
+			'description' => __( 'Passe alle m&ouml;glichen Text- und Hintergrundfarben an.', 'bs4_lang' ),
 			'priority' => 30,
 			'theme_supports' => '',
 			'title' => __( 'Colors', 'bs4_lang' ),
@@ -385,10 +385,10 @@ class Bootstrap4_Customizer {
 				'capability'	=> 'edit_theme_options',
 				'description_hidden' => true,
 				'description'        => sprintf( '%s<br /><a href="%s" class="external-link" target="_blank">%s<span class="screen-reader-text">%s</span></a>',
-					__( 'CSS allows you to customize the appearance and layout of your site with code. Separate CSS is saved for each of your themes. In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key.' ),
-					esc_url( __( 'https://codex.wordpress.org/CSS' ) ),
-					__( 'Learn more about CSS' ),
-					__( '(link opens in a new window)' )
+					__( 'CSS allows you to customize the appearance and layout of your site with code. Separate CSS is saved for each of your themes. In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key.', 'bs4_lang' ),
+					esc_url( __( 'https://codex.wordpress.org/CSS', 'bs4_lang' ) ),
+					__( 'Learn more about CSS', 'bs4_lang' ),
+					__( '(link opens in a new window)', 'bs4_lang' )
 				),
 			)
 		);
@@ -493,7 +493,7 @@ function bs4_sanitize_choices( $input, $setting ) {
 function bs4_sanitize_number( $value ) {
     $can_validate = method_exists( 'WP_Customize_Setting', 'validate' );
     if ( ! is_numeric( $value ) ) {
-        return $can_validate ? new WP_Error( 'nan', __( 'Not a number' ) ) : null;
+        return $can_validate ? new WP_Error( 'nan', __( 'Not a number', 'bs4_lang' ) ) : null;
     }
     return intval( $value );
 }

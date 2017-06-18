@@ -40,14 +40,14 @@ function wb_link_pages( $args = '' ) {
 	global $page, $numpages, $multipage, $more;
 
 	$defaults = array(
-		'before'           => '<h3 class="sr-only">' . __( 'Pages:', 'wordboot' ) .'</h3>',
+		'before'           => '<h3 class="sr-only">' . __( 'Pages:', 'bs4_lang' ) .'</h3>',
 		'after'            => '',
 		'link_before'      => '',
 		'link_after'       => '',
 		'next_or_number'   => 'number',
 		'separator'        => ' ',
-		'nextpagelink'     => __( 'Next page', 'wordboot' ),
-		'previouspagelink' => __( 'Previous page', 'wordboot' ),
+		'nextpagelink'     => __( 'Next page', 'bs4_lang' ),
+		'previouspagelink' => __( 'Previous page', 'bs4_lang' ),
 		'pagelink'         => '%',
 		'sizing'		   => 'pagination-lg', // .pagination-lg OR .pagination-sm
 		'alignment'		   => '', // justify-content-center, OR justify-content-end

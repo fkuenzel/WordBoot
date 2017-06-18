@@ -23,8 +23,8 @@ class WB_Widget_Categories extends WP_Widget {
 	 * @access public
 	 */
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'wb-category-widget', 'description' => __( 'A list or dropdown of categories.', 'wordboot' ) );
-		parent::__construct('categories', __('Categories', 'wordboot'), $widget_ops);
+		$widget_ops = array( 'classname' => 'wb-category-widget', 'description' => __( 'A list or dropdown of categories.', 'bs4_lang' ) );
+		parent::__construct('categories', __('Categories', 'bs4_lang'), $widget_ops);
 	}
 	
 	/**
@@ -41,7 +41,7 @@ class WB_Widget_Categories extends WP_Widget {
 		static $first_dropdown = true;
 
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Wordboot Categories', 'wordboot' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Wordboot Categories', 'bs4_lang' ) : $instance['title'], $instance, $this->id_base );
 
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
@@ -64,7 +64,7 @@ class WB_Widget_Categories extends WP_Widget {
 
 			echo '<label class="sr-only" for="' . esc_attr( $dropdown_id ) . '">' . $title . '</label>';
 
-			$cat_args['show_option_none'] = __( 'Select Category' );
+			$cat_args['show_option_none'] = __( 'Select Category', 'bs4_lang' );
 			$cat_args['id'] = $dropdown_id;
 
 			/**
@@ -153,17 +153,17 @@ class WB_Widget_Categories extends WP_Widget {
 		$hierarchical = isset( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : false;
 		$dropdown = isset( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : false;
 		?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'wordboot' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:', 'bs4_lang' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
 		<p><input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>"<?php checked( $dropdown ); ?> />
-		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown', 'wordboot' ); ?></label><br />
+		<label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e( 'Display as dropdown', 'bs4_lang' ); ?></label><br />
 
 		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
-		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts', 'wordboot' ); ?></label><br />
+		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts', 'bs4_lang' ); ?></label><br />
 
 		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'wordboot' ); ?></label></p>
+		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'bs4_lang' ); ?></label></p>
 		<?php
 	}
 

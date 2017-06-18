@@ -21,7 +21,7 @@
 	<div class="postContent">
 		
 			<?php the_content( sprintf(
-				__( 'Continue reading<span class="sr-only"> "%s"</span>', 'wordboot' ),
+				__( 'Continue reading<span class="sr-only"> "%s"</span>', 'bs4_lang' ),
 				get_the_title()
 			) ); ?>
 	</div><!-- .postContent end; -->

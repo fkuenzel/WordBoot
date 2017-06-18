@@ -20,11 +20,11 @@ function get_bs4_posted_on() {
 	);
 	
 	$posted_on = sprintf(
-		__( 'Posted on %s', 'wordboot' ),
+		__( 'Posted on %s', 'bs4_lang' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 	$byline = sprintf(
-		__( 'by %s', 'wordboot' ),
+		__( 'by %s', 'bs4_lang' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 	
@@ -44,30 +44,30 @@ function bs4_content_footer() {
 	if ( 'post' == get_post_type() ) {
 		echo "<div class='col-md-10'>\n";
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'wordboot' ) );
+		$categories_list = get_the_category_list( __( ', ', 'bs4_lang' ) );
 		if ( $categories_list && bs4_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Veröffentlich in %1$s', 'wordboot' ) . '</span>', $categories_list );
+			printf( '<span class="cat-links">' . __( 'Ver&ouml;ffentlich in %1$s', 'bs4_lang' ) . '</span>', $categories_list );
 		}
 		echo "<br />\n";
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', ',&nbsp;' );
 		if ( $tags_list ) {
-			printf( ' <span class="tags-links">' . __( 'Schlagwörter: %1$s', 'wordboot' ) . '</span>', $tags_list );
+			printf( ' <span class="tags-links">' . __( 'Schlagw&ouml;rter: %1$s', 'bs4_lang' ) . '</span>', $tags_list );
 		}
 		echo "</div>\n";
 	}
 	echo "<div class='col'>\n";
-	if ( is_page() AND wb_show_comments_on_pages() == TRUE ) {
+	if ( is_page() AND bs4_show_comments_on_pages() == TRUE ) {
 		echo ' <span class="comments-link float-lg-right">';
-		comments_popup_link( __( 'Hinterlasse einen Kommentar', 'wordboot' ), __( '<span class="badge badge-default">1</span> Kommentar', 'wordboot' ), __( '<span class="badge badge-default">%</span> Kommentare', 'wordboot' ), 'btn btn-secondary btn-sm' );
+		comments_popup_link( __( 'Hinterlasse einen Kommentar', 'bs4_lang' ), __( '<span class="badge badge-default">1</span> Kommentar', 'bs4_lang' ), __( '<span class="badge badge-default">%</span> Kommentare', 'bs4_lang' ), 'btn btn-secondary btn-sm' );
 		echo '</span>';
 	} else if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() AND !is_page() ) ) {
 			echo ' <span class="comments-link float-lg-right">';
-			comments_popup_link( __( 'Hinterlasse einen Kommentar', 'wordboot' ), __( '<span class="badge badge-default">1</span> Kommentar', 'wordboot' ), __( '<span class="badge badge-default">%</span> Kommentare', 'wordboot' ), 'btn btn-secondary btn-sm' );
+			comments_popup_link( __( 'Hinterlasse einen Kommentar', 'bs4_lang' ), __( '<span class="badge badge-default">1</span> Kommentar', 'bs4_lang' ), __( '<span class="badge badge-default">%</span> Kommentare', 'bs4_lang' ), 'btn btn-secondary btn-sm' );
 			echo '</span>';
 		}
 	
-	edit_post_link( __( 'Bearbeiten', 'wordboot' ), ' <span class="edit-link float-lg-right">', '</span>', '', 'btn btn-secondary btn-sm' );
+	edit_post_link( __( 'Bearbeiten', 'bs4_lang' ), ' <span class="edit-link float-lg-right">', '</span>', '', 'btn btn-secondary btn-sm' );
 	echo "</div>\n";
 	echo "</div> <!-- .row end -->\n";
 }
@@ -113,7 +113,7 @@ add_action( 'edit_category', 'bs4_category_transient_flusher' );
 add_action( 'save_post',     'bs4_category_transient_flusher' );
 
 
-function wb_single_post_excerpt() {
+function bs4_single_post_excerpt() {
 	
 	$output = "";
 	
@@ -125,7 +125,7 @@ function wb_single_post_excerpt() {
 	
 }
 
-function wb_add_html_classes( $html ) {
+function bs4_add_html_classes( $html ) {
     $find = array(
         "/<blockquote>/",
     );
@@ -135,9 +135,9 @@ function wb_add_html_classes( $html ) {
     $html = preg_replace( $find, $rep, $html );
 
     return $html;
-} add_filter( 'the_content','wb_add_html_classes', 0, 4 );  
+} add_filter( 'the_content','bs4_add_html_classes', 0, 4 );  
 
-function wb_style_list_categorie($links) {
+function bs4_style_list_categorie($links) {
 	
 	// class="cat-item 
 	$links = str_replace('<li class="cat-item ', '<li class="list-group-item justify-content-between cat-item ', $links);
@@ -145,26 +145,26 @@ function wb_style_list_categorie($links) {
 	$links = str_replace(')', '</span>', $links);
 		
 	return $links;
-} add_filter('wp_list_categories', 'wb_style_list_categorie');
+} add_filter('wp_list_categories', 'bs4_style_list_categorie');
 
 /**
  * WordPress Searchform
  *
  * add a searchform to WordPress
  */
-function wb_search_form( $form ) {
+function bs4_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform form-inline" action="' . home_url( '/' ) . '" >
 		<div class="form-group">
-			<label for="s" class="sr-only">' . __( 'Search for:', 'wordboot' ) . '</label>
-			<input type="text" class="form-control" id="s" name="s" value="' . get_search_query() . '" placeholder="' . __( 'Search for', 'wordboot' ) . '" />
+			<label for="s" class="sr-only">' . __( 'Search for:', 'bs4_lang' ) . '</label>
+			<input type="text" class="form-control" id="s" name="s" value="' . get_search_query() . '" placeholder="' . __( 'Search for', 'bs4_lang' ) . '" />
 		</div>
 		<div class="form-group">
-			<input type="submit" id="searchsubmit" class="btn btn-secondary" value="'. esc_attr__( 'Search', 'wordboot' ) .'" />
+			<input type="submit" id="searchsubmit" class="btn btn-secondary" value="'. esc_attr__( 'Search', 'bs4_lang' ) .'" />
 		</div>
     </form>';
 
-    return apply_filters( 'wb_search_form', $form );
-} add_filter( 'get_search_form', 'wb_search_form', 100 );
+    return apply_filters( 'bs4_search_form', $form );
+} add_filter( 'get_search_form', 'bs4_search_form', 100 );
 
 /**
  * Conditional Tag "is_tree()"

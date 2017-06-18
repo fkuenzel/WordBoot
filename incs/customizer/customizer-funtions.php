@@ -101,7 +101,7 @@ function bs4_custom_excerpt_length( $length ) {
 function wordpress_excerpt_more( $more ) {
     return sprintf( '<div class="clearfix">&nbsp;</div><a class="read-more btn btn-secondary" href="%1$s">%2$s</a>',
         get_permalink( get_the_ID() ),
-        get_theme_mod('ExcerptText', __('Read More', 'wordboot') )
+        get_theme_mod('ExcerptText', __('Read More', 'bs4_lang') )
     );
 }
 //add_filter( 'excerpt_more', 'wordpress_excerpt_more' );
@@ -119,7 +119,7 @@ function wb_trim_excerpt($text) {
 		$text = strip_tags($text , '');
 		$lenght = get_theme_mod('ExcerptLenght');
 		$excerpt_length = apply_filters('excerpt_length', $lenght);
-		$excerpt_more = apply_filters('excerpt_more', ' ' . '<div class="clearfix">&nbsp;</div><a class="read-more btn btn-secondary" rel="bookmark" href="'.get_permalink().'">'. get_theme_mod('ExcerptText', __('Read More', 'wordboot') ) .'</a>');
+		$excerpt_more = apply_filters('excerpt_more', ' ' . '<div class="clearfix">&nbsp;</div><a class="read-more btn btn-secondary" rel="bookmark" href="'.get_permalink().'">'. get_theme_mod('ExcerptText', __('Read More', 'bs4_lang') ) .'</a>');
 		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
 		if ( count($words) > $excerpt_length ) {
 			array_pop($words);
@@ -221,11 +221,11 @@ function wb_image_carousel() {
 	if ( get_theme_mod('wb_carousel_controls') == 'true' ) {
 		$output .= '<a class="carousel-control-prev" href="#wb-image-carousel" role="button" data-slide="prev">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Previous', 'wordboot' ) .'</span>
+			<span class="sr-only">'. __('Previous', 'bs4_lang' ) .'</span>
 		</a>
 		<a class="carousel-control-next" href="#wb-image-carousel" role="button" data-slide="next">
 			<i class="fa fa-chevron-right" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Next', 'wordboot' ) .'</span>
+			<span class="sr-only">'. __('Next', 'bs4_lang' ) .'</span>
 		</a>';
 	}
 	$output .= '</div> <!.-- #wb_image_carousel END -->';

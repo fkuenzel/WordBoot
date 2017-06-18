@@ -89,8 +89,8 @@ function bs4_paging_nav( $args = '' ) {
 		'current'  => $paged,
 		'mid_size' => 3,
 		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '&larr; Previous', 'wordboot' ),
-		'next_text' => __( 'Next &rarr;', 'wordboot' ),
+		'prev_text' => __( '&larr; Previous', 'bs4_lang' ),
+		'next_text' => __( 'Next &rarr;', 'bs4_lang' ),
 		'type'      => 'list',
         'sizing' => $args['sizing']
 	) );
@@ -206,8 +206,8 @@ function wb_paginate_links( $args = '' ) {
 		'current' => $current,
 		'show_all' => false,
 		'prev_next' => true,
-		'prev_text' => __('&laquo; Previous', 'wordboot'),
-		'next_text' => __('Next &raquo;', 'wordboot'),
+		'prev_text' => __('&laquo; Previous', 'bs4_lang'),
+		'next_text' => __('Next &raquo;', 'bs4_lang'),
 		'end_size' => 1,
 		'mid_size' => 2,
 		'type' => 'plain',
@@ -280,7 +280,7 @@ function wb_paginate_links( $args = '' ) {
 	endif;
 	for ( $n = 1; $n <= $total; $n++ ) :
 		if ( $n == $current ) :
-			$page_links[] = "<li class='page-item active'><a href='#' class='page-link'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . " <span class='sr-only'>". __( 'current', 'wordboot' ) ."'</span></a></li>";
+			$page_links[] = "<li class='page-item active'><a href='#' class='page-link'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . " <span class='sr-only'>". __( 'current', 'bs4_lang' ) ."'</span></a></li>";
 			$dots = true;
 		else :
 			if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
@@ -294,7 +294,7 @@ function wb_paginate_links( $args = '' ) {
 				$page_links[] = "<li class='page-item'><a class='page-link' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a></li>";
 				$dots = true;
 			elseif ( $dots && ! $args['show_all'] ) :
-				$page_links[] = '<li class="page-item"><span class="page-link">' . __( '&hellip;', 'wordboot' ) . '</span></li>';
+				$page_links[] = '<li class="page-item"><span class="page-link">' . __( '&hellip;', 'bs4_lang' ) . '</span></li>';
 				$dots = false;
 			endif;
 		endif;

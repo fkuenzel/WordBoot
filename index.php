@@ -23,9 +23,9 @@
 			
 			<?php 
 				bs4_paging_nav( array(
-					'prev_text' => '<span class="sr-only">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-					'next_text' => '<span class="sr-only">' . __( 'Next page', 'twentyseventeen' ) . '</span>',
-					'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'twentyseventeen' ) . ' </span>'
+					'prev_text' => '<span class="sr-only">' . __( 'Previous page', 'bs4_lang' ) . '</span>',
+					'next_text' => '<span class="sr-only">' . __( 'Next page', 'bs4_lang' ) . '</span>',
+					'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'bs4_lang' ) . ' </span>'
 				) );
 				
 			endif;

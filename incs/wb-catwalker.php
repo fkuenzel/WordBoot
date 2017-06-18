@@ -91,7 +91,7 @@ class Bootstrap4_Walker_Category extends Walker_Category {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
 
 			if ( empty( $args['feed'] ) ) {
-				$alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+				$alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s', 'bs4_lang' ), $cat_name ) . '"';
 			} else {
 				$alt = ' alt="' . $args['feed'] . '"';
 				$name = $args['feed'];

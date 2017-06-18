@@ -22,7 +22,7 @@ function bs4_breadcrumb( $args = '' ) {
 	if ( !is_home() && !is_front_page() || is_paged() ) {
  
 		echo '<nav class="breadcrumb">';
-		echo '<a class="breadcrumb-item" href="' . get_bloginfo('url') . '">' . $args['home'] . '</a> ' . $args['delimeter'] . ' ';
+		echo '<a class="breadcrumb-item" href="' . esc_url( home_url( '/' ) ) . '">' . $args['home'] . '</a> ' . $args['delimeter'] . ' ';
  
 	if ( is_category()) {
 		$cat_obj = $wp_query->get_queried_object();
@@ -31,21 +31,21 @@ function bs4_breadcrumb( $args = '' ) {
 		$parentCat = get_category($thisCat->parent);
 		if ($thisCat->parent != 0) 
 			echo( get_category_parents($parentCat, TRUE, ' ' . $args['delimeter'] . ' ') );
-			echo $args['before'] . single_cat_title('', false) . $args['after'];
+			echo '<span class="breadcrumb-item active">' . $args['before'] . single_cat_title('', false) . $args['after'] .'</span>';
 	} elseif ( is_day() ) {
 		echo '<a class="breadcrumb-item" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $args['delimeter'] . ' ';
 		echo '<a class="breadcrumb-item" href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a> ' . $args['delimeter'] . ' ';
-		echo $args['before'] . get_the_time('d') . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_time('d') . $args['after'] .'</span>';
 	} elseif ( is_month() ) {
 		echo '<a class="breadcrumb-item" href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $args['delimeter'] . ' ';
-		echo $args['before'] . get_the_time('F') . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_time('F') . $args['after'] .'</span>';
 	} elseif ( is_year() ) {
-		echo $args['before'] . get_the_time('Y') . $args['after'];
+		echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_time('Y') . $args['after'] .'</span>';
 	 } elseif ( is_single() && !is_attachment() ) {
 		if ( get_post_type() != 'post' ) {
 			$post_type = get_post_type_object(get_post_type());
 			$slug = $post_type->rewrite;
-			echo '<a class="breadcrumb-item" href="' . get_bloginfo('url') . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $args['delimeter'] . ' ';
+			echo '<a class="breadcrumb-item" href="' . esc_url( home_url( '/' ) ) . '/' . $slug['slug'] . '/">' . $post_type->labels->singular_name . '</a> ' . $args['delimeter'] . ' ';
 			echo '<span class="breadcrumb-item active">' . $args['before'] . get_the_title() . $args['after'] .'</span>';
 		} else {
 			$cat = get_the_category(); $cat = $cat[0];
@@ -76,9 +76,9 @@ function bs4_breadcrumb( $args = '' ) {
 			echo $crumb . ' ' . $args['delimeter'] . ' ';
 			echo '<span class="breadcrumb-item active">'. $args['before'] . get_the_title() . $args['after'] .'</span>';
 		} elseif ( is_search() ) {
-			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Ergebnisse für Ihre Suche nach "' . get_search_query() . '"' . $args['after'] .'</span>';
+			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Ergebnisse f&uuml;r Ihre Suche nach "' . get_search_query() . '"' . $args['after'] .'</span>';
 		} elseif ( is_tag() ) {
-			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Beiträge mit dem Schlagwort "' . single_tag_title('', false) . '"' . $args['after'] .'</span>';
+			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Beitr&auml;ge mit dem Schlagwort "' . single_tag_title('', false) . '"' . $args['after'] .'</span>';
 		} elseif ( is_404() ) {
 			echo '<span class="breadcrumb-item active">' . $args['before'] . 'Fehler 404' . $args['after'] .'</span>';
 		}
@@ -86,7 +86,7 @@ function bs4_breadcrumb( $args = '' ) {
 		if ( get_query_var('paged') ) {
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) 
 				echo ' (';
-				echo ': ' . __('Seite') . ' ' . get_query_var('paged');
+				echo ': ' . __('Seite', 'bs4_lang') . ' ' . get_query_var('paged');
 				if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() )
 					echo ')';
 		}

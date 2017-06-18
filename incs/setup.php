@@ -11,7 +11,6 @@
 function bs4_setup() {
 	/*
 	 * Make theme available for translation.
-	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyseventeen
 	 * If you're building a theme based on Twenty Seventeen, use a find and replace
 	 * to change 'bs4_lang' to the name of your theme in all the template files.
 	 */
@@ -27,7 +26,9 @@ function bs4_setup() {
 	 * provide it for us.
 	 */
 	add_theme_support( 'title-tag' );
-
+	
+	add_editor_style( 'libs/bootstrap4/css/bootstraps.min.css' );
+	
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
@@ -92,10 +93,10 @@ function bs4_setup() {
 	
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'header_m'			=> __( 'Menü Kopfbereich', 'bs4_lang' ),
-		'sidebar_left_m'	=> __( 'Menü Linke Sidebar', 'bs4_lang' ),
-		'sidebar_right_m'	=> __( 'Menü Sidebar Rechts', 'bs4_lang' ),
-		'footer_m'			=> __( 'Menü Fussbereich', 'bs4_lang' ),
+		'header_m'			=> __( 'Men&uuml; Kopfbereich', 'bs4_lang' ),
+		'sidebar_left_m'	=> __( 'Men&uuml; Linke Sidebar', 'bs4_lang' ),
+		'sidebar_right_m'	=> __( 'Men&uuml; Sidebar Rechts', 'bs4_lang' ),
+		'footer_m'			=> __( 'Men&uuml; Fussbereich', 'bs4_lang' ),
 	) );
 
 	/*
