@@ -16,7 +16,7 @@ get_header(); ?>
 		<?php bs4_breadcrumb(); ?>
 	
 		<div class="row">
-			<div class="<?php layout_grid_class('content' ); ?>">
+			<div class="<?php layout_grid_class( 'content' ); ?>">
 			<?php
 				while ( have_posts() ) : the_post();
 
