@@ -16,7 +16,7 @@
  *
  * @since Bootstrap4 1.0
  */
-function wb_widgets_init() {
+function bs4_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Sidebar Left', 'bs4_lang' ),
 		'id'            => 'sidebar_left',
@@ -47,9 +47,9 @@ function wb_widgets_init() {
 		'after_title'   => '</h6>',
 	) );
 }
-add_action( 'widgets_init', 'wb_widgets_init' );
+add_action( 'widgets_init', 'bs4_widgets_init' );
 
-function wb_widget_init(){
+function bs4_widget_init(){
 	// unregister default WordPress Widget
 	unregister_widget( 'WP_Widget_Categories' );
 	unregister_widget( 'WP_Widget_Meta' );
@@ -59,7 +59,7 @@ function wb_widget_init(){
 	register_widget( 'WB_Widget_Meta' );
 }
 
-add_action("widgets_init", "wb_widget_init");
+add_action("widgets_init", "bs4_widget_init");
 
 /**
  * Load Bootstrap4 Widgets

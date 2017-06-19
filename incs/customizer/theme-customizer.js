@@ -151,12 +151,12 @@
 	/**
 	 * Slider Settings
 	 */
-	wp.customize( 'wb_slice_caption_text', function( value ) {
+	wp.customize( 'bs4_slice_caption_text', function( value ) {
 		value.bind( function( newval ) {
 			$('.carousel-caption').css('color', newval );
 		} );
 	} );
-	wp.customize( 'wb_slice_caption_background', function( value ) {
+	wp.customize( 'bs4_slice_caption_background', function( value ) {
 		value.bind( function( newval ) {
 			$('.carousel-caption').css('background', newval );
 		} );

@@ -12,18 +12,18 @@ function bs4_get_image_id( $image_url ) {
         return $attachment[0]; 
 }
 
-if ( ! function_exists( 'wb_post_thumbnail' ) ) :
+if ( ! function_exists( 'bs4_post_thumbnail' ) ) :
 /**
  * Displays an optional post thumbnail.
  *
  * Wraps the post thumbnail in an anchor element on index views, or a div
  * element when on single views.
  *
- * Create your own wb_post_thumbnail() function to override in a child theme.
+ * Create your own bs4_post_thumbnail() function to override in a child theme.
  *
  * @since Bootstrap4 1.0
  */
-function wb_post_thumbnail() {
+function bs4_post_thumbnail() {
 	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 		return;
 	}
@@ -52,7 +52,7 @@ endif;
  * @version			1.0.0
  * @since			1.0.0
  */
-function wb_caption( $output, $attr, $content ) {
+function bs4_caption( $output, $attr, $content ) {
 	/* We're not worried abut captions in feeds, so just return the output here. */
 	if ( is_feed() )
 		return $output;
@@ -98,7 +98,7 @@ function wb_caption( $output, $attr, $content ) {
     
 	/* Return the formatted, clean caption. */
 	return $output;
-} add_filter( 'img_caption_shortcode', 'wb_caption', 10, 3 );
+} add_filter( 'img_caption_shortcode', 'bs4_caption', 10, 3 );
 
 
 /** 
@@ -110,7 +110,7 @@ function wb_caption( $output, $attr, $content ) {
  * @version			1.0.0
  * @since			1.0.0
  */  
-function wb_add_image_responsive_class( $html ){  
+function bs4_add_image_responsive_class( $html ){  
   $classes = ' img-fluid'; // separated by spaces, e.g. 'img image-link'  
   
   // check if there are already classes assigned to the anchor  
@@ -125,8 +125,8 @@ function wb_add_image_responsive_class( $html ){
   
   return $html;  
 }  
-add_filter( 'the_content','wb_add_image_responsive_class', 1); 
-add_filter( 'post_thumbnail_html', 'wb_add_image_responsive_class', 1 ); 
+add_filter( 'the_content','bs4_add_image_responsive_class', 1); 
+add_filter( 'post_thumbnail_html', 'bs4_add_image_responsive_class', 1 ); 
 
 /**
  * Add the Bootstrap "img-fluid" class to a image-gallery
@@ -134,7 +134,7 @@ add_filter( 'post_thumbnail_html', 'wb_add_image_responsive_class', 1 );
  * @version			1.0.0
  * @since			1.0.0
  */
-function wb_attachment_img_attributes ( $attr, $attachment ) {
+function bs4_attachment_img_attributes ( $attr, $attachment ) {
 	if ( isset( $attr['class'] ) && 'custom-logo' === $attr['class'] ) {
         $attr['class'] = 'custom-logo img-fluid';
     } else {
@@ -142,9 +142,9 @@ function wb_attachment_img_attributes ( $attr, $attachment ) {
 	}
 	return $attr;
 }
-add_filter( 'wp_get_attachment_image_attributes', 'wb_attachment_img_attributes' , 20, 2);
+add_filter( 'wp_get_attachment_image_attributes', 'bs4_attachment_img_attributes' , 20, 2);
 
-function wb_remove_classes( $html ) {
+function bs4_remove_classes( $html ) {
     $find = array(
         "/alignleft/",
         "/alignright/",
@@ -171,9 +171,9 @@ function wb_remove_classes( $html ) {
 
     return $html;
 }
-add_filter( 'get_image_tag_class','wb_remove_classes', 1 );
-add_filter( 'wp_get_attachment_image_attributes','wb_remove_classes', 1 );
-add_filter( 'the_content','wb_remove_classes', 1 );  
+add_filter( 'get_image_tag_class','bs4_remove_classes', 1 );
+add_filter( 'wp_get_attachment_image_attributes','bs4_remove_classes', 1 );
+add_filter( 'the_content','bs4_remove_classes', 1 );  
 
 /**
  * Make iframe's Responsive
@@ -181,7 +181,7 @@ add_filter( 'the_content','wb_remove_classes', 1 );
  * @version			1.0.0
  * @since			1.0.0
  */
-function wb_oembed_replacer( $html ) {
+function bs4_oembed_replacer( $html ) {
     $find = array(
         '/<iframe/',
 		'/<\/iframe>/',
@@ -199,8 +199,8 @@ function wb_oembed_replacer( $html ) {
     return $html;
 
 }
-add_filter( 'embed_oembed_html','wb_oembed_replacer', 1, 4 );
-add_filter( 'the_excerpt_embed', 'wb_oembed_replacer', 1, 4 );
+add_filter( 'embed_oembed_html','bs4_oembed_replacer', 1, 4 );
+add_filter( 'the_excerpt_embed', 'bs4_oembed_replacer', 1, 4 );
 
 /**
  * Remove WordPress Emoji function from fronted and backend
@@ -208,7 +208,7 @@ add_filter( 'the_excerpt_embed', 'wb_oembed_replacer', 1, 4 );
  * @version			1.0.0
  * @since			1.0.0
  */ 
-function wb_remove_emoji()	{
+function bs4_remove_emoji()	{
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 	remove_action('admin_print_scripts', 'print_emoji_detection_script');
 	remove_action('admin_print_styles', 'print_emoji_styles');
@@ -216,17 +216,17 @@ function wb_remove_emoji()	{
 	remove_filter('the_content_feed', 'wp_staticize_emoji');
 	remove_filter('comment_text_rss', 'wp_staticize_emoji');
 	remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-	add_filter('tiny_mce_plugins', 'wb_remove_tinymce_emoji');
+	add_filter('tiny_mce_plugins', 'bs4_remove_tinymce_emoji');
 }
 
-function wb_remove_tinymce_emoji($plugins) {
+function bs4_remove_tinymce_emoji($plugins) {
 	if (!is_array($plugins)) {
 		return array();
 	}
 	return array_diff($plugins, array(
 		'wpemoji'
 	));
-} add_action('init', 'wb_remove_emoji');
+} add_action('init', 'bs4_remove_emoji');
 
 /**
  * Gallery Shortcode
@@ -263,7 +263,7 @@ function wb_remove_tinymce_emoji($plugins) {
  * }
  * @return string HTML content to display gallery.
  */
-function wb_shortcode_gallery( $attr ) {
+function bs4_shortcode_gallery( $attr ) {
 	$post = get_post();
 
 	static $instance = 0;
@@ -436,6 +436,6 @@ function wb_shortcode_gallery( $attr ) {
 // remove WordPress default gallery shortcode;
 remove_shortcode('gallery', 'gallery_shortcode'); // remove WordPress default gallery;
 // add Bootstrap gallery ghortcode
-add_shortcode('gallery', 'wb_shortcode_gallery' );
+add_shortcode('gallery', 'bs4_shortcode_gallery' );
 
 ?>

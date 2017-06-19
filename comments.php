@@ -45,7 +45,7 @@ if ( post_password_required() ) {
 			?>
 		</h4>
 
-		<?php wb_comments_navigation(); ?>
+		<?php bs4_comments_navigation(); ?>
 
 		<div class="comment-list list-group">
 			<?php
@@ -61,11 +61,11 @@ if ( post_password_required() ) {
 		</div><!-- .comment-list .list-group end; -->
 		
 		
-		<?php wb_comments_navigation( ); ?>
+		<?php bs4_comments_navigation( ); ?>
 		
 	<?php endif; // Check for have_comments(). 
 	
-		wb_comments_alert();
+		bs4_comments_alert();
 	
         /* Loads the comment-form.php template */
     	comment_form( array(

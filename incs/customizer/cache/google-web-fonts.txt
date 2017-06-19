@@ -1168,7 +1168,7 @@
    "lastModified": "2012-07-25",
    "files": {
     "regular": "http://themes.googleusercontent.com/static/fonts/dancingscript/v3/DK0eTGXiZjN6yA8zAEyM2RnpV0hQCek3EmWnCPrvGRM.ttf",
-    "700": "http://themes.googleusercontent.com/static/fonts/dancingscript/v3/KGBfwabt0ZRLA5W1ywjowb_dAmXiKjTPGCuO6G2MbfA.ttf"
+    "700": "http://themes.googleusercontent.com/static/fonts/dancingscript/v3/KGBfwabt0ZRLA5W1ywjobs4_dAmXiKjTPGCuO6G2MbfA.ttf"
    }
   },
   {

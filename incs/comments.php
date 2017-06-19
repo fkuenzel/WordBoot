@@ -53,22 +53,22 @@ function bs4_comment_form( $args ) {
 }
 add_filter( 'comment_form_defaults', 'bs4_comment_form' );
 
-function wb_edit_comment( $link, $text = null, $before = '', $after = '') {
+function bs4_edit_comment( $link, $text = null, $before = '', $after = '') {
 	if ( null === $text ) {
         $text = __( 'Edit This', 'bs4_lang' );
     }
 	$link = '<a class="comment-edit-link btn btn-secondary btn-sm pull-right" href="' . esc_url( get_edit_comment_link( $comment ) ) . '">' . $text . '</a>';
 	
 	return $link;
-} add_filter( 'edit_comment_link', 'wb_edit_comment' ); 
+} add_filter( 'edit_comment_link', 'bs4_edit_comment' ); 
 
 
-function wb_reply_link_class($class){
+function bs4_reply_link_class($class){
     $class = str_replace("class='comment-reply-link", "class='comment-reply-link btn btn-secondary", $class);
     return $class;
-} add_filter('comment_reply_link', 'wb_reply_link_class');
+} add_filter('comment_reply_link', 'bs4_reply_link_class');
 
-function wb_comments_navigation( $args = array() ) {
+function bs4_comments_navigation( $args = array() ) {
     $navigation = '';
  
     // Are there comments to navigate through?
@@ -96,10 +96,10 @@ function wb_comments_navigation( $args = array() ) {
     echo $navigation;
 } 
 
-function wb_comments_alert() {
+function bs4_comments_alert() {
 	$output = '';
 	
-	if ( /*is_page() AND wb_comments_alerts_page() == TRUE && */ ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
+	if ( /*is_page() AND bs4_comments_alerts_page() == TRUE && */ ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments') ) {
 		$output .= "<div class='alert alert-danger mt-3'>\n
 		<i class='fa fa-exclamation-triangle'></i> <span class='h4'>". __( 'Comments are closed for this Page.', 'bs4_lang' ) ."</span>\n
 		</div>\n";
@@ -112,12 +112,12 @@ function wb_comments_alert() {
 	echo $output;
 }
 
-function wb_comment_classes() {
+function bs4_comment_classes() {
 	$classes[] = 'list-group-item list-group-item-action flex-column align-items-start';
 	
 	return $classes;
 }
-add_filter( 'comment_class', wb_comment_classes, 10, 10 );
+add_filter( 'comment_class', bs4_comment_classes, 10, 10 );
 
 function bs4_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;

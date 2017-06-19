@@ -41,7 +41,7 @@ function bs4_setup() {
 	add_image_size( 'navbar-brand-logo', 30, 30, true );
 	
 	
-	add_image_size( 'wb_slider_img', 1140, 400, true );
+	add_image_size( 'bs4_slider_img', 1140, 400, true );
 	
 	
 	// Set the default content width.

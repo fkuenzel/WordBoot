@@ -124,46 +124,46 @@ h1,h2,h3,h4,h5,h6,
 	color: <?php echo get_theme_mod('nav_link_active_color', '000'); ?>;
 }
 
-<?php if ( get_theme_mod('wb_carousel_status') == TRUE ) { ?>
+<?php if ( get_theme_mod('bs4_carousel_status') == TRUE ) { ?>
 /**
  * Bootstrap Carousel
  *
  * Carousel Colors
  */
-<?php if ( get_theme_mod('wb_carousel_caption') == TRUE ) { ?>
+<?php if ( get_theme_mod('bs4_carousel_caption') == TRUE ) { ?>
 <?php
-	$cap_bg = get_theme_mod( 'wb_carousel_caption_background_color', '#000000');
-	$caption_bg = wb_hex2rgb( $cap_bg ); 
+	$cap_bg = get_theme_mod( 'bs4_carousel_caption_background_color', '#000000');
+	$caption_bg = bs4_hex2rgb( $cap_bg ); 
 ?>
 .carousel-caption {
-	color: <?php echo get_theme_mod( 'wb_carousel_caption_text_color', '#ffffff'); ?>;
-	background: rgba(<?php echo $caption_bg['red']; ?>, <?php echo $caption_bg['green']; ?>, <?php echo $caption_bg['blue']; ?>, <?php echo get_theme_mod( 'wb_carousel_caption_background_transparent', '0.75	'); ?>);
+	color: <?php echo get_theme_mod( 'bs4_carousel_caption_text_color', '#ffffff'); ?>;
+	background: rgba(<?php echo $caption_bg['red']; ?>, <?php echo $caption_bg['green']; ?>, <?php echo $caption_bg['blue']; ?>, <?php echo get_theme_mod( 'bs4_carousel_caption_background_transparent', '0.75	'); ?>);
 } 
 <?php } // carousel caption ?>
-<?php if ( get_theme_mod( 'wb_carousel_indicators' ) == TRUE ) { ?>
+<?php if ( get_theme_mod( 'bs4_carousel_indicators' ) == TRUE ) { ?>
 
 <?php
-	$indicator_bg = get_theme_mod( 'wb_carousel_indicator_color', '#ffffff');
-	$indicator_bg = wb_hex2rgb( $indicator_bg ); 
+	$indicator_bg = get_theme_mod( 'bs4_carousel_indicator_color', '#ffffff');
+	$indicator_bg = bs4_hex2rgb( $indicator_bg ); 
 ?>
 .carousel-indicators li {
 	background: rgba(<?php echo $indicator_bg['red']; ?>, <?php echo $indicator_bg['green']; ?>, <?php echo $indicator_bg['blue']; ?>, 0.5);
 }
 .carousel-indicators .active {
-	background: <?php echo get_theme_mod( 'wb_carousel_indicator_color', '#ffffff'); ?>;
+	background: <?php echo get_theme_mod( 'bs4_carousel_indicator_color', '#ffffff'); ?>;
 }	
 <?php } // Indicator END ?>
-<?php if ( get_theme_mod('wb_carousel_controls') == TRUE ) { ?>
+<?php if ( get_theme_mod('bs4_carousel_controls') == TRUE ) { ?>
 .carousel-control-next,
 .carousel-control-prev {
-	color: <?php echo get_theme_mod( 'wb_carousel_controls_color', '#ffffff'); ?>;
+	color: <?php echo get_theme_mod( 'bs4_carousel_controls_color', '#ffffff'); ?>;
 	font-size: 1.5rem;
 }
 .carousel-control-next:focus,
 .carousel-control-next:hover,
 .carousel-control-prev:focus, 
 .carousel-control-prev:hover {
-	color: <?php echo get_theme_mod( 'wb_carousel_controls_color', '#ffffff'); ?>
+	color: <?php echo get_theme_mod( 'bs4_carousel_controls_color', '#ffffff'); ?>
 }
 <?php } // Carousel Control END ?>
 <?php } // Carousel END ?>

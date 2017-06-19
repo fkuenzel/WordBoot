@@ -58,7 +58,7 @@ function bs4_image_carousel() {
 		}
 	}
 	$output .= '</div> <!-- .carousel-inner END; -->';
-	if ( get_theme_mod('wb_carousel_controls') == 'true' ) {
+	if ( get_theme_mod('bs4_carousel_controls') == 'true' ) {
 		$output .= '<a class="carousel-control-prev" href="#bs4-image-carousel" role="button" data-slide="prev">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
 			<span class="sr-only">'. __('Previous', 'bs4_lang' ) .'</span>
@@ -68,7 +68,7 @@ function bs4_image_carousel() {
 			<span class="sr-only">'. __('Next', 'bs4_lang' ) .'</span>
 		</a>';
 	}
-	$output .= '</div> <!.-- #wb_image_carousel END -->';
+	$output .= '</div> <!.-- #bs4_image_carousel END -->';
 	
 	
 	echo apply_filters( 'bs4_image_carousel', $output );

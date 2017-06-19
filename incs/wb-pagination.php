@@ -82,7 +82,7 @@ function bs4_paging_nav( $args = '' ) {
 	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
 		
 	// Set up paginated links.
-	$links = wb_paginate_links( array(
+	$links = bs4_paginate_links( array(
 		'base'     => $pagenum_link,
 		'format'   => $format,
 		'total'    => $GLOBALS['wp_query']->max_num_pages,
@@ -181,7 +181,7 @@ endif;
  * }
  * @return array|string|void String of page links or array of page links.
  */
-function wb_paginate_links( $args = '' ) {
+function bs4_paginate_links( $args = '' ) {
 	global $wp_query, $wp_rewrite;
 
 	// Setting up default values based on the current URL.

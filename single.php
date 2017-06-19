@@ -27,7 +27,7 @@ get_header(); ?>
 					if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					} else { 
-						wb_comments_alert();
+						bs4_comments_alert();
 					}
 	
 					the_post_navigation( array(

@@ -22,10 +22,10 @@ get_header(); ?>
 					get_template_part( 'template-parts/page/content', 'page' );
 
 					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() AND wb_show_comments_on_pages() == TRUE ) {
+					if ( comments_open() || get_comments_number() AND bs4_show_comments_on_pages() == TRUE ) {
 						comments_template();
 					} else {
-						wb_comments_alert();
+						bs4_comments_alert();
 					}
 
 				endwhile; // End of the loop.

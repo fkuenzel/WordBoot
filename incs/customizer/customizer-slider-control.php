@@ -2,7 +2,7 @@
 // Custom control for carousel category
  
 if (class_exists('WP_Customize_Control')) {
-    class wb_child_post_slider extends WP_Customize_Control {
+    class bs4_child_post_slider extends WP_Customize_Control {
  
         public function render_content() {
    

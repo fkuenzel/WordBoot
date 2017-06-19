@@ -36,7 +36,7 @@
  * }
  * @return string Formatted output in HTML.
  */
-function wb_link_pages( $args = '' ) {
+function bs4_link_pages( $args = '' ) {
 	global $page, $numpages, $multipage, $more;
 
 	$defaults = array(
@@ -63,7 +63,7 @@ function wb_link_pages( $args = '' ) {
 	 *
 	 * @param array $params An array of arguments for page links for paginated posts.
 	 */
-	$r = apply_filters( 'wb_link_pages_args', $params );
+	$r = apply_filters( 'bs4_link_pages_args', $params );
 
 	$output = '<nav aria-label="Page navigation">';
 	if ( $multipage ) {
@@ -78,7 +78,7 @@ function wb_link_pages( $args = '' ) {
 				$output .= '">';
 				$link = $r['link_before'] . str_replace( '%', $i, $r['pagelink'] ) . $r['link_after'];
 				if ( $i != $page || ! $more && 1 == $page ) {
-					$link = _wb_link_page( $i ) . $link . '</a>';
+					$link = _bs4_link_page( $i ) . $link . '</a>';
 				}
 				/**
 				 * Filters the HTML output of individual page number links.
@@ -88,7 +88,7 @@ function wb_link_pages( $args = '' ) {
 				 * @param string $link The page number HTML output.
 				 * @param int    $i    Page number for paginated posts' page links.
 				 */
-				$link = apply_filters( 'wb_link_pages_link', $link, $i );
+				$link = apply_filters( 'bs4_link_pages_link', $link, $i );
 
 				// Use the custom links separator beginning with the second link.
 				$output .= ( 1 === $i ) ? ' ' : $r['separator'];
@@ -108,18 +108,18 @@ function wb_link_pages( $args = '' ) {
 			$output .= '<ul class="pagination">';
 			$prev = $page - 1;
 			if ( $prev > 0 ) {
-				$link = _wb_link_page( $prev ) . $r['link_before'] . $r['previouspagelink'] . $r['link_after'] . '</a>';
+				$link = _bs4_link_page( $prev ) . $r['link_before'] . $r['previouspagelink'] . $r['link_after'] . '</a>';
 
-				$output .= apply_filters( 'wb_link_pages_link', $link, $prev );
+				$output .= apply_filters( 'bs4_link_pages_link', $link, $prev );
 			}
 			$next = $page + 1;
 			if ( $next <= $numpages ) {
 				if ( $prev ) {
 					$output .= $r['separator'];
 				}
-				$link = _wb_link_page( $next ) . $r['link_before'] . $r['nextpagelink'] . $r['link_after'] . '</a>';
+				$link = _bs4_link_page( $next ) . $r['link_before'] . $r['nextpagelink'] . $r['link_after'] . '</a>';
 
-				$output .= apply_filters( 'wb_link_pages_link', $link, $next );
+				$output .= apply_filters( 'bs4_link_pages_link', $link, $next );
 			}
 			$output .= '</ul>';
 			$output .= $r['after'];
@@ -134,7 +134,7 @@ function wb_link_pages( $args = '' ) {
 	 * @param string $output HTML output of paginated posts' page links.
 	 * @param array  $args   An array of arguments.
 	 */
-	$html = apply_filters( 'wb_link_pages', $output, $args );
+	$html = apply_filters( 'bs4_link_pages', $output, $args );
 
 	if ( $r['echo'] ) {
 		echo $html;
@@ -143,7 +143,7 @@ function wb_link_pages( $args = '' ) {
 }
 
 /**
- * Helper function for wb_link_pages().
+ * Helper function for bs4_link_pages().
  *
  * @since 1.0.0
  * @access private
@@ -153,7 +153,7 @@ function wb_link_pages( $args = '' ) {
  * @param int $i Page number.
  * @return string Link.
  */
-function _wb_link_page( $i ) {
+function _bs4_link_page( $i ) {
 	global $wp_rewrite;
 	$post = get_post();
 	$query_args = array();
