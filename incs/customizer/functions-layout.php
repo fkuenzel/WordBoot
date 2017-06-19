@@ -167,7 +167,7 @@ function get_layout_grid_class( $section ) {
 		$offset = ' pull-md'. $grid_offset;
 	}
 	
-	if ( $section === 'sidebar-left' AND $columns === 'two-sidebar' ) {
+	if ( $section === 'sidebar-left' ) {
 		$grid_left = get_theme_mod( 'grid_sidebar_left', '2' );
 		$grid_right = get_theme_mod( 'grid_sidebar_right', '2' );
 
@@ -176,16 +176,16 @@ function get_layout_grid_class( $section ) {
 	}
 
 	// Content Offset
-	if ( $section === 'content' AND $columns === 'sidebar-left' ) {
+	if ( $section === 'content' AND $columns === 'sidebar-left' OR is_page_template( 'page-templates/left-sidebars.php' ) ) {
 		$grid = get_theme_mod( 'grid_sidebar_left', '2' );
 		$offset .= ' push-md-'. $grid;
 	}
-	if ( $section === 'content' AND $columns === 'two-sidebar' ) {
+	if ( $section === 'content' AND $columns === 'two-sidebar' OR is_page_template( 'page-templates/2-sidebars.php' ) ) {
 		$grid = get_theme_mod( 'grid_sidebar_left', '2' );
 		$offset .= ' push-md-'. $grid;
 	}
 
-	if ( $section === 'content' ) {
+	if ( $section === 'content' AND empty( $offset ) ) {
 		$output = 'col';
 	} else {
 		$output = 'col-lg-'.$grid . $offset .' col-md-12';

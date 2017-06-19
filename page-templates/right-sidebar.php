@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying all PAGES posts with left sidebar
+ * The template for displaying all PAGES posts with right sidebar
  *
- * Template Name: Page Left Sidebar
+ * Template Name: Page Right Sidebar
  *
  * @package WordPress
  * @subpackage bs4_basis
@@ -33,7 +33,7 @@ get_header(); ?>
 			?>
 			</div> <!-- .col -->
 			
-			<?php get_sidebar( 'left' ); ?>
+			<?php get_sidebar(); ?>
 			
 		</div> <!-- .row end; -->
 	</div> <!-- .<?php bs4_container_class(); ?> AUTO CLASS end -->
