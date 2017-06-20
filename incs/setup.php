@@ -36,13 +36,16 @@ function bs4_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'featured-image', 2000, 1200, true );
+	add_image_size( 'featured-image', 1140, 641, true );
 	add_image_size( 'thumbnail-avatar', 150, 150, true );
 	add_image_size( 'navbar-brand-logo', 30, 30, true );
 	
 	
-	add_image_size( 'bs4_slider_img', 1140, 400, true );
-	
+	add_image_size( 'bs4_slider_img_xl', 1140, 641, true );
+	add_image_size( 'bs4_slider_img_lg', 960, 540, true );
+	add_image_size( 'bs4_slider_img_md', 720, 405, true );
+	add_image_size( 'bs4_slider_img_sm', 540, 304, true );
+	add_image_size( 'bs4_slider_img', 500, 281, true );
 	
 	// Set the default content width.
 	$GLOBALS['content_width'] = 1140;
@@ -52,7 +55,7 @@ function bs4_setup() {
 		 * Enable support for site logo.
 		 */
 		add_theme_support( 'custom-logo', array(
-			'height'      => 400,
+			'height'      => 641,
 			'width'       => 1140,
 			'flex-height' => true,
 			'flex-width'  => true,
@@ -64,7 +67,7 @@ function bs4_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'bs4_custom_header_args', array(
 			'default-image'          => '',
 			'width'                  => 1140,
-			'height'                 => 400,
+			'height'                 => 641,
 			'flex-width'             => true,
 			'flex-height'            => true,
 			'uploads'                => true,
