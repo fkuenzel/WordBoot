@@ -15,6 +15,12 @@ Customizer Funktionen im überblick:
 - Bootstrap Carousell Slider im Header (mit bis zu 5 Bildern)
 #
 
+<<<<<<< HEAD
 # Lizenz
 WordBoot wird unter der Creative Commons Lizenz "Namensnennung - Weitergabe unter gleichen Bedingungen 4.0" (CC-BY-SA 4.0) Veröffentlicht.
 Link zur Lizenz: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+=======
+Lizenz
+Bootstrap4 wird unter der Creative Commons Lizenz "Namensnennung - Weitergabe unter gleichen Bedingungen 4.0" (CC-BY-SA 4.0) Veröffentlicht.
+Link zur Lizenz: https://creativecommons.org/licenses/by-sa/4.0/deed.de
+>>>>>>> 9f8c7279ba7563fd4da5d45c9ca3f57c76a896dd
