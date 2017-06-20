@@ -16,7 +16,9 @@ function bs4_image_carousel() {
 	$slider_img[3] = bs4_get_image_id( get_theme_mod('bs4_carousel_img_4') );
 	$slider_img[4] = bs4_get_image_id( get_theme_mod('bs4_carousel_img_5') );
 	
-	$output = '<div id="bs4-image-carousel" class="carousel slide '. get_bs4_container_class() .'" data-ride="carousel">';
+	$output = '<div id="bs4-image-carousel" class="carousel slide"';
+	$output .= bs4_js_settings();
+	$output .= '>';
 	$indi_count = -1;
 	if ( get_theme_mod('bs4_carousel_indicators') == 'true' ) {
 		$output .= '<ol class="carousel-indicators">';
@@ -40,9 +42,25 @@ function bs4_image_carousel() {
 			$output .= '<div class="carousel-item ';
 			if ( $i === 1 ) { $output .= 'active'; }
 			$output .= '">';
+			$image_xl = wp_get_attachment_image_src( $img, 'bs4_slider_img_xl', false );
+			$image_lg = wp_get_attachment_image_src( $img, 'bs4_slider_img_lg', false );
+			$image_md = wp_get_attachment_image_src( $img, 'bs4_slider_img_md', false );
+			$image_sm = wp_get_attachment_image_src( $img, 'bs4_slider_img_sm', false );
 			$image = wp_get_attachment_image_src( $img, 'bs4_slider_img', false );
 			//if ( empty($image) ) { $image = wp_get_attachment_image_src( $img, 'full-width', false ); } 
-			$output .= '<img class="d-block img-fluid" src="'. $image['0'] .'" />';
+			//$output .= '<img class="d-block img-fluid" src="'. $image_xl['0'] .'" />';
+			
+			$output .= '
+			<picture class="mx-auto d-block">
+				<source media="(min-width: 1200px)" srcset="'. $image_xl['0'] .'">
+				<source media="(min-width: 992px)" srcset="'. $image_lg['0'] .'">
+				<source media="(min-width: 768px)" srcset="'. $image_md['0'] .'">
+				<source media="(min-width: 576px)" srcset="'. $image_sm['0'] .'">
+				<source media="(max-width: 575px)" srcset="'. $image['0'] .'">
+				<img src="'. $image_md['0'] .'" class="img-fluid">
+			</picture>
+			
+			';
 			
 			if ( get_theme_mod('bs4_carousel_caption') == 'true')  {
 				//$image_meta = wp_get_attachment_metadata( $img );
@@ -61,17 +79,36 @@ function bs4_image_carousel() {
 	if ( get_theme_mod('bs4_carousel_controls') == 'true' ) {
 		$output .= '<a class="carousel-control-prev" href="#bs4-image-carousel" role="button" data-slide="prev">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Previous', 'bs4_lang' ) .'</span>
+			<span class="sr-only">'. __('vorherige', 'bs4_lang' ) .'</span>
 		</a>
 		<a class="carousel-control-next" href="#bs4-image-carousel" role="button" data-slide="next">
 			<i class="fa fa-chevron-right" aria-hidden="true"></i>
-			<span class="sr-only">'. __('Next', 'bs4_lang' ) .'</span>
+			<span class="sr-only">'. __('nächste', 'bs4_lang' ) .'</span>
 		</a>';
 	}
 	$output .= '</div> <!.-- #bs4_image_carousel END -->';
 	
 	
 	echo apply_filters( 'bs4_image_carousel', $output );
+	
+}
+
+function bs4_js_settings() {
+	
+	$options = array();
+	
+	$options['interval']	= get_theme_mod( 'bs4_carousel_js_interval', '5000');
+	$options['keyboard']	= get_theme_mod( 'bs4_carousel_js_keyboard', 'true' );
+	$options['pause']		= get_theme_mod( 'bs4_carousel_js_pause', 'hover' );
+	$options['ride']		= get_theme_mod( 'bs4_carousel_js_ride', 'false' );
+	$options['wrap']		= get_theme_mod( 'bs4_carousel_js_wrap', true );
+	
+	$output = '';
+	foreach( $options as $option => $value ) {
+		$output .= "data-$option='$value' ";
+	}
+	
+	return $output;
 	
 }
 
