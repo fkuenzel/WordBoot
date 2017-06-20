@@ -35,14 +35,6 @@ function bs4_scripts() {
 	// Load Font-Awesome File
 	wp_enqueue_style( 'font-awesome-4.7.0', get_theme_file_uri( '/libs/font-awesome/css/font-awesome.min.css' ), array( 'bs4-style' ), '4.7.0' );
 	
-	
-	/**
-	 * Load jQuery on Footer
-	 */
-	wp_scripts()->add_data( 'jquery', 'group', 1 );
-    wp_scripts()->add_data( 'jquery-core', 'group', 1 );
-    wp_scripts()->add_data( 'jquery-migrate', 'group', 1 );
-	
 	/**
 	 * Add Inline JS to the Footer for external Modal Windows
 	 */ 
