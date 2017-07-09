@@ -4,11 +4,11 @@ Theme URI: https://fkuenzel.de/
 Author: Fabian Künzel
 Author URI: https://github.com/fkuenzel/WordBoot/
 Description: WordPress + Bootstrap = Mobile-First WordPress Theme
-Version: 1.0-alpha
+Version: 1.0-beta
 Text Domain: bs4_lang
 */
 
-.copyright { font-size: .75rem; margin-top: 1rem; }
+.copyright { font-size: .75rem; padding-top: .5rem; padding-bottom: .5rem; }
 
 header span.pageTitle { display: block; margin-bottom: 0; }
 #bs4-image-carousel { margin-left: -15px; margin-right: -15px; }
@@ -50,6 +50,13 @@ img.float-right, figure.float-right { margin-left: 1rem; margin-bottom: 1rem; }
 	.custom-logo-link img { max-width: 640px }
 }
 
+/**
+ * Multiplie Dropdown Menü
+ *
+ * @since		1.0.0
+ */
+
+
 
 /**
  * Bootstrap4 Catergory Widget List
@@ -75,6 +82,18 @@ ul.wb-category-list-child {
 
 .wb-category-widget .badge { float: right; }
 
+/**
+ * Bootstrap4 Recent Posts Widget
+ */
+.widget_recent_entries { }
+.widget_recent_entries .media-body {
+	font-size: .8rem; 
+}
+.widget_recent_entries .media-body .post-date {
+	color: #e8e5e5;
+}
+.widget_recent_entries li:nth-child(even) { border-top: 1px solid; border-bottom: 1px solid; }
+.widget_recent_entries li:last-child { border-bottom: none; }
 
 /**
  * Footer Widget Control

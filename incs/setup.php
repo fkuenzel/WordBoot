@@ -39,13 +39,32 @@ function bs4_setup() {
 	add_image_size( 'featured-image', 1140, 641, true );
 	add_image_size( 'thumbnail-avatar', 150, 150, true );
 	add_image_size( 'navbar-brand-logo', 30, 30, true );
+	add_image_size( 'widget-recent-posts', 64, 64, true );
 	
 	
+	/*
+	 * Bootstrap4 Carousel Slider Images
+	 * 
+	 * @since		1.0.0
+	 */
 	add_image_size( 'bs4_slider_img_xl', 1140, 641, true );
 	add_image_size( 'bs4_slider_img_lg', 960, 540, true );
 	add_image_size( 'bs4_slider_img_md', 720, 405, true );
 	add_image_size( 'bs4_slider_img_sm', 540, 304, true );
 	add_image_size( 'bs4_slider_img', 500, 281, true );
+	
+	
+	/**
+	 * New Post Images
+	 *
+	 * @since		1.0.0
+	 */
+	add_image_size( 'bs4_post_img_xl', 1140, 760, true );
+	add_image_size( 'bs4_post_img_lg', 960, 640, true );
+	add_image_size( 'bs4_post_img_md', 720, 480, true );
+	add_image_size( 'bs4_post_img_sm', 540, 360, true );
+	add_image_size( 'bs4_post_img', 500, 333, true );
+	
 	
 	// Set the default content width.
 	$GLOBALS['content_width'] = 1140;

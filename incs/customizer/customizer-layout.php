@@ -42,6 +42,17 @@ $wp_customize->add_section(
 	)
 );
 
+$wp_customize->add_section(
+	'bs4_breadcrumbs_options', array(
+		'description_hidden'	=> false,
+		'description'			=> __( 'Einstellungen Breadcrumb Navigation.', 'bs4_lang'),
+		'capability'			=> 'edit_theme_options',
+		'panel'					=> 'bs4_layout_panel',
+		'priority'				=> 4,
+		'title'					=> __( 'Breadcrumb', 'bs4_lang' ),
+	)
+);
+
 /**
  * Controlls and Settings
  */
@@ -293,5 +304,37 @@ $wp_customize->add_control( 'navbar_color_schema',
 );
 // JavaScript Changes
 $wp_customize->get_setting( 'navbar_color_schema' )->transport = 'postMessage';
+
+
+/**
+ * #4 Bootstrap Breadcrumb
+ *
+ * @since		1.0.0
+ * @version 	1.0.0
+ *
+ * @section		bs4_breadcrumbs_options
+ */
+ 
+$wp_customize->add_setting( 'bs4_breadcrumbs_status',
+	array(
+		'default'	=> 'false',
+		'type'		=> 'theme_mod',
+	)
+);
+
+$wp_customize->add_control( 'bs4_breadcrumbs_status',
+	array(
+		'choices'  		=> array(
+							'false'		=> __( 'Nein (Default)', 'bs4_lang' ),
+							'true'		=> __( 'Ja', 'bs4_lang' ),
+						),
+		'description'	=> __( 'Stellen Sie ein ob die Breadrcrumb Navigation Angezeigt wird oder nicht.' , 'bs4_lang' ),
+		'label'   		=> __( 'Breadcrumb Aktivieren?', 'bs4_lang' ),
+		'priority'		=> 15,
+		'section'		=> 'bs4_breadcrumbs_options',
+		'settings'		=> 'bs4_breadcrumbs_status',
+		'type'			=> 'select',
+	)
+);
 
 ?>

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
 		
-		<?php bs4_breadcrumb(); ?>
+		
 		<div class="row">
 			<div class="<?php layout_grid_class('content' ); ?>">
 				<div id="404-page" <?php post_class('pb-3'); ?>>

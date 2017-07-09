@@ -60,16 +60,15 @@ $wp_customize->add_section(
  */
 $wp_customize->add_setting( 'bs4_carousel_status', 
 	array(
-		'default'				=> false,
-		//'sanitize_callback'		=> 'bs4_sanitize_choices',
+		'default'				=> 'false',
 		'transport'				=> 'postMessage',
 	)
 );
 $wp_customize->add_control( 'bs4_carousel_status',
 	array(
 		'choices' 		=> array(
-							false  	=> __( 'Nein', 'bs4_lang' ),
-							true   	=> __( 'Ja', 'bs4_lang' ),
+							'false'  	=> __( 'Nein', 'bs4_lang' ),
+							'true'   	=> __( 'Ja', 'bs4_lang' ),
 						 ),
 		'description'	=> '',
 		'label'    		=> __( 'Slider Aktiv?', 'bs4_lang' ),
@@ -89,7 +88,6 @@ $wp_customize->add_control( 'bs4_carousel_status',
 $wp_customize->add_setting( 'bs4_carousel_controls', 
 	array(
 		'default'				=> 'false',
-		//'sanitize_callback'		=> 'bs4_sanitize_choices',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -118,7 +116,6 @@ $wp_customize->add_control( 'bs4_carousel_controls',
 $wp_customize->add_setting( 'bs4_carousel_indicators', 
 	array(
 		'default'				=> 'false',
-		//'sanitize_callback'		=> 'bs4_sanitize_choices',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -146,7 +143,6 @@ $wp_customize->add_control( 'bs4_carousel_indicators',
 $wp_customize->add_setting( 'bs4_carousel_caption', 
 	array(
 		'default'				=> 'false',
-		//'sanitize_callback'		=> 'bs4_sanitize_choices',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -336,7 +332,6 @@ $sliders = array();
 $wp_customize->add_setting( 'bs4_carousel_js_interval', 
 	array(
 		'default'				=> 5000,
-		//'sanitize_callback'		=> 'bs4_sanitize_number',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -353,8 +348,7 @@ $wp_customize->add_control( 'bs4_carousel_js_interval',
 
 $wp_customize->add_setting( 'bs4_carousel_js_keyboard', 
 	array(
-		'default'				=> true,
-		'sanitize_callback'		=> 'bs4_sanitize_choices',
+		'default'				=> 'true',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -398,8 +392,7 @@ $wp_customize->add_control( 'bs4_carousel_js_pause',
 
 $wp_customize->add_setting( 'bs4_carousel_js_ride', 
 	array(
-		'default'				=> false,
-		'sanitize_callback'		=> 'bs4_sanitize_choices',
+		'default'				=> 'carousel',
 		'transport'				=> 'postMessage',
 	)
 );
@@ -420,8 +413,7 @@ $wp_customize->add_control( 'bs4_carousel_js_ride',
 
 $wp_customize->add_setting( 'bs4_carousel_js_wrap', 
 	array(
-		'default'				=> true,
-		'sanitize_callback'		=> 'bs4_sanitize_choices',
+		'default'				=> 'true',
 		'transport'				=> 'postMessage',
 	)
 );

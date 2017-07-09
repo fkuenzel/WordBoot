@@ -20,11 +20,11 @@ function get_bs4_posted_on() {
 	);
 	
 	$posted_on = sprintf(
-		__( 'Posted on %s', 'bs4_lang' ),
+		__( 'Geschrieben am %s', 'bs4_lang' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 	$byline = sprintf(
-		__( 'by %s', 'bs4_lang' ),
+		__( 'von %s', 'bs4_lang' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 	
@@ -39,10 +39,10 @@ if ( ! function_exists( 'bs4_content_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function bs4_content_footer() {
-	echo "<div class='row pb-4'>\n";
+	echo "<div class='row'>\n";
 	// Hide category and tag text for pages.
 	if ( 'post' == get_post_type() ) {
-		echo "<div class='col-md-10'>\n";
+		echo "<div class='col-md-8'>\n";
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'bs4_lang' ) );
 		if ( $categories_list && bs4_categorized_blog() ) {
@@ -67,7 +67,7 @@ function bs4_content_footer() {
 			echo '</span>';
 		}
 	
-	edit_post_link( __( 'Bearbeiten', 'bs4_lang' ), ' <span class="edit-link float-lg-right">', '</span>', '', 'btn btn-secondary btn-sm' );
+	edit_post_link( __( 'Bearbeiten', 'bs4_lang' ), ' <span class="edit-link float-lg-right mr-1">', '</span>', '', 'btn btn-secondary btn-sm' );
 	echo "</div>\n";
 	echo "</div> <!-- .row end -->\n";
 }

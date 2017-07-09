@@ -100,8 +100,8 @@ function bs4_js_settings() {
 	$options['interval']	= get_theme_mod( 'bs4_carousel_js_interval', '5000');
 	$options['keyboard']	= get_theme_mod( 'bs4_carousel_js_keyboard', 'true' );
 	$options['pause']		= get_theme_mod( 'bs4_carousel_js_pause', 'hover' );
-	$options['ride']		= get_theme_mod( 'bs4_carousel_js_ride', 'false' );
-	$options['wrap']		= get_theme_mod( 'bs4_carousel_js_wrap', true );
+	$options['ride']		= get_theme_mod( 'bs4_carousel_js_ride', 'carousel' );
+	$options['wrap']		= get_theme_mod( 'bs4_carousel_js_wrap', 'true' );
 	
 	$output = '';
 	foreach( $options as $option => $value ) {

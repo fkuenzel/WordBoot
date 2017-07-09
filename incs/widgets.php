@@ -53,10 +53,12 @@ function bs4_widget_init(){
 	// unregister default WordPress Widget
 	unregister_widget( 'WP_Widget_Categories' );
 	unregister_widget( 'WP_Widget_Meta' );
+	unregister_widget( 'WP_Widget_Recent_Posts' );
 	
 	// Register Bootstrap4 Widgets
 	register_widget( 'WB_Widget_Categories' );
 	register_widget( 'WB_Widget_Meta' );
+	register_widget( 'BS4_Widget_Recent_Posts' );
 }
 
 add_action("widgets_init", "bs4_widget_init");
@@ -68,4 +70,5 @@ add_action("widgets_init", "bs4_widget_init");
  */
 require( 'widgets/wp-category-widget.php' );
 require( 'widgets/wb-meta-widget.php' );
+require( 'widgets/bs4-widget-recent-posts.php' );
 ?>

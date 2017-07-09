@@ -66,15 +66,7 @@ function bs4_columns_layout( $show_cols = false, $layout = 'global' ) {
 	}
 }
 
-function bs4_show_single_excerpt() {
-	
-	return get_theme_mod( 'ShowExcerptSingle' );
-}
 
-function bs4_show_excerpt() {
-	
-	return get_theme_mod( 'ShowExcerptBlog');
-}
 /**
  * Filter the except length to customitze lenght.
  *
@@ -91,21 +83,6 @@ function bs4_custom_excerpt_length( $length ) {
 	return $lenght;
 }
 //add_filter( 'excerpt_length', 'bs4_custom_excerpt_length', 999 );
-
-/**
- * Filter the "read more" excerpt string link to the post.
- *
- * @param string $more "Read more" excerpt string.
- * @return string (Maybe) modified "read more" excerpt string.
- */
-function wordpress_excerpt_more( $more ) {
-    return sprintf( '<div class="clearfix">&nbsp;</div><a class="read-more btn btn-secondary" href="%1$s">%2$s</a>',
-        get_permalink( get_the_ID() ),
-        get_theme_mod('ExcerptText', __('Read More', 'bs4_lang') )
-    );
-}
-//add_filter( 'excerpt_more', 'wordpress_excerpt_more' );
-
 
 function bs4_trim_excerpt($text) {
 	$raw_excerpt = $text;
@@ -131,8 +108,8 @@ function bs4_trim_excerpt($text) {
 	}
 	return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
 }
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'bs4_trim_excerpt');
+//remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+//add_filter('get_the_excerpt', 'bs4_trim_excerpt');
 
 
 function bs4_show_comments_on_pages() {

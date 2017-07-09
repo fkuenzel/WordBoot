@@ -33,6 +33,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
 					<?php } ?>
                     <div class="customize-control-content">
 						<select <?php $this->link(); ?>>
+							<option value='-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'">Bootstrap4 Default</option>
                         <?php
                             foreach ( $this->fonts as $k => $v )
                             {

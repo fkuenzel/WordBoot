@@ -24,7 +24,7 @@ add_action( 'wp_enqueue_scripts', 'bs4_scripts' );
  */
 function bs4_scripts() {
 	// Theme stylesheet.
-	wp_enqueue_style( 'bs4-style', get_stylesheet_uri(), array('bootstrap-style') );
+	wp_enqueue_style( 'bs4-style', get_stylesheet_uri(), array('bootstrap') );
 	wp_enqueue_style( 'customizer-api', get_theme_file_uri( '/customizer-css.php' ), array('bs4-style') );
 	
 	// Load the Bootstrap 4 Stylesheet and JavaScript Files
@@ -60,7 +60,6 @@ require get_parent_theme_file_path( '/incs/wb-catwalker.php' );
 require get_parent_theme_file_path( '/incs/template-tags.php' );
 require get_parent_theme_file_path( '/incs/wb-pagination.php' );
 require get_parent_theme_file_path( '/incs/wb-page-links.php' );
-require get_parent_theme_file_path( '/incs/bs4-breadcrumb.php' );
 require get_parent_theme_file_path( '/incs/media.php' );
 require get_parent_theme_file_path( '/incs/comments.php' );
 require get_parent_theme_file_path( '/incs/widgets.php' );

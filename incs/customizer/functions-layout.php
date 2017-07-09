@@ -284,12 +284,12 @@ function is_navbar_brand_logo() {
  *
  */
 function bs4_navbar_color_schema() {
-	$schema = get_theme_mod( 'navbar_color_schema', 'navbar-light' );
+	$schema = get_theme_mod( 'navbar_color_schema');
 	$class = '';
 	
 	if ( $schema === 'navbar-customize' ) {
 		$class .= 'navbar-light';
-	} else if ( $schema === 'navbar-light' ) {
+	} else if ( $schema === 'navbar-light' OR $schema === null ) {
 		$class .= 'navbar-light bg-faded';
 	} else {
 		$class .= 'navbar-inverse '. $schema;

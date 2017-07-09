@@ -37,7 +37,7 @@
 		
 	</div><!-- .postContent end; -->
 	<div class="clearfix"></div>
-	<footer class="postFooter">
+	<footer class="postFooter my-3">
 		<?php bs4_content_footer(); ?>
 	</footer>
 </article><!-- #post-ID end; -->

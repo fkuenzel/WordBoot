@@ -128,6 +128,51 @@ function bs4_add_image_responsive_class( $html ){
 add_filter( 'the_content','bs4_add_image_responsive_class', 1); 
 add_filter( 'post_thumbnail_html', 'bs4_add_image_responsive_class', 1 ); 
 
+
+/**
+ * Add Responsive Images to Posts 
+ *
+ * by Using Responsive IMG over Media-Thek, using picture tag
+ *
+ * @version			1.0.0
+ * @since			1.0.0
+ */  
+function bs4_responsive_img( $html, $id, $caption, $title, $align, $url, $size, $alt ){  
+	
+	if ( $size === 'bs4_post_img' ) {
+		$image_xl = wp_get_attachment_image_src( $id, 'bs4_post_img_xl', false );
+		$image_lg = wp_get_attachment_image_src( $id, 'bs4_post_img_lg', false );
+		$image_md = wp_get_attachment_image_src( $id, 'bs4_post_img_md', false );
+		$image_sm = wp_get_attachment_image_src( $id, 'bs4_post_img_sm', false );
+		$image = wp_get_attachment_image_src( $id, 'bs4_post_img', false );
+	
+		$rep = '';
+		
+		if($url){ // if user wants to print the link with image
+			$rep .= "<a href='" . $url . "' title='". $title ."'>";
+		}
+		$rep .= "<picture>
+	<source media='(min-width: 1200px)' srcset='". $image_xl['0'] ."'>
+	<source media='(min-width: 992px)' srcset='". $image_lg['0'] ."'>
+	<source media='(min-width: 768px)' srcset='". $image_md['0'] ."'>
+	<source media='(min-width: 576px)' srcset='". $image_sm['0'] ."'>
+	<source media='(max-width: 575px)' srcset='". $image['0'] ."'>\n";
+
+		$rep .= "
+	<img src='". $image['0'] ."' class='img-fluid'  alt='".  $alt ."'>
+		";
+		
+		$rep .= "</picture>";
+		if($url){ // if user wants to print the link with image
+			$rep .= "</a>";
+		}
+		
+		return $rep;
+	}
+}  
+add_filter( 'image_send_to_editor','bs4_responsive_img', 1, 10); 
+ 
+
 /**
  * Add the Bootstrap "img-fluid" class to a image-gallery
  *
@@ -146,34 +191,69 @@ add_filter( 'wp_get_attachment_image_attributes', 'bs4_attachment_img_attributes
 
 function bs4_remove_classes( $html ) {
     $find = array(
+		/**
+		 * Find - Align Classes
+		 **/
         "/alignleft/",
         "/alignright/",
         "/aligncenter/",
 		"/alignnone/",
-		"/size-full/",
+		/**
+		 * Find - Tiny Inline Text Styles
+		 */
 		"/style=\"text-align:left;\"/",
 		"/style=\"text-align:right;\"/",
 		"/style=\"text-align:center;\"/",
 		"/style=\"text-align:justify;\"/",
-    );
+		/** 
+		 * Find - Default Image Classes
+		 */
+		"/size-full/",
+		"/size-large/",
+		"/size-medium/",
+		"/size-thumbnail/",
+		/**
+		 * Find - WordBoot Responsive Image
+		 */
+		"/size-bs4_post_img/",
+	);
+	
+	
     $rep = array(
-        "float-left alignleft",
-        "float-right alignright",
-        "mx-auto d-block aligncenter",
+		/**
+		 * Replace - Align Classes
+		 **/
+        "float-left",
+        "float-right",
+        "mx-auto text-center d-block",
 		"alignnone",
-		"img-fluid",
+		/**
+		 * Replace - Tiny Inline Text Styles
+		 */
 		"class='text-left'",
 		"class='text-right'",
 		"class='text-center'",
 		"class='text-justify'",
-    );
+		/**
+		 * Replace - Default Image Class
+		 */
+		"img-fluid",
+		"img-fluid",
+		"img-fluid",
+		"img-fluid img-thumbnail",
+		
+		/**
+		 * Replace - WordBoot Responsive Image
+		 */
+		"img-fluid",
+	);
+	
     $html = preg_replace( $find, $rep, $html );
 
     return $html;
 }
-add_filter( 'get_image_tag_class','bs4_remove_classes', 1 );
-add_filter( 'wp_get_attachment_image_attributes','bs4_remove_classes', 1 );
 add_filter( 'the_content','bs4_remove_classes', 1 );  
+
 
 /**
  * Make iframe's Responsive
@@ -438,4 +518,16 @@ remove_shortcode('gallery', 'gallery_shortcode'); // remove WordPress default ga
 // add Bootstrap gallery ghortcode
 add_shortcode('gallery', 'bs4_shortcode_gallery' );
 
+/**
+ * For Media Library Images (Admin
+ *
+ * @since		1.0.0
+ */
+
+add_filter( 'image_size_names_choose', 'bs4_custom_image_size' );
+function bs4_custom_image_size( $sizes ) {
+    return array_merge( $sizes, array(
+        'bs4_post_img' => __( 'Responsive IMG' ),
+    ) );
+}
 ?>
