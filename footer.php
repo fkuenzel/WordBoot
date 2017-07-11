@@ -18,8 +18,9 @@
 				</div>
 
 			</footer>
-			<?php wp_footer(); ?>
 		</div> <!-- #pageWrapper END -->
 		<div id="modalwindows"></div>
+		
+		<?php wp_footer(); ?>
 	</body>
 </html>
