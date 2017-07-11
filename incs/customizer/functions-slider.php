@@ -46,10 +46,22 @@ function bs4_image_carousel() {
 			$image_lg = wp_get_attachment_image_src( $img, 'bs4_slider_img_lg', false );
 			$image_md = wp_get_attachment_image_src( $img, 'bs4_slider_img_md', false );
 			$image_sm = wp_get_attachment_image_src( $img, 'bs4_slider_img_sm', false );
+			$image_full = wp_get_attachment_image_src( $img, 'full-width', false );
 			$image = wp_get_attachment_image_src( $img, 'bs4_slider_img', false );
 			//if ( empty($image) ) { $image = wp_get_attachment_image_src( $img, 'full-width', false ); } 
 			//$output .= '<img class="d-block img-fluid" src="'. $image_xl['0'] .'" />';
-			
+			if ( 'container-fluid' === get_theme_mod('container_class') ) { 
+			$output .= '
+			<picture class="mx-auto d-block">
+				<source media="(min-width: 1200px)" srcset="'. $image_full['0'] .'">
+				<source media="(min-width: 992px)" srcset="'. $image_xl['0'] .'">
+				<source media="(min-width: 768px)" srcset="'. $image_lg['0'] .'">
+				<source media="(min-width: 576px)" srcset="'. $image_md['0'] .'">
+				<source media="(max-width: 575px)" srcset="'. $image_sm['0'] .'">
+				<img src="'. $image['0'] .'" class="img-fluid">
+			</picture>
+			';
+			} else {
 			$output .= '
 			<picture class="mx-auto d-block">
 				<source media="(min-width: 1200px)" srcset="'. $image_xl['0'] .'">
@@ -59,9 +71,8 @@ function bs4_image_carousel() {
 				<source media="(max-width: 575px)" srcset="'. $image['0'] .'">
 				<img src="'. $image_md['0'] .'" class="img-fluid">
 			</picture>
-			
 			';
-			
+			}
 			if ( get_theme_mod('bs4_carousel_caption') == 'true')  {
 				//$image_meta = wp_get_attachment_metadata( $img );
 				$image_meta = get_post_field('post_content', $img);
