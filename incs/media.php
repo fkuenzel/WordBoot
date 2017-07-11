@@ -530,4 +530,31 @@ function bs4_custom_image_size( $sizes ) {
         'bs4_post_img' => __( 'Responsive IMG' ),
     ) );
 }
+
+/**
+ * Add Async Tag to wp_eneque_script()
+ *
+ * @version		1.0.0
+ * @since		1.0.0
+ */
+function add_async_attribute($tag, $handle, $src) {
+	
+	
+	
+	$src = parse_url($src);
+	$self_url = $src['scheme'].'://'.$src['host'];
+	$blog_uri = esc_url( home_url( '' ) );
+	
+	if ( $self_url == $blog_uri ) {
+		if ( 'jquery-core' === $handle OR 'jquery-migrate' === $handle ) {
+			return str_replace(' src', ' src', $tag);
+		} else {
+			return str_replace(' src', ' async="async" src', $tag);
+		}
+	} else {
+		return str_replace(' src', ' defer="defer" src', $tag);
+	}
+}  add_filter( 'script_loader_tag', 'add_async_attribute', 10, 3 );
+
+
 ?>
