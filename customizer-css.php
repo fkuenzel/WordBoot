@@ -110,6 +110,7 @@ span.pageDesc {
 }
 <?php } ?>
 <?php if ( !empty( get_theme_mod('navbar_text_color') ) && get_theme_mod('navbar_text_color') !== null ) { ?>
+#pageHeader .navbar-inverse .navbar-brand, #pageHeader .navbar-inverse .navbar-toggler
 #pageHeader .navbar-brand:focus, #pageHeader .navbar-brand:hover, #pageHeader .navbar-toggler:focus, #pageHeader .navbar-toggler:hover {
 	color: <?php echo get_theme_mod('navbar_text_color'); ?>;
 }
