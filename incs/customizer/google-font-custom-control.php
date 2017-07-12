@@ -66,7 +66,7 @@ if ( ! class_exists( 'WP_Customize_Control' ) )
             $content = json_decode(file_get_contents($fontFile));
         } else {
 
-            $googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyCGVTl8mfYgV-Im2i9sKbaHjwsMm2RQgvY	';
+            $googleApi = 'https://www.googleapis.com/webfonts/v1/webfonts?sort=popularity&key=AIzaSyDLgEaZH2kpks9ujW9tIAct8apn0sVzIbI';
 
             $fontContent = wp_remote_get( $googleApi, array('sslverify'   => false) );
 
