@@ -200,7 +200,7 @@ function get_layout_grid_class( $section ) {
  * @return		(string) $output | returns the output for navbar-brand in header navbar.
  */
 function navbar_brand() {
-	$brand_option = get_theme_mod( 'navbar_brand_text','yes' );
+	$brand_option = get_theme_mod( 'navbar_brand_text', 'mobile' );
 	
 	switch( $brand_option ) {
 		case 'yes':
@@ -228,7 +228,12 @@ function navbar_brand() {
 			$output .= '</a>';
 			break;
 		default:
-			$output = '<a class="navbar-brand">&nbsp;</a>';
+			$output = '<a class="navbar-brand hidden-md-up" href="'. esc_url( home_url( '/' ) ) .'">';
+			if ( is_navbar_brand_logo() ) { $output .= get_navbar_brand_logo() .' '; }
+			if ( !is_navbar_brand_logo() ) {
+				$output .= get_bloginfo( 'name' );
+			}
+			$output .= '</a>';
 			break;
 	}
 
