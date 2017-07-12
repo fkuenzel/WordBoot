@@ -229,7 +229,7 @@ $wp_customize->add_control( 'navbar_brand_text',
 /**
  * navbar-brand Logo
  *
- * @default		mobile
+ * @default		no
  */
 $wp_customize->add_setting( 'navbar_brand_logo', 
 	array(
