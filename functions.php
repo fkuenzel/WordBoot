@@ -30,7 +30,8 @@ function bs4_scripts() {
 	// Load the Bootstrap 4 Stylesheet and JavaScript Files
 	wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/libs/bootstrap4/css/bootstrap.min.css' ), array(), '4.0.0-alpha.6' );
 	wp_enqueue_script( 'tether', get_theme_file_uri( '/libs/tether/1.4.0/js/tether.min.js' ) , array('jquery'), '1.4.0', true );	
-	wp_enqueue_script( 'bootstrap-js', get_theme_file_uri( '/libs/bootstrap4/js/bootstrap.min.js' ), array('tether'), '4.0.0-alpha.6', true );
+	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/libs/bootstrap4/js/bootstrap.min.js' ), array('tether'), '4.0.0-alpha.6', true );
+	wp_enqueue_script( 'dropdown-doubletap', get_theme_file_uri( '/libs/js/dropdown-doubletab.js' ), array('bootstrap'), '3.3.5', true );
 	
 	// Load Font-Awesome File
 	wp_enqueue_style( 'font-awesome-4.7.0', get_theme_file_uri( '/libs/font-awesome/css/font-awesome.min.css' ), array( 'bs4-style' ), '4.7.0' );
