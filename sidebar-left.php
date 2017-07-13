@@ -4,6 +4,5 @@
 		dynamic_sidebar( 'sidebar_left' );
 	} else { ?>
 
-
 	<?php } ?>
 </div> <!-- .<?php layout_grid_class( 'sidebar-left' ); ?> #sidebar-left  END -->

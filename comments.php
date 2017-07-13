@@ -27,13 +27,13 @@ if ( post_password_required() ) {
 				$comments_number = get_comments_number();
 				if ( 1 === $comments_number ) {
 					/* translators: %s: post title */
-					printf( __( 'One thought on &ldquo;%s&rdquo;', 'bs4_lang' ), get_the_title() );
+					printf( __( 'Eine Reaktion auf &ldquo;%s&rdquo;', 'bs4_lang' ), get_the_title() );
 				} else {
 					printf(
 						/* translators: 1: number of comments, 2: post title */
 						_nx(
-							'%1$s thought on &ldquo;%2$s&rdquo;',
-							'%1$s thoughts on &ldquo;%2$s&rdquo;',
+							'%1$s Reaktionen auf &ldquo;%2$s&rdquo;',
+							'%1$s Reaktionen auf &ldquo;%2$s&rdquo;',
 							$comments_number,
 							'comments title',
 							'bs4_lang'

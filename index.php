@@ -5,7 +5,7 @@
 		
 		<div class="row">
 		
-			<div class="<?php layout_grid_class('content' ); ?>">
+			<div class="<?php layout_grid_class( 'content' ); ?>">
 			<?php
 			if ( have_posts() ) :
 				/* Start the Loop */
@@ -23,9 +23,9 @@
 			
 			<?php 
 				bs4_paging_nav( array(
-					'prev_text' => '<span class="sr-only">' . __( 'Previous page', 'bs4_lang' ) . '</span>',
-					'next_text' => '<span class="sr-only">' . __( 'Next page', 'bs4_lang' ) . '</span>',
-					'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Page', 'bs4_lang' ) . ' </span>'
+					'prev_text' => '<span class="sr-only">' . __( 'Vorherige Seite', 'bs4_lang' ) . '</span>',
+					'next_text' => '<span class="sr-only">' . __( 'Folgeseite', 'bs4_lang' ) . '</span>',
+					'before_page_number' => '<span class="meta-nav sr-only">' . __( 'Seite', 'bs4_lang' ) . ' </span>'
 				) );
 				
 			endif;

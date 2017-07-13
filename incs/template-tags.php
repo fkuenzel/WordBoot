@@ -155,11 +155,11 @@ function bs4_style_list_categorie($links) {
 function bs4_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform form-inline" action="' . home_url( '/' ) . '" >
 		<div class="form-group">
-			<label for="s" class="sr-only">' . __( 'Search for:', 'bs4_lang' ) . '</label>
-			<input type="text" class="form-control" id="s" name="s" value="' . get_search_query() . '" placeholder="' . __( 'Search for', 'bs4_lang' ) . '" />
+			<label for="s" class="sr-only">' . __( 'Suche für:', 'bs4_lang' ) . '</label>
+			<input type="text" class="form-control" id="s" name="s" value="' . get_search_query() . '" placeholder="' . __( 'Suche für', 'bs4_lang' ) . '" />
 		</div>
 		<div class="form-group">
-			<input type="submit" id="searchsubmit" class="btn btn-secondary" value="'. esc_attr__( 'Search', 'bs4_lang' ) .'" />
+			<input type="submit" id="searchsubmit" class="btn btn-secondary" value="'. esc_attr__( 'Suchen', 'bs4_lang' ) .'" />
 		</div>
     </form>';
 

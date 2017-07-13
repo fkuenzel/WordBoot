@@ -18,9 +18,9 @@
  */
 function bs4_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar Left', 'bs4_lang' ),
+		'name'          => __( 'Sidebar Links', 'bs4_lang' ),
 		'id'            => 'sidebar_left',
-		'description'   => __( 'Add widgets here to appear in your left sidebar.', 'bs4_lang' ),
+		'description'   => __( 'Fügen Sie hier Widgets hinzu, um in der linken Seitenleiste zu erscheinen.', 'bs4_lang' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h6 class="widget-title h3">',
@@ -28,9 +28,9 @@ function bs4_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Sidebar Right', 'bs4_lang' ),
+		'name'          => __( 'Sidebar Rechts', 'bs4_lang' ),
 		'id'            => 'sidebar_right',
-		'description'   => __( 'Add widgets here to appear in your right sidebar.', 'bs4_lang' ),
+		'description'   => __( 'Füge hier Widgets hinzu, um in deiner rechten Seitenleiste zu erscheinen.', 'bs4_lang' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h6 class="widget-title h3">',
@@ -40,7 +40,7 @@ function bs4_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Footer Widgets', 'bs4_lang' ),
 		'id'            => 'footer_widgets',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'bs4_lang' ),
+		'description'   => __( 'Füge hier Widgets hinzu, um in deiner Fußzeile zu erscheinen.', 'bs4_lang' ),
 		'before_widget' => '<aside id="%1$s" class="col widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h6 class="widget-title h3">',

@@ -12,11 +12,9 @@
 
 get_header(); ?>
 	<div class="<?php bs4_container_class(); ?>" id="pageContent">
-	
-		
-		
+			
 		<div class="row">
-			<div class="<?php layout_grid_class('content' ); ?>">
+			<div class="<?php layout_grid_class( 'content' ); ?>">
 			<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
@@ -31,8 +29,8 @@ get_header(); ?>
 					}
 	
 					the_post_navigation( array(
-						'prev_text' => '<span class="sr-only">' . __( 'Previous Post', 'bs4_lang' ) . '</span> %title',
-						'next_text' => '<span class="sr-only">' . __( 'Next Post', 'bs4_lang' ) . '</span> %title',
+						'prev_text' => '<span class="sr-only">' . __( 'Vorherige Beitrag', 'bs4_lang' ) . '</span> %title',
+						'next_text' => '<span class="sr-only">' . __( 'Nächster Beitrag', 'bs4_lang' ) . '</span> %title',
 					) );
 					
 				endwhile; // End of the loop.
