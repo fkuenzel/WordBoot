@@ -54,18 +54,6 @@ function bs4_setup() {
 	add_image_size( 'bs4_slider_img', 500, 281, true );
 	
 	
-	/**
-	 * New Post Images
-	 *
-	 * @since		1.0.0
-	 */
-	add_image_size( 'bs4_post_img_xl', 1140, 760, true );
-	add_image_size( 'bs4_post_img_lg', 960, 640, true );
-	add_image_size( 'bs4_post_img_md', 720, 480, true );
-	add_image_size( 'bs4_post_img_sm', 540, 360, true );
-	add_image_size( 'bs4_post_img', 500, 333, true );
-	
-	
 	// Set the default content width.
 	$GLOBALS['content_width'] = 1140;
 
