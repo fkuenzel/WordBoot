@@ -42,18 +42,25 @@ function bs4_image_carousel() {
 			$output .= '<div class="carousel-item ';
 			if ( $i === 1 ) { $output .= 'active'; }
 			$output .= '">';
-			$image_xl = wp_get_attachment_image_src( $img, 'bs4_slider_img_xl', false );
-			$image_lg = wp_get_attachment_image_src( $img, 'bs4_slider_img_lg', false );
-			$image_md = wp_get_attachment_image_src( $img, 'bs4_slider_img_md', false );
-			$image_sm = wp_get_attachment_image_src( $img, 'bs4_slider_img_sm', false );
+			$image_xxl = wp_get_attachment_image_src( $img, 'bs4_slider_img_xxl', false ); // 1920x600
+			$image_1680 = wp_get_attachment_image_src( $img, 'bs4_slider_img_1680', false ); // 1440x450
+			$image_1440 = wp_get_attachment_image_src( $img, 'bs4_slider_img_1440', false ); // 1440x450
+			$image_1280 = wp_get_attachment_image_src( $img, 'bs4_slider_img_1280', false ); // 1280x400
+			$image_xl = wp_get_attachment_image_src( $img, 'bs4_slider_img_xl', false ); // 1140x356
+			$image_lg = wp_get_attachment_image_src( $img, 'bs4_slider_img_lg', false ); // 960x300
+			$image_md = wp_get_attachment_image_src( $img, 'bs4_slider_img_md', false ); // 720x225
+			$image_sm = wp_get_attachment_image_src( $img, 'bs4_slider_img_sm', false ); // 540x169
 			$image_full = wp_get_attachment_image_src( $img, 'full-width', false );
-			$image = wp_get_attachment_image_src( $img, 'bs4_slider_img', false );
+			$image = wp_get_attachment_image_src( $img, 'bs4_slider_img', false ); // 500x156
 			//if ( empty($image) ) { $image = wp_get_attachment_image_src( $img, 'full-width', false ); } 
 			//$output .= '<img class="d-block img-fluid" src="'. $image_xl['0'] .'" />';
 			if ( 'container-fluid' === get_theme_mod('container_class') ) { 
 			$output .= '
 			<picture class="mx-auto d-block">
-				<source media="(min-width: 1200px)" srcset="'. $image_full['0'] .'">
+				<source media="(min-width: 1800px)" srcset="'. $image_full['0'] .'">
+				<source media="(min-width: 1600px)" srcset="'. $image_xxl['0'] .'">
+				<source media="(min-width: 1400px)" srcset="'. $image_1440['0'] .'">
+				<source media="(min-width: 1200px)" srcset="'. $image_1280['0'] .'">
 				<source media="(min-width: 992px)" srcset="'. $image_xl['0'] .'">
 				<source media="(min-width: 768px)" srcset="'. $image_lg['0'] .'">
 				<source media="(min-width: 576px)" srcset="'. $image_md['0'] .'">

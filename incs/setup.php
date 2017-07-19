@@ -47,11 +47,16 @@ function bs4_setup() {
 	 * 
 	 * @since		1.0.0
 	 */
-	add_image_size( 'bs4_slider_img_xl', 1140, 641, true );
-	add_image_size( 'bs4_slider_img_lg', 960, 540, true );
-	add_image_size( 'bs4_slider_img_md', 720, 405, true );
-	add_image_size( 'bs4_slider_img_sm', 540, 304, true );
-	add_image_size( 'bs4_slider_img', 500, 281, true );
+	 
+	add_image_size( 'bs4_slider_img_xll', 1920, 600, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_1680', 1680, 525, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_1440', 1440, 450, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_1280', 1280, 400, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_xl', 1140, 356, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_lg', 960, 300, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_md', 720, 225, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img_sm', 540, 169, array( 'center', 'center' ) );
+	add_image_size( 'bs4_slider_img', 500, 156, array( 'center', 'center' ) );
 	
 	
 	// Set the default content width.
@@ -74,7 +79,7 @@ function bs4_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'bs4_custom_header_args', array(
 			'default-image'          => '',
 			'width'                  => 1140,
-			'height'                 => 641,
+			'height'                 => 356,
 			'flex-width'             => true,
 			'flex-height'            => true,
 			'uploads'                => true,
