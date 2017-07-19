@@ -172,6 +172,18 @@
 	wp.customize( 'bs4_content_headlines_text_family', function( value ) {
         value.bind( function( newval ) {
             $('#pageContent .post-title').css('font-family', newval );
+			$('#pageContent h1').css('font-family', newval );
+			$('#pageContent h2').css('font-family', newval );
+			$('#pageContent h3').css('font-family', newval );
+			$('#pageContent h4').css('font-family', newval );
+			$('#pageContent h5').css('font-family', newval );
+			$('#pageContent h6').css('font-family', newval );
+			$('#pageContent .h1').css('font-family', newval );
+			$('#pageContent .h2').css('font-family', newval );
+			$('#pageContent .h3').css('font-family', newval );
+			$('#pageContent .h4').css('font-family', newval );
+			$('#pageContent .h5').css('font-family', newval );
+			$('#pageContent .h6').css('font-family', newval );
 			$('head').append('<style>@import url("https://fonts.googleapis.com/css?family='+ newval +'");</style>');
         } );
     } );
@@ -179,6 +191,18 @@
 	wp.customize( 'bs4_headline_color', function( value ) {
         value.bind( function( newval ) {
             $('#pageContent .post-title').css('color', newval);
+			$('#pageContent h1').css('color', newval );
+			$('#pageContent h2').css('color', newval );
+			$('#pageContent h3').css('color', newval );
+			$('#pageContent h4').css('color', newval );
+			$('#pageContent h5').css('color', newval );
+			$('#pageContent h6').css('color', newval );
+			$('#pageContent .h1').css('color', newval );
+			$('#pageContent .h2').css('color', newval );
+			$('#pageContent .h3').css('color', newval );
+			$('#pageContent .h4').css('color', newval );
+			$('#pageContent .h5').css('color', newval );
+			$('#pageContent .h6').css('color', newval );
         } );
     } );
 	wp.customize( 'bs4_content_background', function( value ) {
