@@ -9,7 +9,7 @@
 ?>
 
 <?php if ( has_nav_menu( 'header_m' ) ) : ?>
-	<nav class="navbar navbar-toggleable-md <?php echo bs4_navbar_color_schema(); ?>">
+	<nav class="navbar navbar-expand-lg <?php echo bs4_navbar_color_schema(); ?>">
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#headerMenu" aria-controls="headerMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button> <!-- .navbar-toggler .navbar-toggler-right end;-->
@@ -24,5 +24,5 @@
 			'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
 			'walker'            => new wp_bootstrap_navwalker()
 		) ); ?>
-	</nav> <!-- .navbar .navbar-toggleable-md .navbar-light .bg-faded end; -->
+	</nav> <!-- .navbar .navbar-expand-lg .navbar-light .bg-faded end; -->
 <?php endif; ?>
