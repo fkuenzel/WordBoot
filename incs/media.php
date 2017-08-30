@@ -137,9 +137,9 @@ add_filter( 'post_thumbnail_html', 'bs4_add_image_responsive_class', 1 );
  */
 function bs4_attachment_img_attributes ( $attr, $attachment ) {
 	if ( isset( $attr['class'] ) && 'custom-logo' === $attr['class'] ) {
-        $attr['class'] = 'custom-logo img-fluid';
+        $attr['class'] .= ' custom-logo img-fluid';
     } else {
-		$attr['class'] = 'img-fluid';
+		$attr['class'] .= ' img-fluid';
 	}
 	return $attr;
 }
