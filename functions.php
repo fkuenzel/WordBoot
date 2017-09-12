@@ -54,6 +54,19 @@ function bs4_scripts() {
 		"); 
 	
 }
+/**
+ * Remove jQuery Migrate
+ *
+ * @since		1.0.0
+ */
+add_filter( 'wp_default_scripts', 'dequeue_jquery_migrate' );
+
+function dequeue_jquery_migrate( &$scripts){
+	if(!is_admin()){
+		$scripts->remove( 'jquery');
+		$scripts->add( 'jquery', false, array( 'jquery-core' ), '1.10.2' );
+	}
+}
 require get_parent_theme_file_path( '/incs/setup.php' );
 require get_parent_theme_file_path( '/incs/wp-bootstrap-navwalker.php' );
 require get_parent_theme_file_path( '/incs/wb-catwalker.php' );
@@ -66,6 +79,6 @@ require get_parent_theme_file_path( '/incs/widgets.php' );
 
 require get_parent_theme_file_path( '/incs/customizer/customizer-api.php' );
 
-$GLOBALS['bs4_version'] = '1.0.0-alpha';
+$GLOBALS['bs4_version'] = '1.0.0-beta';
 
 ?>
